@@ -1,4 +1,4 @@
-package com.example.passwordmanager;
+package com.example.passwordmanager.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -12,14 +12,20 @@ import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-    @FXML AnchorPane backAnchorPane;
-    @FXML TextField searchTextField;
-    @FXML Button addEntryButton;
-    @FXML FlowPane allEntrysFlowPane;
+    @FXML private AnchorPane backAnchorPane;
+    @FXML private TextField searchTextField;
+    @FXML private Button addEntryButton;
+    @FXML private FlowPane allEntrysFlowPane;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         searchTextField.setText("Test");
+        //updateEntryList();
+    }
+
+    private void updateEntryList() {
+        allEntrysFlowPane.getChildren().clear();
+        allEntrysFlowPane.getChildren().add(new EntryListItem());
     }
 }

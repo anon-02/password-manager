@@ -18,7 +18,7 @@
             <Button fx:id="addEntryButton" layoutX="630.0" layoutY="22.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" styleClass="add-button" text="Add" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="entryViewAnchorPane" layoutX="730.0" prefHeight="720.0" prefWidth="350.0">
+      <AnchorPane layoutX="730.0" prefHeight="720.0" prefWidth="350.0">
          <children>
             <Rectangle fill="#14213d" height="720.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="350.0" />
          </children>

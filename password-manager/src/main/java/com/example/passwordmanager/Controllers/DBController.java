@@ -14,34 +14,31 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class DBController {
-    @FXML private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
-    // everything under here should probably go into its own Controller, temporary for now 
+    
     // TODO getters/setterse
-    @FXML private TextField textInput; 
+    // TODO test on main.java
 
-    @FXML private TextField passInput; 
+    // the username for the masterpassword
+    @FXML private TextField userReg; 
+
+    // masterpassword input 
+    @FXML private TextField passReg; 
 
     @FXML 
     private String getInput() {
-        String userInput = textInput.getText();
+        String userInput = userReg.getText();
         System.out.println(userInput);
         return userInput;
     }
 
     @FXML 
     private String getMasterPass() {
-        String masterPassword = passInput.getText();
+        String masterPassword = passReg.getText();
         System.out.println(masterPassword);
         return masterPassword; 
     }
 
-    // call this function to create a new user 
+    // call this function on register to create a new user, creates new db file with user and password table
     @FXML 
     protected void createNewUserDatabase() {
         // wonky-ass way to get to the right file path but works for now 
@@ -82,6 +79,8 @@ public class DBController {
         + "user_id INTEGER,"
         + "username TEXT VARCHAR(255),"
         + "website_url VARCHAR(255),"
+        + "password_type VARCHAR(255),"
+        // date_added
         + "password TEXT NOT NULL,"
         + "last_modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
         + "FOREIGN KEY (user_id) REFERENCES users (user_id)"
@@ -93,6 +92,7 @@ public class DBController {
         System.out.println("Table created successfully.");
     }
 
+    // adds the new user into the user db, doesnt really make sense when the whole table is made up of one user  
     @FXML
     public static int insertUserData(Connection connection, String username, String masterPass) throws SQLException {
         String insertUserSQL = "INSERT INTO users (username, masterPassword) VALUES (?, ?)";
@@ -112,7 +112,7 @@ public class DBController {
         throw new SQLException("User data insertion failed or no user ID retrieved.");
     }
 
-
+    // connects to the db files and updates/creates them
     @FXML 
     public static void SQLConnection(File userDBFile, String newUser, String masterPass) {
         String url = "jdbc:sqlite:" + userDBFile;
@@ -139,5 +139,9 @@ public class DBController {
             System.err.println("Connection to the database failed: " + e.getMessage());
         }
     }
+
+    // Add to password table 
+    // get specific type of password
+    // TODO get all passwords 
    
 }

@@ -1,0 +1,16 @@
+.scroll-pane {
+    -fx-background-color: #E3E3E3;
+}
+
+.scroll-pane .thumb {
+    -fx-background-color: #1E3055;
+    -fx-background-radius: 4px;
+}
+
+.scroll-pane .decrement-arrow {
+    -fx-background-color: #F9F9F9;
+}
+
+.scroll-pane .increment-arrow {
+    -fx-background-color: #F9F9F9;
+}

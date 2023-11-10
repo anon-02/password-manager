@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+.title-text {
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: #F3F2F3;
+}
+
+.label-text-field-description {
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #F3F2F3;
+}
+
+.text-field-content {
+    -fx-background-radius: 8px;
+    -fx-background-color: #F3F2F3;
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1E3055;
+    -fx-alignment: top-left;
+}
+
+.text-field-content-password {
+    -fx-background-radius: 8px;
+    -fx-background-color: #F3F2F3;
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 8px;
+    -fx-text-fill: #1E3055;
+    -fx-alignment: center-left;
+}
+
+.password-strength-background {
+    -fx-fill: #F3F2F3;
+    -fx-arc-width: 6px;
+    -fx-arc-height: 6px;
+}
+
+.password-strength-foreground {
+    -fx-fill: #75DD73;
+    -fx-arc-width: 6px;
+    -fx-arc-height: 6px;
+}
+
+.password-strength-label {
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: normal;
+    -fx-font-size: 10px;
+    -fx-text-fill: #F3F2F3;
+    -fx-alignment: top-right;
+}
+
+.save-button {
+    -fx-background-color: #F3F2F3;
+    -fx-background-radius: 16px;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #1E3055;
+}
+
+.save-button:hover {
+    -fx-background-color: #F9F9F9;
+    -fx-background-radius: 16px;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #1E3055;
+}
+
+.save-button:hover:pressed {
+    -fx-background-color: #EAE2E2;
+    -fx-background-radius: 16px;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #1E3055;
+}
+
+.background {
+    -fx-background-color: #1E3055;
+}

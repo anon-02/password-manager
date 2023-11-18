@@ -7,6 +7,5 @@ import java.io.IOException;
 public interface Entry {
     String getName();
     String getUnderName();
-
     Image getImage() throws IOException;
 }

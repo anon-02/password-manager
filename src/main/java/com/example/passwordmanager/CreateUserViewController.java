@@ -14,20 +14,20 @@ public class CreateUserViewController implements Initializable {
     @FXML private TextField email, masterPassword, confirmMasterPassword;
     @FXML private Button backButton, createButton;
 
-    private PasswordManagerModel model = PasswordManagerModel.getInstance();
+    private fxmlHelper helper = fxmlHelper.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     @FXML
-    private void backButtonPressed() {model.navigateTo(baseAnchorPane, "login_view.fxml");}
+    private void backButtonPressed() {
+        helper.navigateTo(baseAnchorPane, "login_view.fxml");}
 
     @FXML
     private void createUserButtonPressed() {
         // TODO verifyFields()
         // TODO model.addUser(Fields)
-        model.navigateTo(baseAnchorPane, "login_view.fxml");
+        helper.navigateTo(baseAnchorPane, "login_view.fxml");
     }
 }

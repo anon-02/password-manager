@@ -13,16 +13,16 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.util.Objects;
 
-public class PasswordManagerModel {
-    private static PasswordManagerModel instance = null;
+public class fxmlHelper {
+    private static fxmlHelper instance = null;
 
-    protected PasswordManagerModel() {} // Does nothing
+    protected fxmlHelper() {} // Does nothing
 
 
     /* Singleton, ensures that every part of the application shares the model */
-    public static PasswordManagerModel getInstance() {
+    public static fxmlHelper getInstance() {
         if (instance == null) {
-            instance = new PasswordManagerModel();
+            instance = new fxmlHelper();
         }
         return instance;
     }

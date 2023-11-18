@@ -19,7 +19,7 @@ public class CreateEditLogin extends AnchorPane {
     @FXML private ImageView passwordVisible, invisiblePasswordGenerate;
 
     private MainViewController parentController;
-    private PasswordManagerModel model = PasswordManagerModel.getInstance();
+    private fxmlHelper model = fxmlHelper.getInstance();
 
     public CreateEditLogin(MainViewController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-edit-login.fxml"));

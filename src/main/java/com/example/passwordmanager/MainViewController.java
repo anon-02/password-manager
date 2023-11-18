@@ -34,7 +34,7 @@ public class MainViewController implements Initializable {
     @FXML private Button saveButton;
     @FXML private FlowPane injectEntryType;
 
-    private PasswordManagerModel model = PasswordManagerModel.getInstance();
+    private fxmlHelper helper = fxmlHelper.getInstance();
     ArrayList<Entry> entries = new ArrayList<>();
 
 
@@ -57,7 +57,7 @@ public class MainViewController implements Initializable {
             }
         });
 
-        model.AddDefaultText(searchTextField, "Search");
+        helper.AddDefaultText(searchTextField, "Search");
 
         searchTextField.setOnKeyReleased(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {

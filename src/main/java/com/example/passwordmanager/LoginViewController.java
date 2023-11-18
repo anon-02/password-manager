@@ -15,13 +15,16 @@ public class LoginViewController implements Initializable {
     @FXML private TextField email, masterPassword;
     @FXML private Button newUserButton, unlockButton;
 
-    private PasswordManagerModel model = PasswordManagerModel.getInstance();
+    private fxmlHelper helper = fxmlHelper.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        helper.onMouseHover(newUserButton);
+        helper.onMouseHover(unlockButton);
     }
 
-    @FXML public void unlockButtonPressed() {model.navigateTo(baseAnchorPane, "main_view.fxml");}
-    @FXML public void createUserButtonPressed() {model.navigateTo(baseAnchorPane, "create_user_view.fxml");}
+    @FXML public void unlockButtonPressed() {
+        helper.navigateTo(baseAnchorPane, "main_view.fxml");}
+    @FXML public void createUserButtonPressed() {
+        helper.navigateTo(baseAnchorPane, "create_user_view.fxml");}
 }

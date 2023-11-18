@@ -15,7 +15,6 @@ import javafx.scene.layout.FlowPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
@@ -35,9 +34,7 @@ public class MainViewController implements Initializable {
     @FXML private Button saveButton;
     @FXML private FlowPane injectEntryType;
 
-
-
-
+    private PasswordManagerModel model = PasswordManagerModel.getInstance();
     ArrayList<Entry> entries = new ArrayList<>();
 
 
@@ -60,15 +57,7 @@ public class MainViewController implements Initializable {
             }
         });
 
-        searchTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue && Objects.equals(searchTextField.getText(), "Search")) {
-                searchTextField.setText("");
-            } else {
-                if (searchTextField.getText().isEmpty()) {
-                    searchTextField.setText("Search");
-                }
-            }
-        });
+        model.AddDefaultText(searchTextField, "Search");
 
         searchTextField.setOnKeyReleased(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {

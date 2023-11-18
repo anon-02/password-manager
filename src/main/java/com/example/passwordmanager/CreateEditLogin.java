@@ -1,14 +1,12 @@
 package com.example.passwordmanager;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -21,7 +19,7 @@ public class CreateEditLogin extends AnchorPane {
     @FXML private ImageView passwordVisible, invisiblePasswordGenerate;
 
     private MainViewController parentController;
-
+    private PasswordManagerModel model = PasswordManagerModel.getInstance();
 
     public CreateEditLogin(MainViewController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-edit-login.fxml"));
@@ -48,8 +46,9 @@ public class CreateEditLogin extends AnchorPane {
             }
         };
         saveButton.setOnAction(event);
+        model.addPasswordVisibleToggle(passwordVisible, invisiblePassword, visiblePassword);
 
-        EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
+        /*EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 boolean state = visiblePassword.isVisible();
@@ -68,7 +67,7 @@ public class CreateEditLogin extends AnchorPane {
                 passwordVisible.requestFocus(); // Will focus the TextField otherwise
             }
         };
-        passwordVisible.setOnMouseClicked(onClick);
+        passwordVisible.setOnMouseClicked(onClick);*/
     }
 
     public void initFields() {

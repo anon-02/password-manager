@@ -29,6 +29,16 @@
     -fx-text-fill: #14213D;
 }
 
+.text-field-content-note {
+    -fx-background-radius: 8px;
+    -fx-alignment: top-left;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #14213D;
+}
+
 .text-field-content-password {
     -fx-background-radius: 8px;
     -fx-alignment: center-left;
@@ -36,7 +46,7 @@
     -fx-background-color: #F3F2F3;
     -fx-font-family: 'Sen', sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 8px;
+    -fx-font-size: 14px;
     -fx-text-fill: #14213D;
 }
 

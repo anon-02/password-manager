@@ -9,6 +9,8 @@
     -fx-background-color: #F3F2F3;
     -fx-background-radius: 8px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0);
+    -fx-border-color: #011627;
+    -fx-border-radius: 8px;
 }
 
 .anchor-pane-foreground:hover {

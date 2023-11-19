@@ -34,6 +34,41 @@
     -fx-alignment: center-left;
 }
 
+.text-field-content {
+    -fx-background-radius: 8px;
+    -fx-background-color: #F3F2F3;
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1E3055;
+    -fx-alignment: top-left;
+}
+
+.text-area-note {
+    -fx-background-color: #F3F2F3;
+    -fx-background-radius: 12px;
+    -fx-fill: #1E3055;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1E3055;
+    -fx-alignment: top-left;
+}
+
+.text-area-note .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.text-area-note .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area-note .scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+
 .password-strength-background {
     -fx-fill: #F3F2F3;
     -fx-arc-width: 6px;

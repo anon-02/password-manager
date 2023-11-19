@@ -5,13 +5,13 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LoginEntry implements Entry{
+public class AccountEntry implements DisplayableEntry {
 
     private String name, username, password, note;
     private Image image;
 
 
-    public LoginEntry(String name, String username, String password, String note) {
+    public AccountEntry(String name, String username, String password, String note) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -22,6 +22,8 @@ public class LoginEntry implements Entry{
     public String getName() {
         return this.name;
     }
+
+    public String getUsername() {return this.username;}
 
     public String getUnderName() {
         return this.username;

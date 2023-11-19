@@ -91,7 +91,7 @@ public class CreateEditLogin extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException {
         if (isFieldsComplete()) {
-            parentController.addEntry(new LoginEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
+            parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }
     }

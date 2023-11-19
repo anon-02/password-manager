@@ -8,6 +8,10 @@
     -fx-fill: #F3F2F3;
 }
 
+.background {
+    -fx-background-color: #14213D;
+}
+
 .app-name {
     -fx-font-size: 20px;
     -fx-text-fill: #F3F2F3;

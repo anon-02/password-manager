@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -24,18 +25,22 @@ public class MainViewController implements Initializable {
     @FXML private AnchorPane mainAnchorPane;
     @FXML private TextField searchTextField;
     @FXML private Button addEntryButton;
-    @FXML private FlowPane allEntrysFlowPane;
+    @FXML private FlowPane allEntrysFlowPane, detailViewFlowPane;
 
     /* Create Entry View */
     @FXML private AnchorPane createEntryAnchorPane;
     @FXML private ImageView createEntryExit;
     @FXML private ChoiceBox<String> entryType;
     private final String[] entryTypes = {"Login", "Card"};
-    @FXML private Button saveButton;
+    //@FXML private Button saveButton;
     @FXML private FlowPane injectEntryType;
 
+    /* Detail view */
+    @FXML private Button editButton, cancelButton, saveButton;
+
+
     private fxmlHelper helper = fxmlHelper.getInstance();
-    ArrayList<Entry> entries = new ArrayList<>();
+    ArrayList<DisplayableEntry> entries = new ArrayList<>();
 
 
     @Override
@@ -43,6 +48,7 @@ public class MainViewController implements Initializable {
         searchTextField.setText("Search");
         entryType.getItems().addAll(entryTypes);
         entryType.setValue(entryTypes[0]);
+        editButton.setVisible(false);
 
         try {
             updateEntryList();
@@ -57,8 +63,6 @@ public class MainViewController implements Initializable {
             }
         });
 
-        helper.AddDefaultText(searchTextField, "Search");
-
         searchTextField.setOnKeyReleased(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 System.out.println("Search: " + searchTextField.getText());
@@ -69,8 +73,8 @@ public class MainViewController implements Initializable {
 
     private void updateEntryList() throws IOException {
         allEntrysFlowPane.getChildren().clear();
-        for (Entry entry : this.entries) { // Temporary just for proof of concept
-            allEntrysFlowPane.getChildren().add(new EntryListItem(entry, this));
+        for (DisplayableEntry displayableEntry : this.entries) { // Temporary just for proof of concept
+            allEntrysFlowPane.getChildren().add(new EntryListItem(displayableEntry, this));
         }
     }
 
@@ -109,8 +113,26 @@ public class MainViewController implements Initializable {
         updateEntryList();
     }
 
-    public void addEntry(Entry entry) {
-        this.entries.add(entry);
+    public void addEntry(DisplayableEntry displayableEntry) {
+        this.entries.add(displayableEntry);
     }
 
+    /*public DetailViewItem getCorrectDetailView(DisplayableEntry entry, MainViewController controller) {
+        switch (entry) {
+            case (entry instanceof AccountEntry):
+                return new DetailViewItem((AccountEntry) entry, controller);
+            case (entry instanceof CardEntry):
+                return new DetailViewItem((CardEntry) entry, controller);
+        }
+    }*/
+
+    public void populateDetailView(DisplayableEntry entry) {
+        detailViewFlowPane.getChildren().clear();
+        if (entry instanceof AccountEntry) {
+            detailViewFlowPane.getChildren().add(new DetailViewItem((AccountEntry) entry, this));
+        } else if (entry instanceof CardEntry) {
+            detailViewFlowPane.getChildren().add(new DetailViewItem((CardEntry) entry, this));
+        }
+        editButton.setVisible(true);
+    }
 }

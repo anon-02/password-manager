@@ -80,9 +80,10 @@ public class CreateEditCard extends AnchorPane {
         };
         cvcVisible.setOnMouseClicked(onClick);
 
+        // Regex for card number
         cardNumber.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if (!cardNumber.getText().replace(" ", "").matches("^\\d{12}$")) {
+                if (!cardNumber.getText().replace(" ", "").matches("^\\d{16}$")) {
                     cardNumber.setText("");
                 }
                 else {
@@ -140,7 +141,7 @@ public class CreateEditCard extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException {
         if (isFieldsComplete()) {
-            parentController.addEntry(new CardEntry(this.name.getText(), this.cardNumber.getText(), this.expireMonth.getValue(), this.expireYear.getValue(), this.invisibleCvcCode.getText(), this.note.getText()));
+            parentController.addEntry(new CardEntry(this.name.getText(), "Tim Carlsson", this.cardNumber.getText(), this.expireMonth.getValue(), this.expireYear.getValue(), this.invisibleCvcCode.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }
 

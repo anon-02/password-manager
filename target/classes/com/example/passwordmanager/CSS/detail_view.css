@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+.text-field-name {
+    -fx-background-radius: 8px;
+    -fx-alignment: center-left;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #F3F2F3;
+}
+
+.text-field {
+    -fx-background-radius: 8px;
+    -fx-alignment: center-left;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #14213D;
+}

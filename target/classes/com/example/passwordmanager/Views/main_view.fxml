@@ -27,7 +27,7 @@
                         </ImageView>
                         <Label layoutX="182.0" layoutY="7.0" styleClass="title-text" text="Create Entry" />
                         <Label layoutX="117.0" layoutY="65.0" styleClass="label-text-field-description" text="Entry Type" />
-                        <ChoiceBox fx:id="entryType" layoutX="108.0" layoutY="82.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="84.0" styleClass="text-field-content" />
+                        <ChoiceBox fx:id="entryType" layoutX="108.0" layoutY="82.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="96.0" styleClass="text-field-content" />
                         <Button fx:id="saveButton" layoutX="196.0" layoutY="583.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="save-button" text="Save" />
                         <FlowPane fx:id="injectEntryType" layoutY="113.0" prefHeight="450.0" prefWidth="480.0" styleClass="flow-pane-test" />
                      </children>

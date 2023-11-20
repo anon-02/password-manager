@@ -39,7 +39,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="730.0">
                      <children>
                         <Rectangle fill="#1e3055" height="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="730.0" />
-                        <Label layoutX="19.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="112.0" styleClass="app-name" stylesheets="@../CSS/main_view.css" text="App Name" />
+                        <Label layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" styleClass="app-name" stylesheets="@../CSS/main_view.css" text="PasswordManager" />
                         <TextField fx:id="searchTextField" focusTraversable="false" layoutX="165.0" layoutY="22.0" prefHeight="32.0" prefWidth="400.0" promptText="Search " styleClass="search-bar" />
                         <Button fx:id="addEntryButton" layoutX="630.0" layoutY="22.0" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="32.0" prefWidth="80.0" styleClass="add-button" text="Add" />
                      </children>

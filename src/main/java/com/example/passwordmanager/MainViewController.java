@@ -130,6 +130,12 @@ public class MainViewController implements Initializable {
         else if (entry instanceof CardEntry) {
             detailViewFlowPane.getChildren().add(new DetailViewItem((CardEntry) entry, this));
         }
+        else if (entry instanceof WifiEntry) {
+            detailViewFlowPane.getChildren().add(new DetailViewItem((WifiEntry) entry, this));
+        }
+        else if (entry instanceof SecureNoteEntry) {
+            detailViewFlowPane.getChildren().add(new DetailViewItem((SecureNoteEntry) entry, this));
+        }
         editButton.setVisible(true);
     }
 }

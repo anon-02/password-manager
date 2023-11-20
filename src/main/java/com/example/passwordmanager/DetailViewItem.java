@@ -30,14 +30,17 @@ public class DetailViewItem extends AnchorPane{
     @FXML private ImageView cardEye;
 
     /** Used for wi-fi entries **/
-
+    @FXML private TextField entryWifiName, wifiName, wifiPasswordInvisible, wifiPasswordVisible, wifiConfigURL, wifiAdminPassword;
+    @FXML private TextArea wifiNote;
+    @FXML private ImageView wifiEyeImageView;
 
     /** Used for secure note entries **/
-
+    @FXML private TextField entryNoteName, noteSubject;
+    @FXML private TextArea noteContent;
     private String currentEntry;
 
     public DetailViewItem(AccountEntry entry, MainViewController controller) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/display_view_account.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_account.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -60,7 +63,7 @@ public class DetailViewItem extends AnchorPane{
     }
 
     public DetailViewItem(CardEntry entry, MainViewController controller) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/display_view_card.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -88,6 +91,51 @@ public class DetailViewItem extends AnchorPane{
         helper.addPasswordVisibleToggle(cardEye, cardCVCInvisible, cardCVCVisible);
 
         currentEntry = "cardEntry";
+    }
+
+    public DetailViewItem(WifiEntry entry, MainViewController controller) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_wifi.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+        this.parentController = controller;
+
+        this.entryWifiName.setText(entry.getName());
+        this.wifiName.setText(entry.getWifiName());
+        this.wifiPasswordVisible.setText(entry.getWifiPassword());
+        this.wifiPasswordInvisible.setText(entry.getWifiPassword());
+        this.wifiConfigURL.setText(entry.getWifiURL());
+        this.wifiAdminPassword.setText(entry.getWifiAdminPassword());
+        this.wifiNote.setText(entry.getNote());
+
+        helper.addPasswordVisibleToggle(wifiEyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
+
+        currentEntry = "wifiEntry";
+    }
+
+    public DetailViewItem(SecureNoteEntry entry, MainViewController controller) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_secure-note.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        this.parentController = controller;
+
+        this.entryNoteName.setText(entry.getName());
+        this.noteSubject.setText(entry.getNoteSubject());
+        this.noteContent.setText(entry.getNoteContent());
+
+        currentEntry = "secureNoteEntry";
     }
 
 }

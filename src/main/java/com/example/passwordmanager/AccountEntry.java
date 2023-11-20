@@ -17,6 +17,8 @@ public class AccountEntry implements DisplayableEntry {
         this.password = password;
         this.note = note;
         //this.modified = timeCreated; TODO implement timeModified
+
+        System.out.println("Entry added: " + this.name + this.username + this.password);
     }
 
     public String getName() {
@@ -38,7 +40,7 @@ public class AccountEntry implements DisplayableEntry {
     }
 
     public Image getImage() throws IOException {
-        return new Image(Objects.requireNonNull(getClass().getResource("Images/door-key.png")).openStream());
+        return new Image(Objects.requireNonNull(getClass().getResource("Images/user.png")).openStream());
     }
 
     public void setName(String newString) {

@@ -26,8 +26,7 @@
       </AnchorPane>
       <AnchorPane layoutX="65.0" layoutY="194.0" prefHeight="47.0" prefWidth="285.0" stylesheets="@../CSS/login_createUser_view.css">
          <children>
-            <TextField fx:id="accountPasswordVisible" layoutY="17.0" prefHeight="30.0" prefWidth="220.0" styleClass="text-field-content" />
-            <PasswordField fx:id="cardNumber" editable="false" layoutY="17.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter card number" styleClass="text-field-content-password" />
+            <TextField fx:id="cardNumber" layoutY="17.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter card number" styleClass="text-field-content" />
             <Label layoutX="8.0" styleClass="text-field-name" text="Card Number" />
          </children>
       </AnchorPane>

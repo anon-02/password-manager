@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class CreateEditLogin extends AnchorPane {
+public class CreateLogin extends AnchorPane {
 
     @FXML private AnchorPane backAnchorPane;
     @FXML private TextField name, username, invisiblePassword, visiblePassword, note;
@@ -21,8 +21,8 @@ public class CreateEditLogin extends AnchorPane {
     private MainViewController parentController;
     private fxmlHelper model = fxmlHelper.getInstance();
 
-    public CreateEditLogin(MainViewController controller) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-edit-login.fxml"));
+    public CreateLogin(MainViewController controller) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-account.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

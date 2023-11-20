@@ -77,7 +77,7 @@ public class DetailViewItem extends AnchorPane{
         this.cardYearChoiceBox.getItems().addAll(expireYears);
 
         this.entryCardName.setText(entry.getName());
-        this.cardHolder.setText(entry.getCardNumber());
+        this.cardHolder.setText(entry.getCardHolder());
         this.cardNumber.setText(entry.getCardNumber());
         this.cardMonth.setText(entry.getExpireMonth());
         this.cardYear.setText(entry.getExpireYear());

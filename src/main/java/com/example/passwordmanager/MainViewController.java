@@ -4,7 +4,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -31,7 +30,7 @@ public class MainViewController implements Initializable {
     @FXML private AnchorPane createEntryAnchorPane;
     @FXML private ImageView createEntryExit;
     @FXML private ChoiceBox<String> entryType;
-    private final String[] entryTypes = {"Login", "Card"};
+    private final String[] entryTypes = {"Account", "Card", "Wifi", "Secure note"};
     //@FXML private Button saveButton;
     @FXML private FlowPane injectEntryType;
 
@@ -45,7 +44,6 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchTextField.setText("Search");
         entryType.getItems().addAll(entryTypes);
         entryType.setValue(entryTypes[0]);
         editButton.setVisible(false);
@@ -88,17 +86,23 @@ public class MainViewController implements Initializable {
     public void updateCreateView() {
         this.injectEntryType.getChildren().clear();
         String currentType = entryType.getValue();
-        System.out.println(currentType);
 
         // Add case for every new type of entry
         switch (currentType) {
-            case "Login":
-                this.injectEntryType.getChildren().add(new CreateEditLogin(this));
+            case "Account":
+                this.injectEntryType.getChildren().add(new CreateLogin(this));
                 return;
             case "Card":
-                this.injectEntryType.getChildren().add(new CreateEditCard(this));
+                this.injectEntryType.getChildren().add(new CreateCard(this));
+                return;
+            case "Wifi":
+                this.injectEntryType.getChildren().add(new CreateWifi(this));
+                return;
+            case "Secure note":
+                this.injectEntryType.getChildren().add(new CreateSecureNote(this));
                 return;
             default:
+                System.out.println("Entry type not found");
         }
     }
 
@@ -117,20 +121,13 @@ public class MainViewController implements Initializable {
         this.entries.add(displayableEntry);
     }
 
-    /*public DetailViewItem getCorrectDetailView(DisplayableEntry entry, MainViewController controller) {
-        switch (entry) {
-            case (entry instanceof AccountEntry):
-                return new DetailViewItem((AccountEntry) entry, controller);
-            case (entry instanceof CardEntry):
-                return new DetailViewItem((CardEntry) entry, controller);
-        }
-    }*/
-
+    // Creates the correct entry type for the detail view
     public void populateDetailView(DisplayableEntry entry) {
         detailViewFlowPane.getChildren().clear();
         if (entry instanceof AccountEntry) {
             detailViewFlowPane.getChildren().add(new DetailViewItem((AccountEntry) entry, this));
-        } else if (entry instanceof CardEntry) {
+        }
+        else if (entry instanceof CardEntry) {
             detailViewFlowPane.getChildren().add(new DetailViewItem((CardEntry) entry, this));
         }
         editButton.setVisible(true);

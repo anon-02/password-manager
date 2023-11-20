@@ -12,7 +12,7 @@
    <children>
       <AnchorPane layoutX="65.0" layoutY="80.0" stylesheets="@../CSS/login_createUser_view.css">
          <children>
-            <TextField fx:id="entryName" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter  name" styleClass="text-field-content" />
+            <TextField fx:id="entryAccountName" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter  name" styleClass="text-field-content" />
             <Label layoutX="8.0" styleClass="text-field-name" text="Entry name" />
          </children>
       </AnchorPane>
@@ -42,7 +42,7 @@
       <AnchorPane layoutX="65.0" layoutY="251.0" stylesheets="@../CSS/login_createUser_view.css">
          <children>
             <Label layoutX="8.0" styleClass="text-field-name" text="Note" />
-            <TextArea fx:id="accountNote" editable="false" layoutY="17.0" prefHeight="80.0" prefWidth="220.0" styleClass="text-area-note" stylesheets="@../CSS/create_edit_view.css" text="Enter note" wrapText="true" />
+            <TextArea fx:id="accountNote" editable="false" layoutY="17.0" prefHeight="80.0" prefWidth="220.0" promptText="Enter note" styleClass="text-area-note" stylesheets="@../CSS/create_edit_view.css" wrapText="true" />
          </children>
       </AnchorPane>
    </children>

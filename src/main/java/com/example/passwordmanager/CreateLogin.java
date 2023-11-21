@@ -1,19 +1,17 @@
 package com.example.passwordmanager;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class CreateEditLogin extends AnchorPane {
+public class CreateLogin extends AnchorPane {
 
     @FXML private AnchorPane backAnchorPane;
     @FXML private TextField name, username, invisiblePassword, visiblePassword, note;
@@ -21,10 +19,10 @@ public class CreateEditLogin extends AnchorPane {
     @FXML private ImageView passwordVisible, invisiblePasswordGenerate;
 
     private MainViewController parentController;
+    private fxmlHelper model = fxmlHelper.getInstance();
 
-
-    public CreateEditLogin(MainViewController controller) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-edit-login.fxml"));
+    public CreateLogin(MainViewController controller) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-account.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -48,8 +46,9 @@ public class CreateEditLogin extends AnchorPane {
             }
         };
         saveButton.setOnAction(event);
+        model.addPasswordVisibleToggle(passwordVisible, invisiblePassword, visiblePassword);
 
-        EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
+        /*EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 boolean state = visiblePassword.isVisible();
@@ -68,7 +67,7 @@ public class CreateEditLogin extends AnchorPane {
                 passwordVisible.requestFocus(); // Will focus the TextField otherwise
             }
         };
-        passwordVisible.setOnMouseClicked(onClick);
+        passwordVisible.setOnMouseClicked(onClick);*/
     }
 
     public void initFields() {
@@ -92,7 +91,7 @@ public class CreateEditLogin extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException {
         if (isFieldsComplete()) {
-            parentController.addEntry(new LoginEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
+            parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }
     }

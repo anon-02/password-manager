@@ -9,12 +9,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class CreateEditCard extends AnchorPane {
+public class CreateCard extends AnchorPane {
 
     @FXML private TextField name, cardNumber, visibleCvcCode, note;
     @FXML private ChoiceBox<String> expireMonth, expireYear;
@@ -23,10 +22,11 @@ public class CreateEditCard extends AnchorPane {
     @FXML private ImageView cvcVisible;
 
     private MainViewController parentController;
+    private fxmlHelper helper = fxmlHelper.getInstance();
 
 
-    public CreateEditCard(MainViewController controller) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-edit-card.fxml"));
+    public CreateCard(MainViewController controller) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -59,7 +59,9 @@ public class CreateEditCard extends AnchorPane {
 
         saveButton.setOnAction(event);
 
-        EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
+        helper.addPasswordVisibleToggle(cvcVisible, invisibleCvcCode, visibleCvcCode);
+
+        /*EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 boolean state = visibleCvcCode.isVisible();
@@ -78,11 +80,12 @@ public class CreateEditCard extends AnchorPane {
                 cvcVisible.requestFocus(); // Will focus the TextField otherwise
             }
         };
-        cvcVisible.setOnMouseClicked(onClick);
+        cvcVisible.setOnMouseClicked(onClick);*/
 
+        // Regex for card number
         cardNumber.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if (!cardNumber.getText().replace(" ", "").matches("^\\d{12}$")) {
+                if (!cardNumber.getText().replace(" ", "").matches("^\\d{16}$")) {
                     cardNumber.setText("");
                 }
                 else {
@@ -140,7 +143,7 @@ public class CreateEditCard extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException {
         if (isFieldsComplete()) {
-            parentController.addEntry(new CardEntry(this.name.getText(), this.cardNumber.getText(), this.expireMonth.getValue(), this.expireYear.getValue(), this.invisibleCvcCode.getText(), this.note.getText()));
+            parentController.addEntry(new CardEntry(this.name.getText(), "Tim Carlsson", this.cardNumber.getText(), this.expireMonth.getValue(), this.expireYear.getValue(), this.invisibleCvcCode.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }
 

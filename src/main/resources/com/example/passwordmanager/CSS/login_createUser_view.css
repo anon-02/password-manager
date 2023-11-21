@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+
+.background {
+    -fx-background-color: #1E3055;
+}
+.large_text {
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 32px;
+    -fx-text-fill: #F3F2F3;
+    -fx-alignment: center;
+}
+
+.text-field-name {
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #F3F2F3;
+}
+
+.text-field-content {
+    -fx-background-radius: 8px;
+    -fx-alignment: center-left;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #14213D;
+}
+
+.text-field-content-note {
+    -fx-background-radius: 8px;
+    -fx-alignment: top-left;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #14213D;
+}
+
+.text-field-content-password {
+    -fx-background-radius: 8px;
+    -fx-alignment: center-left;
+
+    -fx-background-color: #F3F2F3;
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: #14213D;
+}
+
+.forgot-password {
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: normal;
+    -fx-font-size: 12px;
+    -fx-text-fill: #F3F2F3;
+}
+
+.button {
+    -fx-background-color: #F3F2F3;
+    -fx-background-radius: 16px;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #14213D;
+    -fx-alignment: center;
+}
+
+.button:hover {-fx-background-color: #F9F9F9;}
+.button:hover:pressed{-fx-background-color: #EAE2E2;}

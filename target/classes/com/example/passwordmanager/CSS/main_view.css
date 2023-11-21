@@ -8,11 +8,15 @@
     -fx-fill: #F3F2F3;
 }
 
+.background {
+    -fx-background-color: #14213D;
+}
+
 .app-name {
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
     -fx-text-fill: #F3F2F3;
     -fx-font-weight: bold;
-    -fx-text-alignment: center;
+    -fx-alignment: center;
     -fx-font-family: 'Sen', sans-serif;
 }
 

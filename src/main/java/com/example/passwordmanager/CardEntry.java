@@ -5,14 +5,15 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class CardEntry implements Entry{
+public class CardEntry implements DisplayableEntry {
 
-    private String name, cardNumber, expireMonth, expireYear, cvcCode, note;
+    private String name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note;
     private Image image;
 
 
-    public CardEntry(String name, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
+    public CardEntry(String name, String cardHolder, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
         this.name = name;
+        this.cardHolder = cardHolder;
         this.cardNumber = cardNumber;
         this.expireMonth = expireMonth;
         this.expireYear = expireYear;
@@ -28,6 +29,8 @@ public class CardEntry implements Entry{
     public String getUnderName() {
         return "•••• •••• •••• " + this.cardNumber.substring(this.cardNumber.length()-4);
     }
+
+    public String getCardHolder() {return this.cardHolder;}
 
     public String getCardNumber() {return this.cardNumber;}
 
@@ -55,7 +58,11 @@ public class CardEntry implements Entry{
         this.name = newString;
     }
 
-    public void setUsername(String newString) {
+    public void setCardHolder(String newString) {
+        this.cardHolder = newString;
+    }
+
+    public void setCardNumber(String newString) {
         this.cardNumber = newString;
     }
 

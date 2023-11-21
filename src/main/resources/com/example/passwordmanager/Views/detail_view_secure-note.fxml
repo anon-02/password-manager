@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="676.0" prefWidth="350.0" styleClass="background" stylesheets="@../CSS/login_createUser_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="65.0" layoutY="80.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="entryNoteName" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter  name" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Entry name" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="137.0" prefHeight="47.0" prefWidth="220.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="noteSubject" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter username" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Note Subject" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="194.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <Label layoutX="8.0" styleClass="text-field-name" text="Note" />
+            <TextArea fx:id="noteContent" editable="false" layoutY="17.0" prefHeight="140.0" prefWidth="220.0" promptText="Enter note" styleClass="text-area-note" stylesheets="@../CSS/create_edit_view.css" wrapText="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>

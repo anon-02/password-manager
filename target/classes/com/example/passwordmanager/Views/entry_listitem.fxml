@@ -8,7 +8,7 @@
 
 <fx:root fx:id="entryAnchorPane" prefHeight="62.0" prefWidth="716.0" styleClass="anchor-pane-background" stylesheets="@../CSS/entry_listitem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="8.0" layoutY="6.0" prefHeight="50.0" prefWidth="700.0" styleClass="anchor-pane-foreground" stylesheets="@../CSS/entry_listitem.css">
+      <AnchorPane layoutX="8.0" layoutY="6.0" onMouseClicked="#onClick" prefHeight="50.0" prefWidth="700.0" styleClass="anchor-pane-foreground" stylesheets="@../CSS/entry_listitem.css">
          <children>
             <ImageView fx:id="iconImageView" fitHeight="32.0" fitWidth="32.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>

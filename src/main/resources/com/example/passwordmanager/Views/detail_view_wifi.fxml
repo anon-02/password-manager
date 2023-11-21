@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="676.0" prefWidth="350.0" styleClass="background" stylesheets="@../CSS/login_createUser_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="65.0" layoutY="80.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="entryWifiName" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter  name" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Entry name" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="137.0" prefHeight="47.0" prefWidth="220.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="wifiName" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter wifi name" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Wifi Name" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="194.0" prefHeight="47.0" prefWidth="285.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="wifiPasswordVisible" layoutY="17.0" prefHeight="30.0" prefWidth="220.0" styleClass="text-field-content" />
+            <PasswordField fx:id="wifiPasswordInvisible" editable="false" layoutY="17.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter password" styleClass="text-field-content-password" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Wifi Password" />
+            <ImageView fx:id="wifiEyeImageView" fitHeight="20.0" fitWidth="20.0" layoutX="226.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/eye.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="251.0" prefHeight="47.0" prefWidth="220.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="wifiConfigURL" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter url" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Configuration URL" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="308.0" prefHeight="47.0" prefWidth="220.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="wifiAdminPassword" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter admin password" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Admin Password" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="365.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <Label layoutX="8.0" styleClass="text-field-name" text="Note" />
+            <TextArea fx:id="wifiNote" editable="false" layoutY="17.0" prefHeight="80.0" prefWidth="220.0" promptText="Enter note" styleClass="text-area-note" stylesheets="@../CSS/create_edit_view.css" wrapText="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>

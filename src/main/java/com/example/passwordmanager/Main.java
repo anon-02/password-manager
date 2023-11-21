@@ -1,11 +1,18 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.Password;
+import com.example.passwordmanager.Model.User;
+import com.example.passwordmanager.Model.UserDAO;
+import com.example.passwordmanager.Model.UserDAOImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Main extends Application {
     @Override
@@ -18,7 +25,16 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
+    public static void main(String[] args) throws SQLException {
+
+        UserDAO userDAO = new UserDAOImpl();
+
+        User user2 = new User(2, 2, "johnny", "real password right here");
+
+
+        int result2 = userDAO.insert(user2);
+
+
+       launch();
     }
 }

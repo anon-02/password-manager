@@ -29,10 +29,10 @@ public class Main extends Application {
 
         UserDAO userDAO = new UserDAOImpl();
 
-        User user2 = new User(2, 2, "johnny", "real password right here");
+     //   User user2 = new User(2, 2, "johnny", "real password right here");
 
 
-        int result2 = userDAO.insert(user2);
+       // int result2 = userDAO.insert(user2);
 
 
        launch();

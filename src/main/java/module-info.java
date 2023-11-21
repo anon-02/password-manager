@@ -6,6 +6,7 @@ module com.example.passwordmanager {
     requires com.dlsc.formsfx;
     requires javafx.graphics;
     requires java.sql;
+    requires com.google.common;
 
     opens com.example.passwordmanager to javafx.fxml;
     exports com.example.passwordmanager;

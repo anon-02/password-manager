@@ -6,7 +6,6 @@ import java.util.List;
 
 public class User<T extends Entry> {
     private int id;
-    private int user_id;
     private String username;
     private String masterPassword;
 
@@ -16,9 +15,8 @@ public class User<T extends Entry> {
     //  private static final String JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/users.db";
 
 
-    public User(int id, int user_id, String username, String masterPassword) {
+    public User(int id, String username, String masterPassword) {
         this.id = id;
-        this.user_id = id;
         this.username = username;
         this.masterPassword = masterPassword;
     }
@@ -49,15 +47,11 @@ public class User<T extends Entry> {
         return masterPassword;
     }
 
-    public int getUser_id() {
-        return user_id;
-    }
 
 
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", user_id=" + user_id +
                 ", username='" + username + '\'' +
                 ", masterPassword='" + masterPassword + '\'' +
                 '}';

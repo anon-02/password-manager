@@ -11,7 +11,7 @@ public class LoginService {
         this.userDAO = new UserDAOImpl();
     }
 
-    // TODO Login()   void for now, send user_id later
+    // TODO Login()   void for now, send user_id later, on hold for database restructure
     public void LogIn(String username, String masterPassword) throws SQLException {
         String hashedPass = HashPass(masterPassword);
 
@@ -30,7 +30,7 @@ public class LoginService {
         }
 
 
-        // TODO connect to view and restrict access
+        // TODO connect to view and restrict access/not open the main view if you havent input a correct user
 
     }
 
@@ -40,7 +40,6 @@ public class LoginService {
 
         String hashedPass = HashPass(masterPassword);
 
-        // TODO do something about user_id
         User newUser = new User(0, username, hashedPass);
 
         int result = userDAO.insert(newUser);

@@ -33,19 +33,26 @@ public class CreateUserViewController implements Initializable {
     private void backButtonPressed() {
         helper.navigateTo(baseAnchorPane, "login_view.fxml");}
 
+    private boolean verifyFields() {
+        return (masterPassword.getText().equals(confirmMasterPassword.getText()));
+    }
+
     @FXML
     private void createUserButtonPressed() throws SQLException {
         // TODO verifyFields(), mail format and check confirm password
         // DONE model.addUser(Fields)
         // TODO error handling somewhere
+        if (verifyFields()) {
+            helper.navigateTo(baseAnchorPane, "login_view.fxml");
 
-        helper.navigateTo(baseAnchorPane, "login_view.fxml");
-
-        // Add User
-        String userMailInput = email.getText();
-        String userMasterPassInput = masterPassword.getText();
-        System.out.println("new users mail: "+userMailInput);
-        System.out.println("new users pass (prehash): "+userMasterPassInput);
-        loginService.CreateNewUser(userMailInput, userMasterPassInput);
+            // Add User
+            String userMailInput = email.getText();
+            String userMasterPassInput = masterPassword.getText();
+            System.out.println("new users mail: "+userMailInput);
+            System.out.println("new users pass (prehash): "+userMasterPassInput);
+            loginService.CreateNewUser(userMailInput, userMasterPassInput);
+        } else {
+            System.out.println("Yo"); // TODO add error popup or highlight fields
+        }
     }
 }

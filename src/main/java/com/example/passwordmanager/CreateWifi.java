@@ -22,7 +22,6 @@ public class CreateWifi extends AnchorPane {
     private fxmlHelper helper = fxmlHelper.getInstance();
 
 
-
     public CreateWifi(MainViewController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-wifi.fxml"));
         fxmlLoader.setRoot(this);

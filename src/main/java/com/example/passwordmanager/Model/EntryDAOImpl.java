@@ -25,6 +25,11 @@ public class EntryDAOImpl implements EntryDAO<Entry>{
 
     @Override
     public int insert(Entry entry) throws SQLException {
+        return 0;
+    }
+
+    /*@Override
+    public int insert(Entry entry) throws SQLException {
         Connection connection = DatabaseHandler.entityDBconnect();
 
         String genericEntrySql = "INSERT INTO entry_list (entry_category, entry_name, entry_password, entry_identifier, entry_password_type,  entry_note, user_id, entry_min_password, entry_max_password, entry_URL) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
@@ -56,7 +61,7 @@ public class EntryDAOImpl implements EntryDAO<Entry>{
         return result;
 
         // getters for all vars
-    }
+    }*/
 
     /*
         @Override

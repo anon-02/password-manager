@@ -40,13 +40,9 @@ public class LoginViewController implements Initializable {
         System.out.println("user '"+userMailInput + "' trying to log in");
         System.out.println("users pass : "+ userMasterPassInput);
 
-        loginService.LogIn(userMailInput, userMasterPassInput);
-
-
-
-
-
-        helper.navigateTo(baseAnchorPane, "main_view.fxml");
+        if (loginService.LogIn(userMailInput, userMasterPassInput)) {
+            helper.navigateTo(baseAnchorPane, "main_view.fxml");
+        }
     }
 
 

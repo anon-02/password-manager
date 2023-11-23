@@ -3,8 +3,8 @@ package com.example.passwordmanager.Model;
 import java.sql.*;
 
 public class DatabaseHandler {
-    private static final String USER_JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/users.db";
-    private static final String ENTITY_JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/entity.db";
+    private static final String USER_JDBC_URL = "jdbc:sqlite:C:/Users/timso/Chalmers/password-manager/Database/users.db";
+    private static final String ENTITY_JDBC_URL = "jdbc:sqlite:C:/Users/timso/Chalmers/password-manager/Database/users.db";
     private static Connection  connection;
 
     private DatabaseHandler() {

@@ -12,14 +12,14 @@ public class LoginService {
     }
 
     // TODO Login()   void for now, send user_id later, on hold for database restructure
-    public void LogIn(String username, String masterPassword) throws SQLException {
+    public boolean LogIn(String username, String masterPassword) throws SQLException {
         String hashedPass = HashPass(masterPassword);
 
         boolean userExist = userDAO.doesUserExist(username);
-
-        if (userExist) {
+        boolean correctPass = userDAO.isPassCorrect(hashedPass);
+        /*if (userExist) {
             System.out.println("User exists");
-            boolean correctPass = userDAO.isPassCorrect(hashedPass);
+
             if (correctPass) {
                 System.out.println("Correct login, user '" + username + "' logging in");
             } else {
@@ -27,8 +27,8 @@ public class LoginService {
             }
         } else {
             System.out.println("This user is not registered here!");
-        }
-
+        }*/
+        return (userExist && correctPass);
 
         // TODO connect to view and restrict access/not open the main view if you havent input a correct user
 

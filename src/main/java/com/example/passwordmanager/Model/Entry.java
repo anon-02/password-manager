@@ -51,6 +51,34 @@ public abstract class Entry {
         this.password.setMinLength(length);
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public String getPasswordType() {
+        return passwordType;
+    }
+
+    public int getMinPasswordLength() {
+        return minPasswordLength;
+    }
+
+    public int getMaxPasswordLength() {
+        return maxPasswordLength;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
     public void setMaxPasswordLength(int length) {
         this.maxPasswordLength = length;
         this.password.setMaxLength(length);

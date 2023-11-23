@@ -11,7 +11,7 @@ public class UserDAOImpl implements UserDAO {
     // TODO maybe remove
     @Override
     public User get(int id) throws SQLException {
-        Connection connection = DatabaseHandler.connect();
+        Connection connection = DatabaseHandler.userDBconnect();
         User user = null;
 
         String sql  = "SELECT id, username, master_password FROM users WHERE id = ?";
@@ -50,7 +50,7 @@ public class UserDAOImpl implements UserDAO {
     // crud create
     @Override
     public int insert(User user) throws SQLException {
-        Connection connection = DatabaseHandler.connect();
+        Connection connection = DatabaseHandler.userDBconnect();
                        // fake errors weird
         String sql = "INSERT INTO users (username, master_password) VALUES (?, ?)";
 
@@ -73,7 +73,7 @@ public class UserDAOImpl implements UserDAO {
     // TODO implement forgotten password
     @Override
     public int update(User user) throws SQLException {
-        Connection connection = DatabaseHandler.connect();
+        Connection connection = DatabaseHandler.userDBconnect();
 
         String sql = "UPDATE users set username = ?, master_password = ? where id = ?";
 
@@ -93,7 +93,7 @@ public class UserDAOImpl implements UserDAO {
     // TODO maybe useful
     @Override
     public int delete(User user) throws SQLException {
-        Connection connection = DatabaseHandler.connect();
+        Connection connection = DatabaseHandler.userDBconnect();
 
         String sql = "DELETE FROM users WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -109,7 +109,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public boolean doesUserExist(String username)throws SQLException {
-        Connection connection = DatabaseHandler.connect();
+        Connection connection = DatabaseHandler.userDBconnect();
         String sql = "SELECT 1 FROM users WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, username);
@@ -123,7 +123,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public boolean isPassCorrect(String hashedMasterPassword) throws SQLException {
-        Connection connection = DatabaseHandler.connect();
+        Connection connection = DatabaseHandler.userDBconnect();
         String sql = "SELECT 1 FROM users WHERE master_password = ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);

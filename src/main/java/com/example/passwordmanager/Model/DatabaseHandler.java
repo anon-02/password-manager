@@ -3,18 +3,26 @@ package com.example.passwordmanager.Model;
 import java.sql.*;
 
 public class DatabaseHandler {
-    private static final String JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/users.db";
-
+    private static final String USER_JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/users.db";
+    private static final String ENTITY_JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/entity.db";
     private static Connection  connection;
 
     private DatabaseHandler() {
 
     }
 
-    // Connect
-    public  static Connection connect() throws SQLException {
+    // Connect to user database
+    public static Connection userDBconnect() throws SQLException {
         if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection(JDBC_URL);
+            connection = DriverManager.getConnection(USER_JDBC_URL);
+        }
+        return connection;
+    }
+
+    // connect to entity database
+    public static Connection entityDBconnect() throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            connection = DriverManager.getConnection(ENTITY_JDBC_URL);
         }
         return connection;
     }

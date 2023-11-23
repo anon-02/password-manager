@@ -11,9 +11,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/main_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/login_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        stage.setTitle("Password Vault");
+        stage.setTitle("PasswordManager");
         stage.setScene(scene);
         stage.show();
     }

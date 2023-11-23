@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root fx:id="backAnchorPane" prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="entryName" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
+      <Label layoutX="116.0" styleClass="label-text-field-description" text="Entry Name" />
+      <TextField fx:id="wifiName" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" promptText="examplewifi1234" styleClass="text-field-content" />
+      <Label layoutX="116.0" layoutY="47.0" styleClass="label-text-field-description" text="Wifi Name" />
+      <StackPane layoutX="108.0" layoutY="112.0">
+         <children>
+            <TextField fx:id="wifiPasswordVisible" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" />
+            <PasswordField fx:id="wifiPasswordInvisible" prefHeight="24.0" prefWidth="264.0" promptText="1234" styleClass="text-field-content-password" />
+         </children>
+      </StackPane>
+      <Label layoutX="116.0" layoutY="95.0" styleClass="label-text-field-description" text="Wifi Password" />
+      <TextField fx:id="wifiNote" layoutX="108.0" layoutY="275.0" prefHeight="72.0" prefWidth="264.0" promptText="Enter note" styleClass="text-field-content" />
+      <Label layoutX="116.0" layoutY="258.0" styleClass="label-text-field-description" text="Note" />
+      <Button fx:id="saveButton" layoutX="195.0" layoutY="480.0" maxHeight="38.0" minHeight="24.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="save-button" text="Save" />
+      <ImageView fx:id="eyeImageView" fitHeight="20.0" fitWidth="20.0" layoutX="378.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/eye.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="116.0" layoutY="154.0" styleClass="label-text-field-description" text="Configuration URL" />
+      <TextField fx:id="wifiURL" layoutX="108.0" layoutY="171.0" prefHeight="24.0" prefWidth="264.0" promptText="https//www.exampleurl.se" styleClass="text-field-content" />
+      <Label layoutX="116.0" layoutY="204.0" styleClass="label-text-field-description" text="Admin password" />
+      <TextField fx:id="wifiAdminPassword" layoutX="108.0" layoutY="221.0" prefHeight="24.0" prefWidth="264.0" promptText="1234" styleClass="text-field-content" />
+      <Label layoutX="307.0" layoutY="258.0" styleClass="label-text-field-description" text="(optional)" />
+      <Label layoutX="307.0" layoutY="204.0" styleClass="label-text-field-description" text="(optional)" />
+      <Label layoutX="307.0" layoutY="154.0" styleClass="label-text-field-description" text="(optional)" />
+   </children>
+</fx:root>

@@ -27,7 +27,7 @@
                         </ImageView>
                         <Label layoutX="182.0" layoutY="7.0" styleClass="title-text" text="Create Entry" />
                         <Label layoutX="117.0" layoutY="65.0" styleClass="label-text-field-description" text="Entry Type" />
-                        <ChoiceBox fx:id="entryType" layoutX="108.0" layoutY="82.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="84.0" styleClass="text-field-content" />
+                        <ChoiceBox fx:id="entryType" layoutX="108.0" layoutY="82.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="96.0" styleClass="text-field-content" />
                         <Button fx:id="saveButton" layoutX="196.0" layoutY="583.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="save-button" text="Save" />
                         <FlowPane fx:id="injectEntryType" layoutY="113.0" prefHeight="450.0" prefWidth="480.0" styleClass="flow-pane-test" />
                      </children>
@@ -39,14 +39,29 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="730.0">
                      <children>
                         <Rectangle fill="#1e3055" height="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="730.0" />
-                        <Label layoutX="19.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="112.0" styleClass="app-name" stylesheets="@../CSS/main_view.css" text="App Name" />
-                        <TextField fx:id="searchTextField" focusTraversable="false" layoutX="165.0" layoutY="22.0" prefHeight="32.0" prefWidth="400.0" styleClass="search-bar" text="Search" />
+                        <Label layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" styleClass="app-name" stylesheets="@../CSS/main_view.css" text="PasswordManager" />
+                        <TextField fx:id="searchTextField" focusTraversable="false" layoutX="165.0" layoutY="22.0" prefHeight="32.0" prefWidth="400.0" promptText="Search " styleClass="search-bar" />
                         <Button fx:id="addEntryButton" layoutX="630.0" layoutY="22.0" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="32.0" prefWidth="80.0" styleClass="add-button" text="Add" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="730.0" prefHeight="720.0" prefWidth="350.0">
+                  <AnchorPane layoutX="730.0" prefHeight="720.0" prefWidth="350.0" styleClass="background">
                      <children>
-                        <Rectangle fill="#14213d" height="720.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="350.0" />
+                        <FlowPane fx:id="detailViewFlowPane" prefHeight="676.0" prefWidth="356.0" />
+                        <StackPane layoutY="676.0" prefHeight="44.0" prefWidth="350.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="background">
+                                 <children>
+                                    <Button fx:id="cancelButton" layoutX="12.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Cancel" />
+                                    <Button fx:id="saveButton" layoutX="246.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Save" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="background">
+                                 <children>
+                                    <Button fx:id="editButton" layoutX="248.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Edit" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </StackPane>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutY="75.0" prefHeight="645.0" prefWidth="730.0">

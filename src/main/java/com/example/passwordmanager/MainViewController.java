@@ -15,7 +15,6 @@ import javafx.scene.layout.FlowPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
@@ -25,27 +24,29 @@ public class MainViewController implements Initializable {
     @FXML private AnchorPane mainAnchorPane;
     @FXML private TextField searchTextField;
     @FXML private Button addEntryButton;
-    @FXML private FlowPane allEntrysFlowPane;
+    @FXML private FlowPane allEntrysFlowPane, detailViewFlowPane;
 
     /* Create Entry View */
     @FXML private AnchorPane createEntryAnchorPane;
     @FXML private ImageView createEntryExit;
     @FXML private ChoiceBox<String> entryType;
-    private final String[] entryTypes = {"Login", "Card"};
-    @FXML private Button saveButton;
+    private final String[] entryTypes = {"Account", "Card", "Wifi", "Secure note"};
+    //@FXML private Button saveButton;
     @FXML private FlowPane injectEntryType;
 
+    /* Detail view */
+    @FXML private Button editButton, cancelButton, saveButton;
 
 
-
-    ArrayList<Entry> entries = new ArrayList<>();
+    private fxmlHelper helper = fxmlHelper.getInstance();
+    ArrayList<DisplayableEntry> entries = new ArrayList<>();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchTextField.setText("Search");
         entryType.getItems().addAll(entryTypes);
         entryType.setValue(entryTypes[0]);
+        editButton.setVisible(false);
 
         try {
             updateEntryList();
@@ -60,16 +61,6 @@ public class MainViewController implements Initializable {
             }
         });
 
-        searchTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue && Objects.equals(searchTextField.getText(), "Search")) {
-                searchTextField.setText("");
-            } else {
-                if (searchTextField.getText().isEmpty()) {
-                    searchTextField.setText("Search");
-                }
-            }
-        });
-
         searchTextField.setOnKeyReleased(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 System.out.println("Search: " + searchTextField.getText());
@@ -80,8 +71,8 @@ public class MainViewController implements Initializable {
 
     private void updateEntryList() throws IOException {
         allEntrysFlowPane.getChildren().clear();
-        for (Entry entry : this.entries) { // Temporary just for proof of concept
-            allEntrysFlowPane.getChildren().add(new EntryListItem(entry, this));
+        for (DisplayableEntry displayableEntry : this.entries) { // Temporary just for proof of concept
+            allEntrysFlowPane.getChildren().add(new EntryListItem(displayableEntry, this));
         }
     }
 
@@ -95,17 +86,23 @@ public class MainViewController implements Initializable {
     public void updateCreateView() {
         this.injectEntryType.getChildren().clear();
         String currentType = entryType.getValue();
-        System.out.println(currentType);
 
         // Add case for every new type of entry
         switch (currentType) {
-            case "Login":
-                this.injectEntryType.getChildren().add(new CreateEditLogin(this));
+            case "Account":
+                this.injectEntryType.getChildren().add(new CreateLogin(this));
                 return;
             case "Card":
-                this.injectEntryType.getChildren().add(new CreateEditCard(this));
+                this.injectEntryType.getChildren().add(new CreateCard(this));
+                return;
+            case "Wifi":
+                this.injectEntryType.getChildren().add(new CreateWifi(this));
+                return;
+            case "Secure note":
+                this.injectEntryType.getChildren().add(new CreateSecureNote(this));
                 return;
             default:
+                System.out.println("Entry type not found");
         }
     }
 
@@ -120,8 +117,25 @@ public class MainViewController implements Initializable {
         updateEntryList();
     }
 
-    public void addEntry(Entry entry) {
-        this.entries.add(entry);
+    public void addEntry(DisplayableEntry displayableEntry) {
+        this.entries.add(displayableEntry);
     }
 
+    // Creates the correct entry type for the detail view
+    public void populateDetailView(DisplayableEntry entry) {
+        detailViewFlowPane.getChildren().clear();
+        if (entry instanceof AccountEntry) {
+            detailViewFlowPane.getChildren().add(new DetailViewItem((AccountEntry) entry, this));
+        }
+        else if (entry instanceof CardEntry) {
+            detailViewFlowPane.getChildren().add(new DetailViewItem((CardEntry) entry, this));
+        }
+        else if (entry instanceof WifiEntry) {
+            detailViewFlowPane.getChildren().add(new DetailViewItem((WifiEntry) entry, this));
+        }
+        else if (entry instanceof SecureNoteEntry) {
+            detailViewFlowPane.getChildren().add(new DetailViewItem((SecureNoteEntry) entry, this));
+        }
+        editButton.setVisible(true);
+    }
 }

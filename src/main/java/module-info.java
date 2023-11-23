@@ -8,4 +8,6 @@ module com.example.passwordmanager {
 
     opens com.example.passwordmanager to javafx.fxml;
     exports com.example.passwordmanager;
+    exports com.example.passwordmanager.Model;
+    opens com.example.passwordmanager.Model to javafx.fxml;
 }

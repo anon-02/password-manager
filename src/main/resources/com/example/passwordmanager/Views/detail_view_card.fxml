@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root prefHeight="676.0" prefWidth="350.0" styleClass="background" stylesheets="@../CSS/login_createUser_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="65.0" layoutY="80.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="entryCardName" editable="false" layoutX="-1.0" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter name" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Entry name" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="137.0" prefHeight="47.0" prefWidth="220.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="cardHolder" editable="false" layoutY="17.0" prefHeight="24.0" prefWidth="220.0" promptText="Enter card holder" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Card Holder" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="194.0" prefHeight="47.0" prefWidth="285.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <TextField fx:id="cardNumber" layoutY="17.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter card number" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="text-field-name" text="Card Number" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="308.0" stylesheets="@../CSS/login_createUser_view.css">
+         <children>
+            <Label layoutX="8.0" styleClass="text-field-name" text="Note" />
+            <TextArea fx:id="cardNote" editable="false" layoutY="17.0" prefHeight="80.0" prefWidth="220.0" promptText="Enter note" styleClass="text-area-note" stylesheets="@../CSS/create_edit_view.css" wrapText="true" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="65.0" layoutY="251.0">
+         <children>
+            <Label layoutX="8.0" styleClass="text-field-name" text="Expire date" />
+            <StackPane layoutY="17.0">
+               <children>
+                  <AnchorPane fx:id="editableExpireDatePane">
+                     <children>
+                        <ChoiceBox fx:id="cardMonthChoiceBox" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="50.0" styleClass="text-field-content" />
+                        <ChoiceBox fx:id="cardYearChoiceBox" layoutX="72.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="50.0" styleClass="text-field-content" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="nonEditableExpireDatePane" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="cardMonth" editable="false" prefHeight="30.0" prefWidth="50.0" styleClass="text-field-content" />
+                        <TextField fx:id="cardYear" editable="false" layoutX="72.0" prefHeight="30.0" prefWidth="50.0" styleClass="text-field-content" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </StackPane>
+            <Label layoutX="180.0" prefHeight="17.0" prefWidth="40.0" styleClass="text-field-name" text="CVC" />
+            <StackPane layoutX="176.0" layoutY="17.0">
+               <children>
+                  <TextField fx:id="cardCVCVisible" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="44.0" styleClass="text-field-content" />
+                  <PasswordField fx:id="cardCVCInvisible" editable="false" maxHeight="24.0" minHeight="30.0" prefHeight="30.0" prefWidth="44.0" styleClass="text-field-content" text="020" />
+               </children>
+            </StackPane>
+            <Label layoutX="58.0" layoutY="19.0" styleClass="text-field-name" text="/" />
+            <ImageView fx:id="cardEye" fitHeight="20.0" fitWidth="20.0" layoutX="226.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/eye.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>

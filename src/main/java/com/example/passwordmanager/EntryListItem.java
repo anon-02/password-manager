@@ -1,15 +1,13 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.Entry;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 // This will be a base class and every other type of item will be a subclass
 public class EntryListItem extends AnchorPane {
@@ -21,10 +19,11 @@ public class EntryListItem extends AnchorPane {
     @FXML private Label nameLabel, underNameLabel, lastModifiedLabel, modifiedLabel;
 
     MainViewController parentController;
+    private DisplayableEntry entry;
 
 
     // This constructor is used for testing only
-    public EntryListItem(Entry entry, MainViewController controller) throws IOException {
+    public EntryListItem(DisplayableEntry entry, MainViewController controller) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/entry_listitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,6 +35,7 @@ public class EntryListItem extends AnchorPane {
         }
 
         this.parentController = controller;
+        this.entry = entry;
 
         this.nameLabel.setText(entry.getName());
         this.underNameLabel.setText(entry.getUnderName());
@@ -43,5 +43,11 @@ public class EntryListItem extends AnchorPane {
         this.modifiedLabel.setText("Today 13:50");
         this.iconImageView.setImage(entry.getImage());
     }
+
+    @FXML
+    private void onClick() {
+        parentController.populateDetailView(entry);
+    }
+
 }
 

@@ -21,8 +21,8 @@
          <children>
             <StackPane layoutY="17.0">
                <children>
-                  <TextField fx:id="masterPassword" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" />
-                  <PasswordField styleClass="text-field-content-password" />
+                  <TextField prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" />
+                  <PasswordField fx:id="masterPassword" styleClass="text-field-content-password" />
                </children>
             </StackPane>
             <Label layoutX="8.0" styleClass="text-field-name" text="Master password" />

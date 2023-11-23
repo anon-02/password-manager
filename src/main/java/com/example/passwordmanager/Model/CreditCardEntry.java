@@ -10,6 +10,7 @@ import java.util.Objects;
 public class CreditCardEntry extends Entry {
 
     private String cardHolderName;
+    private String cardNumber;
     private String expirationDate;
     private String CVC ;
 

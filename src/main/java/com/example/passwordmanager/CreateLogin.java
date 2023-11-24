@@ -47,27 +47,6 @@ public class CreateLogin extends AnchorPane {
         };
         saveButton.setOnAction(event);
         model.addPasswordVisibleToggle(passwordVisible, invisiblePassword, visiblePassword);
-
-        /*EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                boolean state = visiblePassword.isVisible();
-                if (state) {
-                    invisiblePassword.setText(visiblePassword.getText());
-                    invisiblePassword.toFront();
-                    invisiblePassword.setVisible(true);
-                    visiblePassword.setVisible(false);
-
-                } else {
-                    visiblePassword.setText(invisiblePassword.getText());
-                    visiblePassword.toFront();
-                    invisiblePassword.setVisible(false);
-                    visiblePassword.setVisible(true);
-                }
-                passwordVisible.requestFocus(); // Will focus the TextField otherwise
-            }
-        };
-        passwordVisible.setOnMouseClicked(onClick);*/
     }
 
     public void initFields() {

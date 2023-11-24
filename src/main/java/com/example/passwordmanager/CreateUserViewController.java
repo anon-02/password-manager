@@ -34,7 +34,7 @@ public class CreateUserViewController implements Initializable {
         helper.navigateTo(baseAnchorPane, "login_view.fxml");}
 
     private boolean verifyFields() {
-        return (masterPassword.getText().equals(confirmMasterPassword.getText()));
+        return (masterPassword.getText().equals(confirmMasterPassword.getText()) && (!email.getText().isEmpty() || !masterPassword.getText().isEmpty()));
     }
 
     @FXML

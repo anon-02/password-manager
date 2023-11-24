@@ -37,15 +37,6 @@ public class LoginViewController implements Initializable {
         helper.onMouseHover(unlockButton);
         helper.addPasswordVisibleToggle(eyeImageView, masterPasswordInvisible, masterPasswordVisible);
 
-        email.setOnKeyReleased(KeyEvent -> {
-            if (KeyEvent.getCode() == KeyCode.TAB) {
-                if (helper.getVisible(masterPasswordInvisible)) {
-                    masterPasswordInvisible.requestFocus();
-                } else {
-                    masterPasswordVisible.requestFocus();
-                }
-            }
-        });
 
         helper.changeImageOnHover(eyeImageView, "eye.png", "eye-hover.png");
     }

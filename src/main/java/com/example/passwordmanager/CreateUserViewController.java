@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -13,8 +16,9 @@ import java.util.ResourceBundle;
 
 public class CreateUserViewController implements Initializable {
     @FXML private AnchorPane baseAnchorPane;
-    @FXML private TextField email, masterPassword, confirmMasterPassword;
+    @FXML private TextField email, masterPasswordInvisible, masterPasswordVisible, confirmPasswordInvisible, confirmPasswordVisible;
     @FXML private Button backButton, createButton;
+    @FXML private ImageView masterPasswordEye, confirmPasswordEye;
 
     private fxmlHelper helper = fxmlHelper.getInstance();
 
@@ -27,6 +31,12 @@ public class CreateUserViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        helper.onMouseHover(backButton);
+        helper.onMouseHover(createButton);
+
+        helper.addPasswordVisibleToggle(masterPasswordEye, masterPasswordInvisible, masterPasswordVisible);
+        helper.addPasswordVisibleToggle(confirmPasswordEye, confirmPasswordInvisible, confirmPasswordVisible);
+
     }
 
     @FXML
@@ -34,7 +44,8 @@ public class CreateUserViewController implements Initializable {
         helper.navigateTo(baseAnchorPane, "login_view.fxml");}
 
     private boolean verifyFields() {
-        return (masterPassword.getText().equals(confirmMasterPassword.getText()) && (!email.getText().isEmpty() || !masterPassword.getText().isEmpty()));
+        return (masterPasswordInvisible.getText().equals(confirmPasswordInvisible.getText()) &&
+                (!email.getText().isEmpty() || !masterPasswordInvisible.getText().isEmpty()));
     }
 
     @FXML
@@ -47,7 +58,7 @@ public class CreateUserViewController implements Initializable {
 
             // Add User
             String userMailInput = email.getText();
-            String userMasterPassInput = masterPassword.getText();
+            String userMasterPassInput = masterPasswordInvisible.getText();
             System.out.println("new users mail: "+userMailInput);
             System.out.println("new users pass (prehash): "+userMasterPassInput);
             loginService.CreateNewUser(userMailInput, userMasterPassInput);

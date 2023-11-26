@@ -12,20 +12,18 @@ public abstract class Entry {
     private String name;
     private String identifier;
     private String passwordType;
-    private int minPasswordLength;
-    private int maxPasswordLength;
+    private int passwordLength;
+    private int timesInspected = 0;  // amount of times a user has clicked on this entry, helps us sort entries by how frequently a user inspects them
     private Password password;
     private String note;
     private Image image;
 
-    public Entry(String category, String name, String identifier, String passwordType, int minPasswordLength, int maxPasswordLength) {
+    public Entry(String category, String name, String identifier, String passwordType, int passwordLength) {
         this.category = category;
         this.name = name;
         this.identifier = identifier;
         this.passwordType = passwordType;
-        this.minPasswordLength = minPasswordLength;
-        this.maxPasswordLength = maxPasswordLength;
-        this.password = new Password(new AllSignsPassword(), minPasswordLength, maxPasswordLength);
+        this.password = new Password(new AllSignsPassword());
     }
 
     // if you want to create entry object before user has typed in input, and use setters to insert data
@@ -35,25 +33,22 @@ public abstract class Entry {
         return this.password.getDateLastModified();
     }
 
-    public void changePasswordType(String passwordType) {
-        // work with Enum and raise exceptions if passwordType is not one of the enum strings
-        if (passwordType.equals("NUMBERS")) {
-            this.password.setPasswordMaker(PasswordFactory.makeNumbersPassword());
-        }
-        else if (passwordType.equals("LETTERS")) {
-            this.password.setPasswordMaker(PasswordFactory.makeLettersPassword());
-        }
-        //... add for other types of password
+    public void changePasswordType(PasswordMaker passwordMaker) {
+        this.password.setPasswordMaker(passwordMaker);
+     }
+
+
+    public void setPasswordLength(int length) {
+        this.passwordLength = length;
+        this.password.setLength(length);
     }
 
-    public void setMinPasswordLength(int length) {
-        this.minPasswordLength = length;
-        this.password.setMinLength(length);
+    public int getTimesInspected() {
+        return this.timesInspected;
     }
 
-    public void setMaxPasswordLength(int length) {
-        this.maxPasswordLength = length;
-        this.password.setMaxLength(length);
+    public void increaseTimesInspected() {
+        this.timesInspected ++;
     }
 
     public void setPassword(String password) {

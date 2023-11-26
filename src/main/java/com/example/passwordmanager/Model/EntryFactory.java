@@ -12,8 +12,8 @@ public class EntryFactory {
         return new WebsiteEntry(name, identifier, minPasswordLength, maxPasswordLength, URL);
     }
 
-    public static WifiEntry makeWifiEntry(String name, String identifier, int minPasswordLength, int maxPasswordLength) {
-        return new WifiEntry(name, identifier, minPasswordLength, maxPasswordLength);
+    public static WifiEntry makeWifiEntry(String name, String identifier, int passwordLength) {
+        return new WifiEntry(name, identifier, passwordLength);
     }
 
     public static PersonalizedEntry PersonalizedEntry(String name, String identifier, String passwordType, int minPasswordLength, int maxPasswordLength) {

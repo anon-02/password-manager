@@ -5,37 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/AllSignsPassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/CreditCardEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/Entry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntryFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/LetterNumberPassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/LettersPassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/NumbersPassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/Password.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/PasswordFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/PasswordMaker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/PersonalizedEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/WebsiteEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/WifiEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PasswordManager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PasswordManager.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CardEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CardEntry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditCard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditCard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditCard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditCard$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditLogin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditLogin$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditLogin$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditLogin$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateEditLogin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Entry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Entry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/EntryListItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/EntryListItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/LoginEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/LoginEntry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/MainViewController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/MainViewController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/MainViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/Entry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntryFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntryFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/NumbersPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/NumbersPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/Password.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/Password.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/PasswordMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/PasswordMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/WifiEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/WifiEntry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +26,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -63,6 +44,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -93,6 +78,17 @@
       <option name="presentableId" value="Default" />
       <updated>1699624843208</updated>
     </task>
+    <task id="LOCAL−00001" summary="commit">
+      <created>1700140672814</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1700140672814</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>

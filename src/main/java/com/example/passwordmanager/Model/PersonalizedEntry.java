@@ -3,10 +3,7 @@ package com.example.passwordmanager.Model;
 
 public class PersonalizedEntry extends Entry {
 
-    public PersonalizedEntry(String name, String identifier, String passwordType, int minPasswordLength, int maxPasswordLength) {
-        super("PERSONALIZED", name, identifier, passwordType, minPasswordLength, maxPasswordLength);
-        if (!(passwordType.equals("ALLSIGNS"))) {
-            changePasswordType(passwordType);
-        }
+    public PersonalizedEntry(String name, String identifier, String passwordType, int passwordLength) {
+        super("PERSONALIZED", name, identifier, passwordType, passwordLength);
     }
 }

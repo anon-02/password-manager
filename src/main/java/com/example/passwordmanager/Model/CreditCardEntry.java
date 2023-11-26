@@ -15,12 +15,12 @@ public class CreditCardEntry extends Entry {
 
 
     public CreditCardEntry(String name, String identifier, String cardHolderName, String expirationDate, String CVC) throws IOException {
-        super("CREDITCARD", name, identifier, "NUMBERS", 4, 4);
+        super("CREDITCARD", name, identifier, "NUMBERS", 4);
         this.cardHolderName = cardHolderName;
         this.expirationDate = expirationDate;
         this.CVC = CVC;
         setImage(new Image(Objects.requireNonNull(getClass().getResource("Images/credit-card.png")).openStream()));
-        changePasswordType("NUMBERS");
+        changePasswordType(PasswordFactory.makeNumbersPassword());
     }
 
     public CreditCardEntry() {};

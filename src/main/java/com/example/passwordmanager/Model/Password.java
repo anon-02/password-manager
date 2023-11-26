@@ -23,7 +23,7 @@ public class Password {
 
 
     public void setPassword(String password) {
-        this.password = this.passwordMaker.setPassword(password);
+        this.password = password;
     }
 
     public String getPassword(){

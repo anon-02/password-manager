@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="">
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="login auth.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CardEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CardEntry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/EntryListItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/EntryListItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/MainViewController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/MainViewController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/MainViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/CreditCardEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/CreditCardEntry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/Entry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/Entry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -30,18 +42,25 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2XzHAM6F97Ne1RFqAjIrPgSdhz2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Tim\Chalmers\test\password-manager\src\main\resources\com\example\passwordmanager\Views" />
+      <recent name="C:\Users\Tim\Chalmers\test\password-manager\src\main\resources\com\example\passwordmanager\Images" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.passwordmanager" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -60,6 +79,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -71,24 +93,88 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1699624843208</updated>
+      <workItem from="1700144550375" duration="3045000" />
+      <workItem from="1700327876778" duration="12416000" />
+      <workItem from="1700406233639" duration="13755000" />
+      <workItem from="1700485216185" duration="10182000" />
+      <workItem from="1700733140391" duration="1918000" />
     </task>
-    <task id="LOCAL−00001" summary="commit">
-      <created>1700140672814</created>
+    <task id="LOCAL−00001" summary="detail view progress.">
+      <option name="closed" value="true" />
+      <created>1700432165502</created>
       <option name="number" value="LOCAL−00001" />
       <option name="presentableId" value="LOCAL−00001" />
-      <updated>1700140672814</updated>
+      <updated>1700432165502</updated>
     </task>
-    <task id="LOCAL−00002" summary="commit">
-      <created>1701000898612</created>
+    <task id="LOCAL−00002" summary="more progress.">
+      <option name="closed" value="true" />
+      <created>1700497372770</created>
       <option name="number" value="LOCAL−00002" />
       <option name="presentableId" value="LOCAL−00002" />
-      <updated>1701000898612</updated>
+      <updated>1700497372770</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="hmm">
+      <option name="closed" value="true" />
+      <created>1700497401368</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1700497401368</updated>
+    </task>
+    <task id="LOCAL−00004" summary="hmm">
+      <option name="closed" value="true" />
+      <created>1700497406415</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1700497406415</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Login and register">
+      <option name="closed" value="true" />
+      <created>1700591482254</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1700591482254</updated>
+    </task>
+    <task id="LOCAL−00006" summary="everything merged">
+      <created>1700734287345</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1700734287345</updated>
+    </task>
+    <task id="LOCAL−00007" summary="login auth.">
+      <created>1700734919139</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1700734919139</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="detail view progress." />
+    <MESSAGE value="more progress." />
+    <MESSAGE value="hmm" />
+    <MESSAGE value="Login and register" />
+    <MESSAGE value="everything merged" />
+    <MESSAGE value="login auth." />
+    <option name="LAST_COMMIT_MESSAGE" value="login auth." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

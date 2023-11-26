@@ -8,15 +8,15 @@ public class EntryFactory {
         return new CreditCardEntry(name, identifier, cardName, date, cvv);
     }
 
-    public static WebsiteEntry makeWebsiteEntry(String name, String identifier, int minPasswordLength, int maxPasswordLength, String URL) throws IOException {
-        return new WebsiteEntry(name, identifier, minPasswordLength, maxPasswordLength, URL);
+    public static WebsiteEntry makeWebsiteEntry(String name, String identifier, int passwordLength, String URL) throws IOException {
+        return new WebsiteEntry(name, identifier, passwordLength, URL);
     }
 
     public static WifiEntry makeWifiEntry(String name, String identifier, int passwordLength) {
         return new WifiEntry(name, identifier, passwordLength);
     }
 
-    public static PersonalizedEntry PersonalizedEntry(String name, String identifier, String passwordType, int minPasswordLength, int maxPasswordLength) {
-        return new PersonalizedEntry(name, identifier, passwordType, minPasswordLength, maxPasswordLength);
+    public static PersonalizedEntry PersonalizedEntry(String name, String identifier, String passwordType, int passwordLength) {
+        return new PersonalizedEntry(name, identifier, passwordType, passwordLength);
     }
 }

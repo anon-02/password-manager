@@ -123,6 +123,10 @@
     -fx-background-color: #1E3055;
 }
 
+.background-dark {
+    -fx-background-color: #14213D;
+}
+
 .generate-password-text {
     -fx-font-family: 'Sen', sans-serif;
     -fx-font-weight: bold;

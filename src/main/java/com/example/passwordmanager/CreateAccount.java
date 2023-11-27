@@ -95,7 +95,7 @@ public class CreateAccount extends AnchorPane {
         } else {
             noteAnchorPane.setLayoutY(384);
             passwordGeneratorFlowPane.getChildren().clear();
-            passwordGeneratorFlowPane.getChildren().add(new PasswordGeneratorItem());
+            passwordGeneratorFlowPane.getChildren().add(new PasswordGeneratorItem("create"));
         }
         passwordGeneratorShowing = !passwordGeneratorShowing;
 

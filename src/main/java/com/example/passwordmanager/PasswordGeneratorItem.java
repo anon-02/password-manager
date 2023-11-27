@@ -21,8 +21,14 @@ public class PasswordGeneratorItem extends AnchorPane {
     @FXML Slider lengthSlider;
     @FXML CheckBox includeUppercase, includeNumbers, includeSpecial;
 
-    public PasswordGeneratorItem() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/password-generator.fxml"));
+    public PasswordGeneratorItem(String s) {
+        FXMLLoader fxmlLoader = null;
+        if (s.equals("create")) {
+            fxmlLoader = new FXMLLoader(getClass().getResource("Views/password-generator.fxml"));
+        } else if (s.equals("detail")){
+            fxmlLoader = new FXMLLoader(getClass().getResource("Views/password-generator-small.fxml"));
+        }
+        assert fxmlLoader != null;
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

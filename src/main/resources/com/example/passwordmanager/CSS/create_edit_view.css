@@ -29,7 +29,7 @@
     -fx-background-color: #F3F2F3;
     -fx-font-family: 'Sen', sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 8px;
+    -fx-font-size: 12px;
     -fx-text-fill: #1E3055;
     -fx-alignment: center-left;
 }
@@ -121,4 +121,37 @@
 
 .background {
     -fx-background-color: #1E3055;
+}
+
+.generate-password-text {
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-text-fill: #F3F2F3;
+}
+
+.generate-button {
+    -fx-background-color: #F3F2F3;
+    -fx-background-radius: 12px;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1E3055;
+}
+
+.generate-button:hover {
+    -fx-background-color: #F9F9F9;
+    -fx-background-radius: 12px;
+
+    -fx-font-family: 'Sen', sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1E3055;
+}
+
+.rectangle {
+    -fx-fill: #F9F9F9;
+    -fx-arc-width: 4px;
+    -fx-arc-height: 4px;
 }

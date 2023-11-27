@@ -7,27 +7,33 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
 <fx:root fx:id="backAnchorPane" prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="name" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" text="Gmail (timcarlsson)" />
+      <TextField fx:id="name" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
       <Label layoutX="116.0" styleClass="label-text-field-description" text="Name" />
-      <TextField fx:id="username" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" text="timcarlsson0203@gmail.com" />
+      <TextField fx:id="username" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter username" styleClass="text-field-content" />
       <Label layoutX="116.0" layoutY="47.0" styleClass="label-text-field-description" text="Username" />
       <StackPane layoutX="108.0" layoutY="112.0">
          <children>
             <TextField fx:id="visiblePassword" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" />
-            <PasswordField fx:id="invisiblePassword" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content-password" text="testestest" />
+            <PasswordField fx:id="invisiblePassword" prefHeight="24.0" prefWidth="264.0" promptText="Enter password" styleClass="text-field-content-password" />
          </children>
       </StackPane>
       <Label layoutX="116.0" layoutY="95.0" styleClass="label-text-field-description" text="Password" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" layoutX="115.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-background" width="250.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" layoutX="115.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-foreground" width="160.0" />
       <Label layoutX="263.0" layoutY="147.0" prefHeight="15.0" prefWidth="102.0" styleClass="password-strength-label" text="Good Password" />
-      <TextField fx:id="note" layoutX="108.0" layoutY="171.0" prefHeight="72.0" prefWidth="264.0" styleClass="text-field-content" text="lorem ipsum" />
-      <Label layoutX="116.0" layoutY="154.0" styleClass="label-text-field-description" text="Note" />
+      <AnchorPane fx:id="noteAnchorPane" layoutX="108.0" layoutY="172.0">
+         <children>
+            <TextField fx:id="note" layoutY="17.0" prefHeight="72.0" prefWidth="264.0" promptText="Enter note" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="label-text-field-description" text="Note" />
+            <Label layoutX="200.0" styleClass="label-text-field-description" text="(optional)" />
+         </children>
+      </AnchorPane>
       <Button fx:id="saveButton" layoutX="195.0" layoutY="480.0" maxHeight="38.0" minHeight="24.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="save-button" text="Save" />
       <ImageView fx:id="passwordVisible" fitHeight="20.0" fitWidth="20.0" layoutX="378.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -39,5 +45,6 @@
             <Image url="@../Images/gear.png" />
          </image>
       </ImageView>
+      <FlowPane fx:id="passwordGeneratorFlowPane" layoutX="108.0" layoutY="164.0" prefHeight="216.0" prefWidth="264.0" />
    </children>
 </fx:root>

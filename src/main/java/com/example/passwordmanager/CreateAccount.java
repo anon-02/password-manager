@@ -7,21 +7,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 
-public class CreateLogin extends AnchorPane {
+public class CreateAccount extends AnchorPane {
 
-    @FXML private AnchorPane backAnchorPane;
+    @FXML private AnchorPane backAnchorPane, noteAnchorPane;
     @FXML private TextField name, username, invisiblePassword, visiblePassword, note;
     @FXML private Button saveButton;
-    @FXML private ImageView passwordVisible, invisiblePasswordGenerate;
+    @FXML private ImageView passwordVisible, invisiblePasswordGenerate, passwordGenerate;
+    @FXML private FlowPane passwordGeneratorFlowPane;
 
     private MainViewController parentController;
     private fxmlHelper model = fxmlHelper.getInstance();
+    private boolean passwordGeneratorShowing = false;
 
-    public CreateLogin(MainViewController controller) {
+    public CreateAccount(MainViewController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-account.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -34,6 +38,7 @@ public class CreateLogin extends AnchorPane {
 
         initFields();
         this.parentController = controller;
+        model.addPasswordVisibleToggle(passwordVisible, invisiblePassword, visiblePassword);
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override
@@ -46,10 +51,18 @@ public class CreateLogin extends AnchorPane {
             }
         };
         saveButton.setOnAction(event);
-        model.addPasswordVisibleToggle(passwordVisible, invisiblePassword, visiblePassword);
+
+        EventHandler<MouseEvent> cogClick = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                cogClicked();
+            }
+        };
+        passwordGenerate.setOnMouseClicked(cogClick);
+
     }
 
-    public void initFields() {
+    private void initFields() {
         this.name.setText("");
         this.username.setText("");
         this.invisiblePassword.setText("");
@@ -73,6 +86,19 @@ public class CreateLogin extends AnchorPane {
             parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }
+    }
+
+    private void cogClicked() {
+        if (passwordGeneratorShowing) {
+            passwordGeneratorFlowPane.getChildren().clear();
+            noteAnchorPane.setLayoutY(174);
+        } else {
+            noteAnchorPane.setLayoutY(384);
+            passwordGeneratorFlowPane.getChildren().clear();
+            passwordGeneratorFlowPane.getChildren().add(new PasswordGeneratorItem());
+        }
+        passwordGeneratorShowing = !passwordGeneratorShowing;
+
     }
 
 }

@@ -12,12 +12,12 @@
 
 <fx:root prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="name" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" text="Gmail (timcarlsson)" />
+      <TextField fx:id="name" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
       <Label layoutX="116.0" styleClass="label-text-field-description" text="Name" />
-      <TextField fx:id="cardNumber" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" text="1234 5678 9012 3456" />
+      <TextField fx:id="cardNumber" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter card number" styleClass="text-field-content" />
       <Label layoutX="116.0" layoutY="47.0" styleClass="label-text-field-description" text="Card number" />
       <Label layoutX="116.0" layoutY="95.0" styleClass="label-text-field-description" text="Expire date" />
-      <TextField fx:id="note" layoutX="108.0" layoutY="171.0" prefHeight="72.0" prefWidth="264.0" styleClass="text-field-content" text="lorem ipsum" />
+      <TextField fx:id="note" layoutX="108.0" layoutY="171.0" prefHeight="72.0" prefWidth="264.0" styleClass="text-field-content" />
       <Label layoutX="116.0" layoutY="154.0" styleClass="label-text-field-description" text="Note" />
       <ChoiceBox fx:id="expireMonth" layoutX="108.0" layoutY="112.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="50.0" styleClass="text-field-content" />
       <ChoiceBox fx:id="expireYear" layoutX="180.0" layoutY="112.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="50.0" styleClass="text-field-content" />
@@ -25,7 +25,7 @@
       <StackPane layoutX="328.0" layoutY="112.0">
          <children>
             <TextField fx:id="visibleCvcCode" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="40.0" styleClass="text-field-content" />
-            <PasswordField fx:id="invisibleCvcCode" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="40.0" styleClass="text-field-content-password" text="020" />
+            <PasswordField fx:id="invisibleCvcCode" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="40.0" promptText="123" styleClass="text-field-content-password" />
          </children>
       </StackPane>
       <Label layoutX="165.0" layoutY="109.0" styleClass="title-text" text="/" />
@@ -35,5 +35,6 @@
             <Image url="@../Images/eye.png" />
          </image>
       </ImageView>
+      <Label layoutX="311.0" layoutY="154.0" styleClass="label-text-field-description" text="(optional)" />
    </children>
 </fx:root>

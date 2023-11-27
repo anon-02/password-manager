@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 
@@ -20,6 +21,7 @@ public class CreateCard extends AnchorPane {
     @FXML private PasswordField invisibleCvcCode;
     @FXML private Button saveButton;
     @FXML private ImageView cvcVisible;
+    @FXML private FlowPane passwordGeneratorFlowPane;
 
     private MainViewController parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
@@ -58,29 +60,7 @@ public class CreateCard extends AnchorPane {
         };
 
         saveButton.setOnAction(event);
-
         helper.addPasswordVisibleToggle(cvcVisible, invisibleCvcCode, visibleCvcCode);
-
-        /*EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                boolean state = visibleCvcCode.isVisible();
-                if (state) {
-                    invisibleCvcCode.setText(visibleCvcCode.getText());
-                    invisibleCvcCode.toFront();
-                    invisibleCvcCode.setVisible(true);
-                    visibleCvcCode.setVisible(false);
-
-                } else {
-                    visibleCvcCode.setText(invisibleCvcCode.getText());
-                    visibleCvcCode.toFront();
-                    invisibleCvcCode.setVisible(false);
-                    visibleCvcCode.setVisible(true);
-                }
-                cvcVisible.requestFocus(); // Will focus the TextField otherwise
-            }
-        };
-        cvcVisible.setOnMouseClicked(onClick);*/
 
         // Regex for card number
         cardNumber.focusedProperty().addListener((observable, oldValue, newValue) -> {

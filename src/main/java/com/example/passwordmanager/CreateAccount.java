@@ -1,15 +1,17 @@
 package com.example.passwordmanager;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
@@ -20,10 +22,14 @@ public class CreateAccount extends AnchorPane {
     @FXML private Button saveButton;
     @FXML private ImageView passwordVisible, invisiblePasswordGenerate, passwordGenerate;
     @FXML private FlowPane passwordGeneratorFlowPane;
+    @FXML private Rectangle strengthIndicatorRec;
+    @FXML private Label passwordStrengthLabel;
+
 
     private MainViewController parentController;
     private fxmlHelper model = fxmlHelper.getInstance();
     private boolean passwordGeneratorShowing = false;
+    private ToggleGroup passwordTypes = new ToggleGroup();
 
     public CreateAccount(MainViewController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-account.fxml"));
@@ -60,6 +66,12 @@ public class CreateAccount extends AnchorPane {
         };
         passwordGenerate.setOnMouseClicked(cogClick);
 
+        invisiblePassword.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String oldString, String newString) {
+                updateStrengthIndicator(newString);
+            }
+        });
     }
 
     private void initFields() {
@@ -98,7 +110,33 @@ public class CreateAccount extends AnchorPane {
             passwordGeneratorFlowPane.getChildren().add(new PasswordGeneratorItem("create"));
         }
         passwordGeneratorShowing = !passwordGeneratorShowing;
-
     }
+
+    @FXML
+    private void generateButtonClicked() {
+        // TODO model.generatePassword()
+    }
+
+    private void updateStrengthIndicator(String newString) {
+        // TODO get ratio from model according to rules
+        double ratio = invisiblePassword.getText().length() * 8 / 250d;
+        strengthIndicatorRec.setWidth((int) (250 * ratio));
+
+        if (ratio >= 0 && ratio < 0.25) {
+            strengthIndicatorRec.setStyle("-fx-fill: #DD7373");
+            passwordStrengthLabel.setText("Bad password");
+        } else if (ratio >= 0.25 && ratio < 0.5) {
+            strengthIndicatorRec.setStyle("-fx-fill: #DDCC73");
+            passwordStrengthLabel.setText("Weak password");
+        } else if (ratio >= 0.5 && ratio < 0.75) {
+            strengthIndicatorRec.setStyle("-fx-fill: #75DD73");
+            passwordStrengthLabel.setText("Good password");
+        } else {
+            strengthIndicatorRec.setStyle("-fx-fill: #3BD338");
+            passwordStrengthLabel.setText("Very password");
+        }
+    }
+
+
 
 }

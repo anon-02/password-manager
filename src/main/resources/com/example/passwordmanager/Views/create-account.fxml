@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root fx:id="backAnchorPane" prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="backAnchorPane" prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="name" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
       <Label layoutX="116.0" styleClass="label-text-field-description" text="Name" />
@@ -25,8 +25,8 @@
       </StackPane>
       <Label layoutX="116.0" layoutY="95.0" styleClass="label-text-field-description" text="Password" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" layoutX="115.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-background" width="250.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" layoutX="115.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-foreground" width="160.0" />
-      <Label layoutX="263.0" layoutY="147.0" prefHeight="15.0" prefWidth="102.0" styleClass="password-strength-label" text="Good Password" />
+      <Rectangle fx:id="strengthIndicatorRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" layoutX="115.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-foreground" width="160.0" />
+      <Label fx:id="passwordStrengthLabel" layoutX="263.0" layoutY="147.0" prefHeight="15.0" prefWidth="102.0" styleClass="password-strength-label" text="Good Password" />
       <AnchorPane fx:id="noteAnchorPane" layoutX="108.0" layoutY="172.0">
          <children>
             <TextField fx:id="note" layoutY="17.0" prefHeight="72.0" prefWidth="264.0" promptText="Enter note" styleClass="text-field-content" />

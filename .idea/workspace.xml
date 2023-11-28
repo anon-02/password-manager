@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="logic implemented for creating &quot;passwords&quot; + rudimentary strength indicator">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/DetailViewItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/DetailViewItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/PasswordGeneratorItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/PasswordGeneratorItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/create-account.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/create-account.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/detail_view_account.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/detail_view_account.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/password-generator-small.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/password-generator-small.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/password-generator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/password-generator.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Views/create-account.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Views/create-account.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Views/detail_view_account.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Views/detail_view_account.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="final commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,33 +13,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="CSS File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="sqlDB" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2XzHAM6F97Ne1RFqAjIrPgSdhz2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -75,7 +57,7 @@
       <module name="PasswordManager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.passwordmanager.Password.*" />
+          <option name="PATTERN" value="com.example.passwordmanager.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,8 +85,10 @@
       <workItem from="1700327876778" duration="12416000" />
       <workItem from="1700406233639" duration="13755000" />
       <workItem from="1700485216185" duration="10182000" />
-      <workItem from="1700733140391" duration="1918000" />
-      <workItem from="1701102646725" duration="6654000" />
+      <workItem from="1700882833863" duration="10306000" />
+      <workItem from="1700971588308" duration="13290000" />
+      <workItem from="1701051570818" duration="2698000" />
+      <workItem from="1701058206549" duration="25906000" />
     </task>
     <task id="LOCAL−00001" summary="detail view progress.">
       <option name="closed" value="true" />
@@ -141,82 +125,29 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1700591482254</updated>
     </task>
-    <task id="LOCAL−00006" summary="everything merged">
-      <created>1700734287345</created>
+    <task id="LOCAL−00006" summary="start of the entity DAO">
+      <option name="closed" value="true" />
+      <created>1700700380687</created>
       <option name="number" value="LOCAL−00006" />
       <option name="presentableId" value="LOCAL−00006" />
-      <updated>1700734287345</updated>
+      <updated>1700700380687</updated>
     </task>
-    <task id="LOCAL−00007" summary="login auth.">
-      <created>1700734919139</created>
-      <option name="number" value="LOCAL−00007" />
-      <option name="presentableId" value="LOCAL−00007" />
-      <updated>1700734919139</updated>
-    </task>
-    <task id="LOCAL−00008" summary="qol loginview">
-      <option name="closed" value="true" />
-      <created>1700866252681</created>
-      <option name="number" value="LOCAL−00008" />
-      <option name="presentableId" value="LOCAL−00008" />
-      <updated>1700866252681</updated>
-    </task>
-    <task id="LOCAL−00009" summary="initial commit.">
-      <option name="closed" value="true" />
-      <created>1700866596773</created>
-      <option name="number" value="LOCAL−00009" />
-      <option name="presentableId" value="LOCAL−00009" />
-      <updated>1700866596773</updated>
-    </task>
-    <task id="LOCAL−00010" summary="reverted some things.">
-      <option name="closed" value="true" />
-      <created>1700869321255</created>
-      <option name="number" value="LOCAL−00010" />
-      <option name="presentableId" value="LOCAL−00010" />
-      <updated>1700869321255</updated>
-    </task>
-    <task id="LOCAL−00011" summary="generate password visual component set up">
-      <option name="closed" value="true" />
-      <created>1701118527430</created>
-      <option name="number" value="LOCAL−00011" />
-      <option name="presentableId" value="LOCAL−00011" />
-      <updated>1701118527430</updated>
-    </task>
-    <task id="LOCAL−00012" summary="logic implemented for creating &quot;passwords&quot; + rudimentary strength indicator">
-      <created>1701174127948</created>
-      <option name="number" value="LOCAL−00012" />
-      <option name="presentableId" value="LOCAL−00012" />
-      <updated>1701174127948</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="detail view progress." />
     <MESSAGE value="more progress." />
     <MESSAGE value="hmm" />
     <MESSAGE value="Login and register" />
-    <MESSAGE value="everything merged" />
-    <MESSAGE value="login auth." />
-    <MESSAGE value="qol loginview" />
-    <MESSAGE value="initial commit." />
-    <MESSAGE value="reverted some things." />
-    <MESSAGE value="generate password visual component set up" />
-    <MESSAGE value="logic implemented for creating &quot;passwords&quot; + rudimentary strength indicator" />
-    <option name="LAST_COMMIT_MESSAGE" value="logic implemented for creating &quot;passwords&quot; + rudimentary strength indicator" />
+    <MESSAGE value="start of the entity DAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="start of the entity DAO" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

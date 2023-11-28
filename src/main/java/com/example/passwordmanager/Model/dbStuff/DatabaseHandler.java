@@ -1,10 +1,9 @@
-package com.example.passwordmanager.Model;
+package com.example.passwordmanager.Model.dbStuff;
 
 import java.sql.*;
 
 public class DatabaseHandler {
-    private static final String USER_JDBC_URL = "jdbc:sqlite:C:/Users/timso/Chalmers/password-manager/Database/users.db";
-    private static final String ENTITY_JDBC_URL = "jdbc:sqlite:C:/Users/timso/Chalmers/password-manager/Database/entity.db";
+    private static final String JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/users.db";
     private static Connection  connection;
 
     private DatabaseHandler() {
@@ -12,17 +11,9 @@ public class DatabaseHandler {
     }
 
     // Connect to user database
-    public static Connection userDBconnect() throws SQLException {
+    public static Connection DBconnect() throws SQLException {
         if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection(USER_JDBC_URL);
-        }
-        return connection;
-    }
-
-    // connect to entity database
-    public static Connection entityDBconnect() throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection(ENTITY_JDBC_URL);
+            connection = DriverManager.getConnection(JDBC_URL);
         }
         return connection;
     }

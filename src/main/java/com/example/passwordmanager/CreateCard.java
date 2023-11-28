@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,7 +12,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 
 public class CreateCard extends AnchorPane {
 
@@ -51,7 +59,9 @@ public class CreateCard extends AnchorPane {
             public void handle(ActionEvent actionEvent) {
                 try {
                     saveButtonPressed();
-                } catch (IOException e) {
+                } catch (IOException | InvalidAlgorithmParameterException | NoSuchPaddingException |
+                         IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException |
+                         InvalidKeyException | SQLException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -141,8 +151,14 @@ public class CreateCard extends AnchorPane {
     }
 
     @FXML
-    private void saveButtonPressed() throws IOException {
+    private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
+            // TODO not submitting anything
+            CardEntry newEntry = new CardEntry(name.getText(), "placeholder", cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), invisibleCvcCode.getText(), note.getText());
+            /*TODO missing cardholder input */
+            System.out.println("card name: "+newEntry.getName());
+            EncryptionBuffer.insertCardEntry(newEntry);
+
             parentController.addEntry(new CardEntry(this.name.getText(), "Tim Carlsson", this.cardNumber.getText(), this.expireMonth.getValue(), this.expireYear.getValue(), this.invisibleCvcCode.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }

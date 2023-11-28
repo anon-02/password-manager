@@ -1,5 +1,6 @@
 package com.example.passwordmanager.Model;
 
+import javax.crypto.spec.IvParameterSpec;
 import java.sql.Connection;
 import java.util.List;
 /** Description of class **/
@@ -8,6 +9,8 @@ public class User<T extends Entry> {
     private int id;
     private String username;
     private String masterPassword;
+    private String salt;
+    private byte[] iv;
 
 
     private static Connection connection;
@@ -15,10 +18,12 @@ public class User<T extends Entry> {
     //  private static final String JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/users.db";
 
 
-    public User(int id, String username, String masterPassword) {
+    public User(int id, String username, String masterPassword, String salt, byte[] iv) {
         this.id = id;
         this.username = username;
         this.masterPassword = masterPassword;
+        this.salt = salt;
+        this.iv = iv;
     }
 /*
     public void addEntry(T entry) {
@@ -47,6 +52,9 @@ public class User<T extends Entry> {
         return masterPassword;
     }
 
+    public String getSalt() { return salt; }
+    public byte[] getIV() {return iv;}
+
 
 
     public String toString() {
@@ -54,6 +62,7 @@ public class User<T extends Entry> {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", masterPassword='" + masterPassword + '\'' +
+                ", salt=" + salt + "'\'" +
                 '}';
     }
 

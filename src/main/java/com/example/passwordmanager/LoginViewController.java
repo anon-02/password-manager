@@ -1,8 +1,7 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Model.LoginService;
-import com.example.passwordmanager.Model.UserDAO;
-import com.example.passwordmanager.Model.UserDAOImpl;
+import com.example.passwordmanager.Model.*;
+import com.example.passwordmanager.Model.dbStuff.SessionManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -33,7 +34,7 @@ public class LoginViewController implements Initializable {
         helper.onMouseHover(unlockButton);
     }
 
-    @FXML public void unlockButtonPressed() throws SQLException {
+    @FXML public void unlockButtonPressed() throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
         String userMailInput = email.getText();
         String userMasterPassInput = masterPassword.getText();
 
@@ -42,7 +43,8 @@ public class LoginViewController implements Initializable {
 
         loginService.LogIn(userMailInput, userMasterPassInput);
 
-
+        User thisUser = SessionManager.getCurrentUser();
+        System.out.println(thisUser + " is currently logged in");
 
 
 

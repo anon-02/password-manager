@@ -1,17 +1,12 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Model.Password;
-import com.example.passwordmanager.Model.User;
-import com.example.passwordmanager.Model.UserDAO;
-import com.example.passwordmanager.Model.UserDAOImpl;
+import com.example.passwordmanager.Model.dbStuff.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Main extends Application {
@@ -27,7 +22,10 @@ public class Main extends Application {
 
     public static void main(String[] args) throws SQLException {
 
+        // user data endpoint
+        SessionManager sessionManager = new SessionManager();
         UserDAO userDAO = new UserDAOImpl();
+        EntryDAO entryDAO = new EntryDAOImpl();
 
      //   User user2 = new User(2, 2, "johnny", "real password right here");
 

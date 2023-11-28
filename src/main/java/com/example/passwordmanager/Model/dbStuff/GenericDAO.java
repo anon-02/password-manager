@@ -1,4 +1,4 @@
-package com.example.passwordmanager.Model;
+package com.example.passwordmanager.Model.dbStuff;
 
 import java.sql.SQLException;
 import java.util.List;

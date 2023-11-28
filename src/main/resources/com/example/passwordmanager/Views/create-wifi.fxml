@@ -13,12 +13,12 @@
    <children>
       <TextField fx:id="entryName" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
       <Label layoutX="116.0" styleClass="label-text-field-description" text="Entry Name" />
-      <TextField fx:id="wifiName" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" promptText="examplewifi1234" styleClass="text-field-content" />
+      <TextField fx:id="wifiName" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter wifi name" styleClass="text-field-content" />
       <Label layoutX="116.0" layoutY="47.0" styleClass="label-text-field-description" text="Wifi Name" />
       <StackPane layoutX="108.0" layoutY="112.0">
          <children>
             <TextField fx:id="wifiPasswordVisible" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" />
-            <PasswordField fx:id="wifiPasswordInvisible" prefHeight="24.0" prefWidth="264.0" promptText="1234" styleClass="text-field-content-password" />
+            <PasswordField fx:id="wifiPasswordInvisible" prefHeight="24.0" prefWidth="264.0" promptText="Enter wifi password" styleClass="text-field-content-password" />
          </children>
       </StackPane>
       <Label layoutX="116.0" layoutY="95.0" styleClass="label-text-field-description" text="Wifi Password" />

@@ -90,7 +90,7 @@ public class MainViewController implements Initializable {
         // Add case for every new type of entry
         switch (currentType) {
             case "Account":
-                this.injectEntryType.getChildren().add(new CreateLogin(this));
+                this.injectEntryType.getChildren().add(new CreateAccount(this));
                 return;
             case "Card":
                 this.injectEntryType.getChildren().add(new CreateCard(this));

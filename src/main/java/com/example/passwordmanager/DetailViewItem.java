@@ -1,12 +1,15 @@
 package com.example.passwordmanager;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 
@@ -18,9 +21,12 @@ public class DetailViewItem extends AnchorPane{
     @FXML private AnchorPane baseAnchorPane;
 
     /** Used for account entries **/
+    @FXML private AnchorPane noteAnchorPane;
     @FXML private TextField entryAccountName, accountUsername, accountPasswordInvisible, accountPasswordVisible;
     @FXML private TextArea accountNote;
     @FXML private ImageView eyeImageView, cogImageView;
+    @FXML private FlowPane generatePasswordFlowPane;
+    private boolean passwordGeneratorShowing = false;
 
     /** Used for card entries **/
     @FXML private AnchorPane nonEditableExpireDatePane, editableExpireDatePane;
@@ -37,6 +43,7 @@ public class DetailViewItem extends AnchorPane{
     /** Used for secure note entries **/
     @FXML private TextField entryNoteName, noteSubject;
     @FXML private TextArea noteContent;
+
     private String currentEntry;
 
     public DetailViewItem(AccountEntry entry, MainViewController controller) {
@@ -59,7 +66,27 @@ public class DetailViewItem extends AnchorPane{
 
         helper.addPasswordVisibleToggle(eyeImageView, accountPasswordInvisible, accountPasswordVisible);
 
-        currentEntry = "accountEntry"; // Make an enum
+        currentEntry = "accountEntry"; // TODO Make an enum
+
+        EventHandler<MouseEvent> cogClick = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                cogClicked();
+            }
+
+            private void cogClicked() {
+                if (passwordGeneratorShowing) {
+                    generatePasswordFlowPane.getChildren().clear();
+                    noteAnchorPane.setLayoutY(255);
+                } else {
+                    noteAnchorPane.setLayoutY(476);
+                    generatePasswordFlowPane.getChildren().clear();
+                    generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail"));
+                }
+                passwordGeneratorShowing = !passwordGeneratorShowing;
+            }
+        };
+        cogImageView.setOnMouseClicked(cogClick);
     }
 
     public DetailViewItem(CardEntry entry, MainViewController controller) {

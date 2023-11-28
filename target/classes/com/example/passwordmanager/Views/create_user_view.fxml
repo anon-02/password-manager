@@ -3,36 +3,60 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 
 <AnchorPane fx:id="baseAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="background" stylesheets="@../CSS/login_createUser_view.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.passwordmanager.CreateUserViewController">
    <children>
       <AnchorPane layoutX="408.0" layoutY="204.0">
          <children>
-            <TextField fx:id="email" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" />
+            <TextField fx:id="email" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter email" styleClass="text-field-content" />
             <Label layoutX="8.0" styleClass="text-field-name" text="Email" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="408.0" layoutY="262.0">
+      <AnchorPane layoutX="409.0" layoutY="261.0" prefHeight="47.0" prefWidth="357.0">
          <children>
-            <TextField fx:id="masterPassword" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" />
+            <StackPane layoutY="17.0">
+               <children>
+                  <TextField fx:id="masterPasswordVisible" prefHeight="24.0" prefWidth="264.0" promptText="Enter password" styleClass="text-field-content" />
+                  <PasswordField fx:id="masterPasswordInvisible" promptText="Enter password" styleClass="text-field-content-password" />
+               </children>
+            </StackPane>
             <Label layoutX="8.0" styleClass="text-field-name" text="Master password" />
+            <ImageView fx:id="masterPasswordEye" fitHeight="20.0" fitWidth="20.0" layoutX="269.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/eye.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="409.0" layoutY="320.0">
+      <AnchorPane layoutX="409.0" layoutY="318.0" prefHeight="47.0" prefWidth="357.0">
          <children>
-            <TextField fx:id="confirmMasterPassword" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" styleClass="text-field-content" />
+            <StackPane layoutY="17.0">
+               <children>
+                  <TextField fx:id="confirmPasswordVisible" prefHeight="24.0" prefWidth="264.0" promptText="Enter password" styleClass="text-field-content" />
+                  <PasswordField fx:id="confirmPasswordInvisible" promptText="Confirm password" styleClass="text-field-content-password" />
+               </children>
+            </StackPane>
             <Label layoutX="8.0" styleClass="text-field-name" text="Confirm password" />
+            <ImageView fx:id="confirmPasswordEye" fitHeight="20.0" fitWidth="20.0" layoutX="269.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/eye.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <Label layoutX="14.0" layoutY="14.0" styleClass="large_text" text="PasswordManager" />
-      <Label layoutX="448.0" layoutY="135.0" maxHeight="55.0" minHeight="40.0" prefHeight="55.0" prefWidth="185.0" styleClass="large_text" text="Create user" />
       <Button fx:id="createButton" layoutX="552.0" layoutY="407.0" maxHeight="32.0" maxWidth="120.0" minHeight="32.0" minWidth="120.0" mnemonicParsing="false" onMouseClicked="#createUserButtonPressed" prefHeight="32.0" prefWidth="120.0" text="Create" />
       <Button fx:id="backButton" alignment="CENTER" layoutX="408.0" layoutY="407.0" maxHeight="32.0" maxWidth="120.0" minHeight="32.0" minWidth="120.0" mnemonicParsing="false" onMouseClicked="#backButtonPressed" prefHeight="32.0" prefWidth="120.0" text="Back">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Button>
+      <Label layoutX="14.0" layoutY="14.0" styleClass="large_text" text="PasswordManager" />
+      <Label layoutX="448.0" layoutY="135.0" maxHeight="55.0" minHeight="40.0" prefHeight="55.0" prefWidth="185.0" styleClass="large_text" text="Create user" />
    </children>
 </AnchorPane>

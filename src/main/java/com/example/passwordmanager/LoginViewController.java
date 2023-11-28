@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class LoginViewController implements Initializable {
 
     @FXML private AnchorPane baseAnchorPane;
-    @FXML private TextField email, masterPassword;
+    @FXML private TextField email, masterPasswordInvisible, masterPasswordVisible;
     @FXML private Button newUserButton, unlockButton;
 
     private fxmlHelper helper = fxmlHelper.getInstance();
@@ -36,7 +36,7 @@ public class LoginViewController implements Initializable {
 
     @FXML public void unlockButtonPressed() throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
         String userMailInput = email.getText();
-        String userMasterPassInput = masterPassword.getText();
+        String userMasterPassInput = masterPasswordInvisible.getText();
 
         System.out.println("user '"+userMailInput + "' trying to log in");
         System.out.println("users pass : "+ userMasterPassInput);

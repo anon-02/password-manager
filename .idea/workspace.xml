@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="final commit" />
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="final commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database/users.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/LoginViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/dbStuff/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/dbStuff/DatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/AccountEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/AccountEntry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateCard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateCard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateLogin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateLogin$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateSecureNote$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateSecureNote$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateSecureNote.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateSecureNote.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateWifi$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateWifi$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateWifi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateWifi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/LoginViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/LoginViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/DatabaseHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/EntryDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/EntryDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/UserDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Password/PasswordGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Password/PasswordGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Password/SimplePasswordGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Password/SimplePasswordGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/WifiEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/WifiEntry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +45,9 @@
         <option value="Interface" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="encryptDecrypt" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -139,6 +168,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">

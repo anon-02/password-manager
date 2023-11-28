@@ -53,10 +53,39 @@ public class fxmlHelper {
                     invisiblePassword.setVisible(false);
                     visiblePassword.setVisible(true);
                 }
-                eye.requestFocus(); // Will focus the TextField otherwise
+                eye.requestFocus(); // Makes it not look shit
             }
         };
         eye.setOnMouseClicked(onClick);
+    }
+
+    public Image getImage(String fileName) throws IOException {
+        return new Image(Objects.requireNonNull(getClass().getResource("Images/" + fileName)).openStream());
+    }
+
+    public void changeImageOnHover(ImageView imageView, String normalImage, String hoverImage) {
+        imageView.setOnMouseEntered(mouseEvent -> {
+            try {
+                System.out.println("We hoverin");
+                imageView.setImage(getImage(hoverImage));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        imageView.setOnMouseExited(mouseEvent -> {
+            try {
+                System.out.println("we not hovering");
+                imageView.setImage(getImage(normalImage));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    // Mainly used to get the current showing password field
+    public boolean getVisible(TextField field) {
+        return field.isVisible();
     }
 
     /* Sets a TextFields text to given string, when field is clicked the text disappears */

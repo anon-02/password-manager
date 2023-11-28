@@ -58,4 +58,15 @@ public class AccountEntry implements DisplayableEntry {
     public void setNote(String newString) {
         this.note = newString;
     }
+
+    @Override
+    public String toString() {
+        return "AccountEntry{" +
+                "encryptedName='" + name + '\'' +
+                ", encryptedUsername='" + username + '\'' +
+                ", encryptedPassword='" + password + '\'' +
+                ", encryptedNote='" + note + '\'' +
+                '}';
+    }
+
 }

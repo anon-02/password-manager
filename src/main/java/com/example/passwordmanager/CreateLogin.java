@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,7 +10,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
 
 public class CreateLogin extends AnchorPane {
 
@@ -40,7 +49,9 @@ public class CreateLogin extends AnchorPane {
             public void handle(ActionEvent actionEvent) {
                 try {
                     saveButtonPressed();
-                } catch (IOException e) {
+                } catch (IOException | SQLException | NoSuchAlgorithmException | InvalidKeySpecException |
+                         InvalidAlgorithmParameterException | NoSuchPaddingException | IllegalBlockSizeException |
+                         BadPaddingException | InvalidKeyException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -89,8 +100,13 @@ public class CreateLogin extends AnchorPane {
     }
 
     @FXML
-    private void saveButtonPressed() throws IOException {
+    private void saveButtonPressed() throws IOException, SQLException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         if (isFieldsComplete()) {
+
+            AccountEntry newEntry = new AccountEntry(name.getText(), username.getText(), invisiblePassword.getText(), note.getText());
+
+            EncryptionBuffer.insertAccountEntry(newEntry);
+
             parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }

@@ -42,4 +42,17 @@ public class WifiEntry implements DisplayableEntry{
     public Image getImage() throws IOException {
         return new Image(Objects.requireNonNull(getClass().getResource("Images/wifi.png")).openStream());
     }
+
+    public String toString() {
+        return "WifiEntry{" +
+                "encryptedName='" + name + '\'' +
+                ", encryptedWifiName='" + wifiName + '\'' +
+                ", encryptedWifiPass='" + wifiPassword + '\'' +
+                ", encryptedURL='" + wifiURL + '\'' +
+                ", encryptedAdminPass='" + wifiAdminPassword + '\'' +
+                ", encryptedNote='" + note + '\'' +
+                '}';
+    }
+
+
 }

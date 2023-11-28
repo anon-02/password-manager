@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="everything merged">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/LoginViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/DatabaseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateWifi$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateWifi$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateWifi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CreateWifi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/LoginViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/LoginViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/Model/LoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-    </list>
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="final commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +16,7 @@
         <option value="FxmlFile" />
         <option value="CSS File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -42,7 +32,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2XzHAM6F97Ne1RFqAjIrPgSdhz2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -51,11 +41,6 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -72,7 +57,7 @@
       <module name="PasswordManager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.passwordmanager.Password.*" />
+          <option name="PATTERN" value="com.example.passwordmanager.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -100,7 +85,10 @@
       <workItem from="1700327876778" duration="12416000" />
       <workItem from="1700406233639" duration="13755000" />
       <workItem from="1700485216185" duration="10182000" />
-      <workItem from="1700733140391" duration="1681000" />
+      <workItem from="1700882833863" duration="10306000" />
+      <workItem from="1700971588308" duration="13290000" />
+      <workItem from="1701051570818" duration="2698000" />
+      <workItem from="1701058206549" duration="25906000" />
     </task>
     <task id="LOCAL−00001" summary="detail view progress.">
       <option name="closed" value="true" />
@@ -137,11 +125,12 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1700591482254</updated>
     </task>
-    <task id="LOCAL−00006" summary="everything merged">
-      <created>1700734287345</created>
+    <task id="LOCAL−00006" summary="start of the entity DAO">
+      <option name="closed" value="true" />
+      <created>1700700380687</created>
       <option name="number" value="LOCAL−00006" />
       <option name="presentableId" value="LOCAL−00006" />
-      <updated>1700734287345</updated>
+      <updated>1700700380687</updated>
     </task>
     <option name="localTasksCounter" value="7" />
     <servers />
@@ -150,23 +139,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="detail view progress." />
     <MESSAGE value="more progress." />
     <MESSAGE value="hmm" />
     <MESSAGE value="Login and register" />
-    <MESSAGE value="everything merged" />
-    <option name="LAST_COMMIT_MESSAGE" value="everything merged" />
+    <MESSAGE value="start of the entity DAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="start of the entity DAO" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

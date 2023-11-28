@@ -23,14 +23,18 @@ public class PasswordGeneratorItem extends AnchorPane {
     @FXML private CheckBox includeUppercase, includeNumbers, includeSpecial;
     @FXML private Button generateButton;
 
+    private int indicatorMaxWidth;
+
     private ToggleGroup passwordTypes = new ToggleGroup();
 
     public PasswordGeneratorItem(String s) {
         FXMLLoader fxmlLoader = null;
         if (s.equals("create")) {
             fxmlLoader = new FXMLLoader(getClass().getResource("Views/password-generator.fxml"));
+            indicatorMaxWidth = 250;
         } else if (s.equals("detail")){
             fxmlLoader = new FXMLLoader(getClass().getResource("Views/password-generator-small.fxml"));
+            indicatorMaxWidth = 110;
         }
         assert fxmlLoader != null;
         fxmlLoader.setRoot(this);
@@ -43,7 +47,7 @@ public class PasswordGeneratorItem extends AnchorPane {
         }
         passwordRadioButton.setToggleGroup(passwordTypes);
         passphraseRadioButton.setToggleGroup(passwordTypes);
-        initSlider();
+        init();
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override
@@ -56,12 +60,30 @@ public class PasswordGeneratorItem extends AnchorPane {
         lengthSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
-                lengthLabel.setText("Length: " + newValue.intValue());
+                update(newValue);
+            }
+        });
+
+        passwordTypes.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle oldValue, Toggle newValue) {
+                update((int) lengthSlider.getValue());
             }
         });
     }
 
-    private void initSlider() {
+    private void update(Number newValue) {
+        String selected = getSelectedToggleButton();
+        if (selected.equals("Password")) {
+            lengthSlider.setMax(100);
+            lengthLabel.setText("Length: " + newValue.intValue());
+        } else if (selected.equals("Passphrase")) {
+            lengthSlider.setMax(10);
+            lengthLabel.setText("Words: " + Math.min(newValue.intValue(), 10));
+        }
+    }
+
+    private void init() {
         lengthSlider.setMin(1);
         lengthSlider.setMax(100);
         lengthSlider.setBlockIncrement(10);
@@ -69,6 +91,8 @@ public class PasswordGeneratorItem extends AnchorPane {
         lengthSlider.setMinorTickCount(1);
         lengthSlider.setMajorTickUnit(1);
         lengthSlider.setValue(10);
+
+        passwordRadioButton.setSelected(true);
     }
 
     private String getSelectedToggleButton() {

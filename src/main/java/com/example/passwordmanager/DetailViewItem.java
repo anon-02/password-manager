@@ -77,9 +77,9 @@ public class DetailViewItem extends AnchorPane{
             private void cogClicked() {
                 if (passwordGeneratorShowing) {
                     generatePasswordFlowPane.getChildren().clear();
-                    noteAnchorPane.setLayoutY(251);
+                    noteAnchorPane.setLayoutY(255);
                 } else {
-                    noteAnchorPane.setLayoutY(471);
+                    noteAnchorPane.setLayoutY(476);
                     generatePasswordFlowPane.getChildren().clear();
                     generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail"));
                 }

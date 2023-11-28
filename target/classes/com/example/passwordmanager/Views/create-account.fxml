@@ -13,6 +13,7 @@
 
 <fx:root fx:id="backAnchorPane" prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <FlowPane fx:id="passwordGeneratorFlowPane" layoutX="108.0" layoutY="164.0" prefHeight="216.0" prefWidth="264.0" />
       <TextField fx:id="name" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
       <Label layoutX="116.0" styleClass="label-text-field-description" text="Name" />
       <TextField fx:id="username" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter username" styleClass="text-field-content" />
@@ -45,6 +46,5 @@
             <Image url="@../Images/gear.png" />
          </image>
       </ImageView>
-      <FlowPane fx:id="passwordGeneratorFlowPane" layoutX="108.0" layoutY="164.0" prefHeight="216.0" prefWidth="264.0" />
    </children>
 </fx:root>

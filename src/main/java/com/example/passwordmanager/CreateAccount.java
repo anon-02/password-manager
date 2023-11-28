@@ -29,7 +29,6 @@ public class CreateAccount extends AnchorPane {
     private MainViewController parentController;
     private fxmlHelper model = fxmlHelper.getInstance();
     private boolean passwordGeneratorShowing = false;
-    private ToggleGroup passwordTypes = new ToggleGroup();
 
     public CreateAccount(MainViewController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-account.fxml"));
@@ -72,6 +71,7 @@ public class CreateAccount extends AnchorPane {
                 updateStrengthIndicator(newString);
             }
         });
+
     }
 
     private void initFields() {

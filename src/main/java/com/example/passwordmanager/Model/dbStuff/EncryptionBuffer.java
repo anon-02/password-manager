@@ -34,7 +34,7 @@ public class EncryptionBuffer {
     static SecretKey key = SessionManager.getActiveSecretKey();
     static String algorithm = "AES/CBC/PKCS5Padding";
 
-    public static void retrieveEntries() throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public static List<DisplayableEntry> retrieveEntries() throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         EntryDAOImpl entryDAO = new EntryDAOImpl();
 
         // get the list
@@ -57,11 +57,8 @@ public class EncryptionBuffer {
             System.out.println(decryptedList);
         }
 
-
-
-
-
         // return a complete list
+        return decryptedList;
     }
 
     public static AccountEntry decryptAccountEntry(AccountEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {

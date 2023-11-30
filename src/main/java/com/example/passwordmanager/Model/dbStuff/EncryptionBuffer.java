@@ -47,13 +47,8 @@ public class EncryptionBuffer {
             System.out.println("This is the decrypted list");
             System.out.println(decryptedList);
         }
-
-
-
-
-
         // return a complete list
-        return encryptedList;
+        return decryptedList;
     }
 
     public static AccountEntry decryptAccountEntry(AccountEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {

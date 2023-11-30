@@ -1,10 +1,10 @@
 package com.example.passwordmanager.Model.dbStuff;
 
 import com.example.passwordmanager.*;
-import com.example.passwordmanager.Entries.AccountEntry;
-import com.example.passwordmanager.Entries.CardEntry;
-import com.example.passwordmanager.Entries.SecureNoteEntry;
-import com.example.passwordmanager.Entries.WifiEntry;
+import com.example.passwordmanager.AccountEntry;
+import com.example.passwordmanager.CardEntry;
+import com.example.passwordmanager.SecureNoteEntry;
+import com.example.passwordmanager.WifiEntry;
 import com.example.passwordmanager.Model.User;
 
 import java.sql.*;

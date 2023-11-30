@@ -1,9 +1,6 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Entries.CardEntry;
-import com.example.passwordmanager.MainViewController;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
-import com.example.passwordmanager.fxmlHelper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -139,10 +136,7 @@ public class CreateCard extends AnchorPane {
             // TODO not submitting anything
             CardEntry newEntry = new CardEntry(name.getText(), "placeholder", cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), invisibleCvcCode.getText(), note.getText());
             /*TODO missing cardholder input */
-            System.out.println("card name: "+newEntry.getName());
             EncryptionBuffer.insertCardEntry(newEntry);
-
-            parentController.addEntry(new CardEntry(this.name.getText(), "Tim Carlsson", this.cardNumber.getText(), this.expireMonth.getValue(), this.expireYear.getValue(), this.invisibleCvcCode.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }
 

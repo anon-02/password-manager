@@ -1,9 +1,6 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Entries.SecureNoteEntry;
-import com.example.passwordmanager.MainViewController;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
-import com.example.passwordmanager.fxmlHelper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,21 +47,7 @@ public class CreateSecureNote extends AnchorPane {
             public void handle(ActionEvent actionEvent) {
                 try {
                     saveButtonPressed();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (InvalidAlgorithmParameterException e) {
-                    throw new RuntimeException(e);
-                } catch (NoSuchPaddingException e) {
-                    throw new RuntimeException(e);
-                } catch (IllegalBlockSizeException e) {
-                    throw new RuntimeException(e);
-                } catch (NoSuchAlgorithmException e) {
-                    throw new RuntimeException(e);
-                } catch (BadPaddingException e) {
-                    throw new RuntimeException(e);
-                } catch (InvalidKeyException e) {
-                    throw new RuntimeException(e);
-                } catch (SQLException e) {
+                } catch (IOException | InvalidAlgorithmParameterException | NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException | SQLException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -85,14 +68,8 @@ public class CreateSecureNote extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
-
             SecureNoteEntry newEntry = new SecureNoteEntry(entryName.getText(), noteSubject.getText(), noteContent.getText());
-
             EncryptionBuffer.insertNoteEntry(newEntry);
-
-
-
-            parentController.addEntry(new SecureNoteEntry(this.entryName.getText(), this.noteSubject.getText(), this.noteContent.getText()));
             parentController.handleSaveButtonPressed();
         }
     }

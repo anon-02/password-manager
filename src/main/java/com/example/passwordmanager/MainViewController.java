@@ -1,9 +1,5 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Entries.AccountEntry;
-import com.example.passwordmanager.Entries.CardEntry;
-import com.example.passwordmanager.Entries.SecureNoteEntry;
-import com.example.passwordmanager.Entries.WifiEntry;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -26,8 +22,6 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
@@ -50,12 +44,8 @@ public class MainViewController implements Initializable {
     /* Detail view */
     @FXML private Button editButton, cancelButton, saveButton;
 
-    List<DisplayableEntry> entryList = EncryptionBuffer.retrieveEntries();
     private fxmlHelper helper = fxmlHelper.getInstance();
-    ArrayList<DisplayableEntry> entries = new ArrayList<>();
 
-    public MainViewController() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-    }
 
 
     @Override
@@ -64,14 +54,9 @@ public class MainViewController implements Initializable {
         entryType.setValue(entryTypes[0]);
         editButton.setVisible(false);
 
-
-        for(DisplayableEntry entry : entryList) {
-            addEntry(entry);
-        }
-
         try {
             updateEntryList();
-        } catch (IOException e) {
+        } catch (IOException | InvalidAlgorithmParameterException | SQLException | NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
             throw new RuntimeException(e);
         }
 
@@ -90,9 +75,9 @@ public class MainViewController implements Initializable {
         });
     }
 
-    private void updateEntryList() throws IOException {
+    private void updateEntryList() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         allEntrysFlowPane.getChildren().clear();
-        for (DisplayableEntry displayableEntry : this.entries) { // Temporary just for proof of concept
+        for (DisplayableEntry displayableEntry : EncryptionBuffer.retrieveEntries()) { // Temporary just for proof of concept
             allEntrysFlowPane.getChildren().add(new EntryListItem(displayableEntry, this));
         }
     }
@@ -133,14 +118,11 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    public void handleSaveButtonPressed() throws IOException {
+    public void handleSaveButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         closeButtonPressed();
         updateEntryList();
     }
 
-    public void addEntry(DisplayableEntry displayableEntry) {
-        this.entries.add(displayableEntry);
-    }
 
     // Creates the correct entry type for the detail view
     public void populateDetailView(DisplayableEntry entry) {

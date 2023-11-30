@@ -1,4 +1,4 @@
-package com.example.passwordmanager.Entries;
+package com.example.passwordmanager;
 
 import com.example.passwordmanager.DisplayableEntry;
 import javafx.scene.image.Image;

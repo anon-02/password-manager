@@ -14,6 +14,4 @@ module com.example.passwordmanager {
     opens com.example.passwordmanager.Model to javafx.fxml;
     exports com.example.passwordmanager.Model.dbStuff;
     opens com.example.passwordmanager.Model.dbStuff to javafx.fxml;
-    exports com.example.passwordmanager.Entries;
-    opens com.example.passwordmanager.Entries to javafx.fxml;
 }

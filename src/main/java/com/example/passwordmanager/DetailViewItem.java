@@ -1,9 +1,5 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Entries.AccountEntry;
-import com.example.passwordmanager.Entries.CardEntry;
-import com.example.passwordmanager.Entries.SecureNoteEntry;
-import com.example.passwordmanager.Entries.WifiEntry;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

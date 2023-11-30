@@ -1,9 +1,6 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Entries.WifiEntry;
-import com.example.passwordmanager.MainViewController;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
-import com.example.passwordmanager.fxmlHelper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -80,15 +77,6 @@ public class CreateWifi extends AnchorPane {
             WifiEntry newEntry = new WifiEntry(entryName.getText(), wifiName.getText(), wifiPasswordInvisible.getText(), wifiURL.getText(), wifiAdminPassword.getText(), wifiNote.getText());
 
             EncryptionBuffer.insertWifiEntry(newEntry);
-
-
-
-            parentController.addEntry(new WifiEntry(this.entryName.getText(),
-                                                    this.wifiName.getText(),
-                                                    this.wifiPasswordInvisible.getText(),
-                                                    this.wifiURL.getText(),
-                                                    this.wifiAdminPassword.getText(),
-                                                    this.wifiNote.getText()));
             parentController.handleSaveButtonPressed();
         }
     }

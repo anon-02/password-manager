@@ -103,12 +103,7 @@ public class CreateLogin extends AnchorPane {
     private void saveButtonPressed() throws IOException, SQLException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         if (isFieldsComplete()) {
 
-            AccountEntry newEntry = new AccountEntry(name.getText(), username.getText(), invisiblePassword.getText(), note.getText());
 
-            EncryptionBuffer.insertAccountEntry(newEntry);
-
-            parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
-            parentController.handleSaveButtonPressed();
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -13,7 +14,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.shape.Rectangle;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
 
 public class CreateAccount extends AnchorPane {
 
@@ -50,7 +59,9 @@ public class CreateAccount extends AnchorPane {
             public void handle(ActionEvent actionEvent) {
                 try {
                     saveButtonPressed();
-                } catch (IOException e) {
+                } catch (IOException | InvalidAlgorithmParameterException | SQLException | NoSuchPaddingException |
+                         IllegalBlockSizeException | NoSuchAlgorithmException | InvalidKeySpecException |
+                         BadPaddingException | InvalidKeyException e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -93,8 +104,17 @@ public class CreateAccount extends AnchorPane {
     }
 
     @FXML
-    private void saveButtonPressed() throws IOException {
+    private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         if (isFieldsComplete()) {
+
+            AccountEntry newEntry = new AccountEntry(name.getText(), username.getText(), invisiblePassword.getText(), note.getText());
+
+            System.out.println("in CreateLogin:  "+newEntry);
+            EncryptionBuffer.insertAccountEntry(newEntry);
+
+            parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
+            parentController.handleSaveButtonPressed();
+
             parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }

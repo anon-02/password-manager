@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -12,9 +13,17 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
 import java.net.URL;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
@@ -37,9 +46,12 @@ public class MainViewController implements Initializable {
     /* Detail view */
     @FXML private Button editButton, cancelButton, saveButton;
 
-
+    List<DisplayableEntry> entryList = EncryptionBuffer.retrieveEntries();
     private fxmlHelper helper = fxmlHelper.getInstance();
     ArrayList<DisplayableEntry> entries = new ArrayList<>();
+
+    public MainViewController() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    }
 
 
     @Override
@@ -47,6 +59,11 @@ public class MainViewController implements Initializable {
         entryType.getItems().addAll(entryTypes);
         entryType.setValue(entryTypes[0]);
         editButton.setVisible(false);
+
+
+        for(DisplayableEntry entry : entryList) {
+            addEntry(entry);
+        }
 
         try {
             updateEntryList();

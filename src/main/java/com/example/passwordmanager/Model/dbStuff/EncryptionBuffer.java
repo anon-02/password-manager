@@ -2,9 +2,6 @@ package com.example.passwordmanager.Model.dbStuff;
 
 import com.example.passwordmanager.*;
 import com.example.passwordmanager.Model.User;
-import com.example.passwordmanager.Model.dbStuff.SessionManager;
-import com.example.passwordmanager.Model.dbStuff.EncryptionLogic;
-import com.example.passwordmanager.Model.dbStuff.EntryDAOImpl;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -16,14 +13,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
-import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
-import java.util.Map;
-
-
-import static org.controlsfx.glyphfont.FontAwesome.Glyph.RANDOM;
 
 public class EncryptionBuffer {
 
@@ -34,7 +25,7 @@ public class EncryptionBuffer {
     static SecretKey key = SessionManager.getActiveSecretKey();
     static String algorithm = "AES/CBC/PKCS5Padding";
 
-    public static void retrieveEntries() throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public static List<DisplayableEntry> retrieveEntries() throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         EntryDAOImpl entryDAO = new EntryDAOImpl();
 
         // get the list
@@ -62,6 +53,7 @@ public class EncryptionBuffer {
 
 
         // return a complete list
+        return encryptedList;
     }
 
     public static AccountEntry decryptAccountEntry(AccountEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {

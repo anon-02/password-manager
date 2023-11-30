@@ -1,5 +1,9 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Entries.AccountEntry;
+import com.example.passwordmanager.Entries.CardEntry;
+import com.example.passwordmanager.Entries.SecureNoteEntry;
+import com.example.passwordmanager.Entries.WifiEntry;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

@@ -1,7 +1,10 @@
 package com.example.passwordmanager.Model.dbStuff;
 
 import com.example.passwordmanager.*;
-import com.example.passwordmanager.Model.Entry;
+import com.example.passwordmanager.Entries.AccountEntry;
+import com.example.passwordmanager.Entries.CardEntry;
+import com.example.passwordmanager.Entries.SecureNoteEntry;
+import com.example.passwordmanager.Entries.WifiEntry;
 import com.example.passwordmanager.Model.User;
 
 import java.sql.*;
@@ -37,6 +40,26 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         getWifiEntries(entryList, user_id, connection);
 
         return entryList;
+    }
+
+    @Override
+    public int save(DisplayableEntry entry) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int insert(DisplayableEntry entry) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int update(DisplayableEntry entry) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    public int delete(DisplayableEntry entry) throws SQLException {
+        return 0;
     }
 
     public List<DisplayableEntry> getAccountEntries(List<DisplayableEntry> entryList, int user_id, Connection connection) throws SQLException {
@@ -81,43 +104,7 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         return entryList;
     }
 
-    @Override
-    public int save(DisplayableEntry displayableEntry) throws SQLException {
-        return 0;
-    }
 
-    @Override
-    public int insert(DisplayableEntry displayableEntry) throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public int update(DisplayableEntry displayableEntry) throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public int delete(DisplayableEntry displayableEntry) throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public int save(Entry entry) throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public int insert(Entry entry) throws SQLException {return 0;}
-
-    @Override
-    public int update(Entry entry) throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public int delete(Entry entry) throws SQLException {
-        return 0;
-    }
 
 
     public static int insertAccountEntry(AccountEntry accountEntry, int type) throws SQLException {

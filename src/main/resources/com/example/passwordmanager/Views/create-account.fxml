@@ -25,9 +25,13 @@
          </children>
       </StackPane>
       <Label layoutX="116.0" layoutY="95.0" styleClass="label-text-field-description" text="Password" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" layoutX="115.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-background" width="250.0" />
-      <Rectangle fx:id="strengthIndicatorRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" layoutX="115.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-foreground" width="160.0" />
-      <Label fx:id="passwordStrengthLabel" layoutX="263.0" layoutY="147.0" prefHeight="15.0" prefWidth="102.0" styleClass="password-strength-label" text="Good Password" />
+      <AnchorPane layoutX="115.0" layoutY="141.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-background" width="250.0" />
+            <Rectangle fx:id="strengthIndicatorRec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="password-strength-foreground" width="160.0" />
+            <Label fx:id="passwordStrengthLabel" layoutX="148.0" layoutY="6.0" prefHeight="15.0" prefWidth="102.0" styleClass="password-strength-label" text="Good Password" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="noteAnchorPane" layoutX="108.0" layoutY="172.0">
          <children>
             <TextField fx:id="note" layoutY="17.0" prefHeight="72.0" prefWidth="264.0" promptText="Enter note" styleClass="text-field-content" />

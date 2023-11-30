@@ -1,6 +1,10 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Entries.AccountEntry;
+import com.example.passwordmanager.MainViewController;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
+import com.example.passwordmanager.PasswordGeneratorItem;
+import com.example.passwordmanager.fxmlHelper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -111,9 +115,6 @@ public class CreateAccount extends AnchorPane {
 
             System.out.println("in CreateLogin:  "+newEntry);
             EncryptionBuffer.insertAccountEntry(newEntry);
-
-            parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
-            parentController.handleSaveButtonPressed();
 
             parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();

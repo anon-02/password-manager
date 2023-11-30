@@ -1,5 +1,6 @@
-package com.example.passwordmanager;
+package com.example.passwordmanager.Entries;
 
+import com.example.passwordmanager.DisplayableEntry;
 import javafx.scene.image.Image;
 
 import java.io.IOException;

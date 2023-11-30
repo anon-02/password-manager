@@ -1,6 +1,5 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Model.Entry;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;

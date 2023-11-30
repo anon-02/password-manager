@@ -1,7 +1,9 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Entries.WifiEntry;
+import com.example.passwordmanager.MainViewController;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
-import com.example.passwordmanager.Model.dbStuff.EncryptionLogic;
+import com.example.passwordmanager.fxmlHelper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

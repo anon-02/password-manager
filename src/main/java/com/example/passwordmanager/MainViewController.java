@@ -123,7 +123,7 @@ public class MainViewController implements Initializable {
         updateEntryList();
     }
 
-
+    // TODO move to detail view class
     // Creates the correct entry type for the detail view
     public void populateDetailView(DisplayableEntry entry) {
         detailViewFlowPane.getChildren().clear();

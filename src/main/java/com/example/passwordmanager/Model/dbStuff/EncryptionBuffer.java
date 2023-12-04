@@ -41,6 +41,8 @@ public class EncryptionBuffer {
         for (DisplayableEntry entry : encryptedList) {
             if (entry instanceof AccountEntry) {
                 decryptedList.add(decryptAccountEntry((AccountEntry) entry));
+            } else if (entry instanceof CardEntry) {
+                decryptedList.add(decryptCardEntry((CardEntry) entry));
             } else if (entry instanceof WifiEntry) {
                 decryptedList.add(decryptWifiEntry((WifiEntry) entry));
             } else {
@@ -62,6 +64,21 @@ public class EncryptionBuffer {
         String decryptedNote = EncryptionLogic.decrypt(algorithm, entry.getNote(), key, iv);
 
         AccountEntry decodedEntry = new AccountEntry(decryptedName, decryptedUsername, decryptedPassword, decryptedNote);
+
+        return decodedEntry;
+    }
+
+    public static CardEntry decryptCardEntry(CardEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        String decryptedName = EncryptionLogic.decrypt(algorithm, entry.getName(), key, iv);
+        String decryptedCardHolder = EncryptionLogic.decrypt(algorithm, entry.getCardHolder(), key, iv);
+        String decryptedCardNumber = EncryptionLogic.decrypt(algorithm, entry.getCardNumber(), key, iv);
+        String decryptedExpireMonth = EncryptionLogic.decrypt(algorithm, entry.getExpireMonth(), key, iv);
+        String decryptedExpireYear = EncryptionLogic.decrypt(algorithm, entry.getExpireYear(), key, iv);
+        String decryptedCvcCode = EncryptionLogic.decrypt(algorithm, entry.getCvcCode(), key, iv);
+        String decryptedNote = EncryptionLogic.decrypt(algorithm, entry.getNote(), key, iv);
+
+
+        CardEntry decodedEntry = new CardEntry(decryptedName, decryptedCardHolder, decryptedCardNumber, decryptedExpireMonth, decryptedExpireYear, decryptedCvcCode, decryptedNote);
 
         return decodedEntry;
     }

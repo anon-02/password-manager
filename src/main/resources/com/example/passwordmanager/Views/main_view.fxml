@@ -41,23 +41,35 @@
                         <Rectangle fill="#1e3055" height="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="730.0" />
                         <Label layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="166.0" styleClass="app-name" stylesheets="@../CSS/main_view.css" text="PasswordManager" />
                         <TextField fx:id="searchTextField" focusTraversable="false" layoutX="165.0" layoutY="22.0" prefHeight="32.0" prefWidth="400.0" promptText="Search " styleClass="search-bar" />
-                        <Button fx:id="addEntryButton" layoutX="630.0" layoutY="22.0" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="32.0" prefWidth="80.0" styleClass="add-button" text="Add" />
+                        <Button fx:id="addEntryButton" layoutX="585.0" layoutY="22.0" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="32.0" prefWidth="80.0" styleClass="add-button" text="Add" />
+                        <AnchorPane layoutX="675.0" layoutY="22.0">
+                           <children>
+                              <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutButtonPressed" prefHeight="35.0" prefWidth="35.0" styleClass="add-button" />
+                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="4.0" layoutY="7.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/logout.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="730.0" prefHeight="720.0" prefWidth="350.0" styleClass="background">
                      <children>
-                        <FlowPane fx:id="detailViewFlowPane" prefHeight="676.0" prefWidth="356.0" />
+                        <FlowPane fx:id="detailViewFlowPane" prefHeight="676.0" prefWidth="350.0" />
+                        <Label fx:id="editLabel" layoutX="134.0" layoutY="14.0" styleClass="editing-mode-label" stylesheets="@../CSS/login_createUser_view.css" text="(Editing)" visible="false" />
                         <StackPane layoutY="676.0" prefHeight="44.0" prefWidth="350.0">
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="background">
+                              <AnchorPane fx:id="cancelSavePane" prefHeight="200.0" prefWidth="200.0" styleClass="background">
                                  <children>
-                                    <Button fx:id="cancelButton" layoutX="12.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Cancel" />
-                                    <Button fx:id="saveButton" layoutX="246.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Save" />
+                                    <Button fx:id="cancelButton" layoutX="12.0" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Cancel" />
+                                    <Button fx:id="saveButton" layoutX="246.0" mnemonicParsing="false" onAction="#saveButtonPressed" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Save" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="background">
+                              <AnchorPane fx:id="editPane" prefHeight="200.0" prefWidth="350.0" styleClass="background">
                                  <children>
-                                    <Button fx:id="editButton" layoutX="248.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Edit" />
+                                    <Button fx:id="editButton" layoutX="248.0" layoutY="1.0" mnemonicParsing="false" onAction="#editButtonPressed" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Edit" />
+                                    <Button fx:id="removeButton" layoutX="16.0" layoutY="1.0" mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Delete" />
                                  </children>
                               </AnchorPane>
                            </children>

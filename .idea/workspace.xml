@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="bild added">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Other/words.txt" afterDir="false" />
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="passphrase generator implemented">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PassphraseGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database/users.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +19,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,7 +76,7 @@
       <recent name="com.example.passwordmanager" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.PassphraseGenerator">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.passwordmanager.Main" />
       <module name="PasswordManager" />
@@ -89,10 +90,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PassphraseGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.passwordmanager.Password.PassphraseGenerator" />
+      <module name="PasswordManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.passwordmanager.Password.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimplePasswordGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.passwordmanager.Password.SimplePasswordGenerator" />
+      <module name="PasswordManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.passwordmanager.Password.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PassphraseGenerator" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.SimplePasswordGenerator" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -191,7 +219,14 @@
       <option name="presentableId" value="LOCAL−00011" />
       <updated>1701710668817</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL−00012" summary="added formatted text file">
+      <option name="closed" value="true" />
+      <created>1701713305436</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1701713305436</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +254,9 @@
     <MESSAGE value="Fixed createCard, added getCardEntries, decryptCardEntry" />
     <MESSAGE value="edit- logout- and removal functionality added (not working with db yet)" />
     <MESSAGE value="bild added" />
-    <option name="LAST_COMMIT_MESSAGE" value="bild added" />
+    <MESSAGE value="added formatted text file" />
+    <MESSAGE value="passphrase generator implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="passphrase generator implemented" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

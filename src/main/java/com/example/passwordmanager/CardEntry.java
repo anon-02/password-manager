@@ -1,18 +1,19 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordEntry;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class CardEntry implements DisplayableEntry {
+public class CardEntry extends PasswordEntry {
 
     private String name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note;
     private Image image;
 
 
     public CardEntry(String name, String cardHolder, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
-        this.name = name;
+        super(name, cardNumber, cvcCode, note);
         this.cardHolder = cardHolder;
         this.cardNumber = cardNumber;
         this.expireMonth = expireMonth;

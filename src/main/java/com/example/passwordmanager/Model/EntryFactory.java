@@ -1,7 +1,7 @@
 package com.example.passwordmanager.Model;
 
 import java.io.IOException;
-
+/*
 public class EntryFactory {
 
     public static CreditCardEntry makeCreditCardEntry(String name, String identifier, String cardName, String date, String cvv) throws IOException {
@@ -19,4 +19,4 @@ public class EntryFactory {
     public static PersonalizedEntry PersonalizedEntry(String name, String identifier, String passwordType, int minPasswordLength, int maxPasswordLength) {
         return new PersonalizedEntry(name, identifier, passwordType, minPasswordLength, maxPasswordLength);
     }
-}
+}*/

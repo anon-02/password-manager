@@ -81,7 +81,7 @@ public class DetailViewItem extends AnchorPane{
                 } else {
                     noteAnchorPane.setLayoutY(476);
                     generatePasswordFlowPane.getChildren().clear();
-                    generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail"));
+                    generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail", entry, parentController));
                 }
                 passwordGeneratorShowing = !passwordGeneratorShowing;
             }
@@ -143,6 +143,7 @@ public class DetailViewItem extends AnchorPane{
         helper.addPasswordVisibleToggle(wifiEyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
 
         currentEntry = "wifiEntry";
+
     }
 
     public DetailViewItem(SecureNoteEntry entry, MainViewController controller) {

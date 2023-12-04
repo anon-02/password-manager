@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordEntry;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -25,9 +26,16 @@ public class PasswordGeneratorItem extends AnchorPane {
 
     private int indicatorMaxWidth;
 
+    private PasswordEntry passwordEntry;
+
     private ToggleGroup passwordTypes = new ToggleGroup();
 
-    public PasswordGeneratorItem(String s) {
+    private MainViewController parentController;
+
+    public PasswordGeneratorItem(String s, PasswordEntry passwordEntry, MainViewController controller) {
+        this.passwordEntry = passwordEntry;
+        this.parentController = controller;
+
         FXMLLoader fxmlLoader = null;
         if (s.equals("create")) {
             fxmlLoader = new FXMLLoader(getClass().getResource("Views/password-generator.fxml"));
@@ -119,7 +127,8 @@ public class PasswordGeneratorItem extends AnchorPane {
 
     @FXML
     public void generateButtonClicked() {
-
+        passwordEntry.generatePassword(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial());
+        this.parentController.populateDetailView(passwordEntry);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.passwordmanager.Model.dbStuff;
 
 import com.example.passwordmanager.*;
+import com.example.passwordmanager.Model.DisplayableEntry;
 import com.example.passwordmanager.Model.User;
 import com.example.passwordmanager.Model.dbStuff.SessionManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionLogic;

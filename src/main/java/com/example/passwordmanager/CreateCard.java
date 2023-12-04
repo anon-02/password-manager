@@ -1,6 +1,5 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,16 +10,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 
 public class CreateCard extends AnchorPane {
 
@@ -29,7 +20,6 @@ public class CreateCard extends AnchorPane {
     @FXML private PasswordField invisibleCvcCode;
     @FXML private Button saveButton;
     @FXML private ImageView cvcVisible;
-    @FXML private FlowPane passwordGeneratorFlowPane;
 
     private MainViewController parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
@@ -61,16 +51,36 @@ public class CreateCard extends AnchorPane {
             public void handle(ActionEvent actionEvent) {
                 try {
                     saveButtonPressed();
-                } catch (IOException | InvalidAlgorithmParameterException | NoSuchPaddingException |
-                         IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException |
-                         InvalidKeyException | SQLException e) {
+                } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         };
 
         saveButton.setOnAction(event);
+
         helper.addPasswordVisibleToggle(cvcVisible, invisibleCvcCode, visibleCvcCode);
+
+        /*EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                boolean state = visibleCvcCode.isVisible();
+                if (state) {
+                    invisibleCvcCode.setText(visibleCvcCode.getText());
+                    invisibleCvcCode.toFront();
+                    invisibleCvcCode.setVisible(true);
+                    visibleCvcCode.setVisible(false);
+
+                } else {
+                    visibleCvcCode.setText(invisibleCvcCode.getText());
+                    visibleCvcCode.toFront();
+                    invisibleCvcCode.setVisible(false);
+                    visibleCvcCode.setVisible(true);
+                }
+                cvcVisible.requestFocus(); // Will focus the TextField otherwise
+            }
+        };
+        cvcVisible.setOnMouseClicked(onClick);*/
 
         // Regex for card number
         cardNumber.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -131,15 +141,9 @@ public class CreateCard extends AnchorPane {
     }
 
     @FXML
-    private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
+    private void saveButtonPressed() throws IOException {
         if (isFieldsComplete()) {
-            // TODO not submitting anything
-            CardEntry newEntry = new CardEntry(name.getText(), "placeholder", cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), invisibleCvcCode.getText(), note.getText());
-            /*TODO missing cardholder input */
-            System.out.println("card name: "+newEntry.getName());
-            EncryptionBuffer.insertCardEntry(newEntry);
-
-            parentController.addEntry(new CardEntry(this.name.getText(), "Tim Carlsson", this.cardNumber.getText(), this.expireMonth.getValue(), this.expireYear.getValue(), this.invisibleCvcCode.getText(), this.note.getText()));
+            parentController.addPasswordEntry(new CardEntry(this.name.getText(), "Tim Carlsson", this.cardNumber.getText(), this.expireMonth.getValue(), this.expireYear.getValue(), this.invisibleCvcCode.getText(), this.note.getText()));
             parentController.handleSaveButtonPressed();
         }
 

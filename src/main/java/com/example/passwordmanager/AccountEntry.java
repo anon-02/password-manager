@@ -1,17 +1,19 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordEntry;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class AccountEntry implements DisplayableEntry {
+public class AccountEntry extends PasswordEntry {
 
     private String name, username, password, note;
     private Image image;
 
 
     public AccountEntry(String name, String username, String password, String note) {
+        super(name, username, password, note);
         this.name = name;
         this.username = username;
         this.password = password;
@@ -31,9 +33,9 @@ public class AccountEntry implements DisplayableEntry {
         return this.username;
     }
 
-    public String getPassword() {
-        return this.password;
-    }
+   /* public String getPassword() { //already implemented by superclass
+        return getPassword()
+    }*/
 
     public String getNote() {
         return this.note;
@@ -58,15 +60,4 @@ public class AccountEntry implements DisplayableEntry {
     public void setNote(String newString) {
         this.note = newString;
     }
-
-    @Override
-    public String toString() {
-        return "AccountEntry{" +
-                "encryptedName='" + name + '\'' +
-                ", encryptedUsername='" + username + '\'' +
-                ", encryptedPassword='" + password + '\'' +
-                ", encryptedNote='" + note + '\'' +
-                '}';
-    }
-
 }

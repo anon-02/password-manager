@@ -1,15 +1,17 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordEntry;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class WifiEntry implements DisplayableEntry{
+public class WifiEntry extends PasswordEntry {
     private String name, wifiName, wifiPassword, wifiURL, wifiAdminPassword, note;
 
 
     public WifiEntry(String name, String wifiName, String wifiPassword, String wifiURL, String wifiAdminPassword, String note) {
+        super(name, wifiName, wifiPassword, note);
         this.name = name;
         this.wifiName = wifiName;
         this.wifiPassword = wifiPassword;
@@ -42,17 +44,4 @@ public class WifiEntry implements DisplayableEntry{
     public Image getImage() throws IOException {
         return new Image(Objects.requireNonNull(getClass().getResource("Images/wifi.png")).openStream());
     }
-
-    public String toString() {
-        return "WifiEntry{" +
-                "encryptedName='" + name + '\'' +
-                ", encryptedWifiName='" + wifiName + '\'' +
-                ", encryptedWifiPass='" + wifiPassword + '\'' +
-                ", encryptedURL='" + wifiURL + '\'' +
-                ", encryptedAdminPass='" + wifiAdminPassword + '\'' +
-                ", encryptedNote='" + note + '\'' +
-                '}';
-    }
-
-
 }

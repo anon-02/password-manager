@@ -10,4 +10,12 @@ public class PasswordFactory {
         return new LettersPassword();
     }
 
+    public static AllSignsPassword makeAllSignsPassword() {
+        return new AllSignsPassword();
+    }
+
+    public static LetterNumberPassword makeLetterNumbersPassword() {
+        return new LetterNumberPassword();
+    }
+
 }

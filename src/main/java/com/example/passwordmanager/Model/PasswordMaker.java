@@ -3,5 +3,5 @@ package com.example.passwordmanager.Model;
 
 public abstract class PasswordMaker {
 
-    public abstract String setPassword(int minLength, int maxLength, String password);
+    public abstract String generatePassword(int length);
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="entryAnchorPane" prefHeight="62.0" prefWidth="716.0" styleClass="anchor-pane-background" stylesheets="@../CSS/entry_listitem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="entryAnchorPane" prefHeight="62.0" prefWidth="716.0" styleClass="anchor-pane-background" stylesheets="@../CSS/entry_listitem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="8.0" layoutY="6.0" onMouseClicked="#onClick" prefHeight="50.0" prefWidth="700.0" styleClass="anchor-pane-foreground" stylesheets="@../CSS/entry_listitem.css">
          <children>
@@ -22,6 +23,15 @@
                   <Font size="42.0" />
                </font>
             </Label>
+            <Button fx:id="addToCategoryButton" layoutX="525.0" layoutY="8.0" mnemonicParsing="false" onAction="#categoryButtonClicked" onMouseEntered="#categoryHoverIn" onMouseExited="#categoryHoverOut" styleClass="add-button" stylesheets="@../CSS/main_view.css">
+               <graphic>
+                  <ImageView fx:id="categoryButton" fitHeight="25.0" fitWidth="25.0" onMouseExited="#categoryHoverOut" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/category-icon-5.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

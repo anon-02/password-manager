@@ -1,6 +1,5 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,14 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 
 public class CreateSecureNote extends AnchorPane {
 
@@ -49,20 +41,6 @@ public class CreateSecureNote extends AnchorPane {
                     saveButtonPressed();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
-                } catch (InvalidAlgorithmParameterException e) {
-                    throw new RuntimeException(e);
-                } catch (NoSuchPaddingException e) {
-                    throw new RuntimeException(e);
-                } catch (IllegalBlockSizeException e) {
-                    throw new RuntimeException(e);
-                } catch (NoSuchAlgorithmException e) {
-                    throw new RuntimeException(e);
-                } catch (BadPaddingException e) {
-                    throw new RuntimeException(e);
-                } catch (InvalidKeyException e) {
-                    throw new RuntimeException(e);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
                 }
             }
         };
@@ -80,16 +58,9 @@ public class CreateSecureNote extends AnchorPane {
     }
 
     @FXML
-    private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
+    private void saveButtonPressed() throws IOException {
         if (isFieldsComplete()) {
-
-            SecureNoteEntry newEntry = new SecureNoteEntry(entryName.getText(), noteSubject.getText(), noteContent.getText());
-
-            EncryptionBuffer.insertNoteEntry(newEntry);
-
-
-
-            parentController.addEntry(new SecureNoteEntry(this.entryName.getText(), this.noteSubject.getText(), this.noteContent.getText()));
+            parentController.addPasswordEntry(new SecureNoteEntry(this.entryName.getText(), this.noteSubject.getText(), this.noteContent.getText()));
             parentController.handleSaveButtonPressed();
         }
     }

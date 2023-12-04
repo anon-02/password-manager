@@ -1,6 +1,5 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,15 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.sql.SQLException;
 
 public class CreateLogin extends AnchorPane {
 
@@ -49,36 +40,13 @@ public class CreateLogin extends AnchorPane {
             public void handle(ActionEvent actionEvent) {
                 try {
                     saveButtonPressed();
-                } catch (IOException | SQLException | NoSuchAlgorithmException | InvalidKeySpecException |
-                         InvalidAlgorithmParameterException | NoSuchPaddingException | IllegalBlockSizeException |
-                         BadPaddingException | InvalidKeyException e) {
+                } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         };
         saveButton.setOnAction(event);
         model.addPasswordVisibleToggle(passwordVisible, invisiblePassword, visiblePassword);
-
-        /*EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                boolean state = visiblePassword.isVisible();
-                if (state) {
-                    invisiblePassword.setText(visiblePassword.getText());
-                    invisiblePassword.toFront();
-                    invisiblePassword.setVisible(true);
-                    visiblePassword.setVisible(false);
-
-                } else {
-                    visiblePassword.setText(invisiblePassword.getText());
-                    visiblePassword.toFront();
-                    invisiblePassword.setVisible(false);
-                    visiblePassword.setVisible(true);
-                }
-                passwordVisible.requestFocus(); // Will focus the TextField otherwise
-            }
-        };
-        passwordVisible.setOnMouseClicked(onClick);*/
     }
 
     public void initFields() {
@@ -100,14 +68,9 @@ public class CreateLogin extends AnchorPane {
     }
 
     @FXML
-    private void saveButtonPressed() throws IOException, SQLException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+    private void saveButtonPressed() throws IOException {
         if (isFieldsComplete()) {
-
-            AccountEntry newEntry = new AccountEntry(name.getText(), username.getText(), invisiblePassword.getText(), note.getText());
-
-            EncryptionBuffer.insertAccountEntry(newEntry);
-
-            parentController.addEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText()));
+            parentController.addPasswordEntry(new AccountEntry(this.name.getText(), this.username.getText(), this.invisiblePassword.getText(), this.note.getText())); //change so that factory creates the objects
             parentController.handleSaveButtonPressed();
         }
     }

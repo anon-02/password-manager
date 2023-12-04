@@ -1,7 +1,7 @@
 package com.example.passwordmanager.Model.dbStuff;
 
 import com.example.passwordmanager.*;
-import com.example.passwordmanager.Model.Entry;
+import com.example.passwordmanager.Model.DisplayableEntry;
 import com.example.passwordmanager.Model.User;
 
 import java.sql.*;
@@ -101,24 +101,6 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         return 0;
     }
 
-    @Override
-    public int save(Entry entry) throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public int insert(Entry entry) throws SQLException {return 0;}
-
-    @Override
-    public int update(Entry entry) throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public int delete(Entry entry) throws SQLException {
-        return 0;
-    }
-
 
     public static int insertAccountEntry(AccountEntry accountEntry, int type) throws SQLException {
         User currentuser =  SessionManager.getCurrentUser();
@@ -139,7 +121,7 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
 
         DatabaseHandler.closePreparedStatement(preparedStatement);
         DatabaseHandler.closeConnection(connection);
-        
+
         System.out.println("Successful accountInsert");
         return result;
     }

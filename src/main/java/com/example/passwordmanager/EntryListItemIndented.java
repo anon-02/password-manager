@@ -13,12 +13,10 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.util.Objects;
 
-// This will be a base class and every other type of item will be a subclass
-public class EntryListItem extends AnchorPane {
+public class EntryListItemIndented extends AnchorPane {
 
-    //private Model = getInstance();
-
-    @FXML private AnchorPane entryAnchorPane;
+    @FXML
+    private AnchorPane entryAnchorPane;
     @FXML private ImageView iconImageView;
     @FXML private Label nameLabel, underNameLabel, lastModifiedLabel, modifiedLabel;
 
@@ -31,8 +29,8 @@ public class EntryListItem extends AnchorPane {
 
 
     // This constructor is used for testing only
-    public EntryListItem(PasswordEntry entry, MainViewController controller) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/entry_listitem.fxml"));
+    public EntryListItemIndented(PasswordEntry entry, MainViewController controller) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/entry_listitem_indented.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -52,25 +50,21 @@ public class EntryListItem extends AnchorPane {
         this.iconImageView.setImage(entry.getImage());
     }
 
-    @FXML
+
     public void categoryHoverIn(Event event) throws IOException {
         this.categoryButton.setImage(new Image(Objects.requireNonNull(getClass().getResource("Images/categoryLabel2.jpg")).openStream()));
     }
 
-    @FXML
     public void categoryHoverOut(Event event) throws IOException {
         this.categoryButton.setImage(new Image(Objects.requireNonNull(getClass().getResource("Images/category-icon-5.jpg")).openStream()));
     }
 
-    @FXML
     public void categoryButtonClicked(Event event) throws IOException {
-        this.parentController.categoryOption(entry);
+        this.parentController.categoryOptionExtended(entry);
     }
-
 
     @FXML
     private void onClick() {
         parentController.populateDetailView(entry);
     }
-
 }

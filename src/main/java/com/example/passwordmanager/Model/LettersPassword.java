@@ -3,7 +3,7 @@ package com.example.passwordmanager.Model;
 
 public class LettersPassword extends PasswordMaker {
     @Override
-    public String setPassword(int minLength, int maxLength, String password) {
+    public String generatePassword(int length) {
         return null;
     }
 }

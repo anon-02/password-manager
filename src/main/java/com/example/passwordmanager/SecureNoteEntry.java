@@ -1,15 +1,17 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordEntry;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class SecureNoteEntry implements DisplayableEntry{
+public class SecureNoteEntry extends PasswordEntry {
 
     private String name, noteSubject, noteContent;
 
     public SecureNoteEntry(String name, String noteSubject, String noteContent) {
+        super(name, noteSubject, "abc", noteContent);
         this.name = name;
         this.noteSubject = noteSubject;
         this.noteContent = noteContent;

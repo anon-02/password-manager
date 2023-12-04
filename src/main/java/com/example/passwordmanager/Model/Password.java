@@ -11,6 +11,10 @@ public class Password {
     private Date dateLastModified;
 
     // constructor
+    public Password(){
+
+    }
+
     public Password (PasswordMaker passwordMaker) {
         this.passwordMaker = passwordMaker;
     }
@@ -23,11 +27,15 @@ public class Password {
     }
 
     public void setPassword(String password) {
-        this.password = this.passwordMaker.setPassword(minLength, maxLength, password);
+        this.password = password;
     }
 
     public String getPassword(){
         return this.password;
+    }
+
+    public void generatePassword(int length) {
+        this.password = this.passwordMaker.generatePassword(length);
     }
 
     public void setMinLength(int length) {

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="edit- logout- and removal functionality added (not working with db yet)">
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="bild added">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Other/words.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,6 +68,7 @@
       <recent name="C:\Users\Tim\Chalmers\test\password-manager\src\main\resources\com\example\passwordmanager\Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Tim\Chalmers\objekt_projekt\password-manager\src\main\resources\com\example\passwordmanager\Other" />
       <recent name="C:\Users\Tim\Chalmers\objekt_projekt\password-manager\src\main\resources\com\example\passwordmanager\Images" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -182,7 +184,14 @@
       <option name="presentableId" value="LOCAL−00010" />
       <updated>1701709722184</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL−00011" summary="bild added">
+      <option name="closed" value="true" />
+      <created>1701710668817</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1701710668817</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +218,8 @@
     <MESSAGE value="cleaned up" />
     <MESSAGE value="Fixed createCard, added getCardEntries, decryptCardEntry" />
     <MESSAGE value="edit- logout- and removal functionality added (not working with db yet)" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit- logout- and removal functionality added (not working with db yet)" />
+    <MESSAGE value="bild added" />
+    <option name="LAST_COMMIT_MESSAGE" value="bild added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -60,6 +60,7 @@ public class AccountEntry implements DisplayableEntry {
         this.note = newString;
     }
 
+
     @Override
     public String toString() {
         return "AccountEntry{" +

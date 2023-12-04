@@ -71,11 +71,8 @@ public class CreateWifi extends AnchorPane {
 
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
-        System.out.println(isFieldsComplete());
         if (isFieldsComplete()) {
-
             WifiEntry newEntry = new WifiEntry(entryName.getText(), wifiName.getText(), wifiPasswordInvisible.getText(), wifiURL.getText(), wifiAdminPassword.getText(), wifiNote.getText());
-
             EncryptionBuffer.insertWifiEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }

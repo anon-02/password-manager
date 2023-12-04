@@ -24,7 +24,7 @@ import java.sql.SQLException;
 
 public class CreateCard extends AnchorPane {
 
-    @FXML private TextField name, cardNumber, visibleCvcCode, note;
+    @FXML private TextField name, cardHolder, cardNumber, visibleCvcCode, note;
     @FXML private ChoiceBox<String> expireMonth, expireYear;
     @FXML private PasswordField invisibleCvcCode;
     @FXML private Button saveButton;
@@ -133,9 +133,7 @@ public class CreateCard extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
-            // TODO not submitting anything
-            CardEntry newEntry = new CardEntry(name.getText(), "placeholder", cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), invisibleCvcCode.getText(), note.getText());
-            /*TODO missing cardholder input */
+            CardEntry newEntry = new CardEntry(name.getText(), cardHolder.getText(), cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), invisibleCvcCode.getText(), note.getText());
             EncryptionBuffer.insertCardEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }

@@ -12,29 +12,51 @@
 
 <fx:root prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="name" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
-      <Label layoutX="116.0" styleClass="label-text-field-description" text="Name" />
-      <TextField fx:id="cardNumber" layoutX="108.0" layoutY="64.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter card number" styleClass="text-field-content" />
-      <Label layoutX="116.0" layoutY="47.0" styleClass="label-text-field-description" text="Card number" />
-      <Label layoutX="116.0" layoutY="95.0" styleClass="label-text-field-description" text="Expire date" />
-      <TextField fx:id="note" layoutX="108.0" layoutY="171.0" prefHeight="72.0" prefWidth="264.0" styleClass="text-field-content" />
-      <Label layoutX="116.0" layoutY="154.0" styleClass="label-text-field-description" text="Note" />
-      <ChoiceBox fx:id="expireMonth" layoutX="108.0" layoutY="112.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="50.0" styleClass="text-field-content" />
-      <ChoiceBox fx:id="expireYear" layoutX="180.0" layoutY="112.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="50.0" styleClass="text-field-content" />
-      <Label layoutX="328.0" layoutY="95.0" prefHeight="17.0" prefWidth="40.0" styleClass="label-text-field-description" text="CVC" />
-      <StackPane layoutX="328.0" layoutY="112.0">
+      <AnchorPane layoutX="108.0">
          <children>
-            <TextField fx:id="visibleCvcCode" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="40.0" styleClass="text-field-content" />
-            <PasswordField fx:id="invisibleCvcCode" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="40.0" promptText="123" styleClass="text-field-content-password" />
+            <TextField fx:id="name" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="label-text-field-description" text="Name" />
          </children>
-      </StackPane>
-      <Label layoutX="165.0" layoutY="109.0" styleClass="title-text" text="/" />
+      </AnchorPane>
+      <AnchorPane layoutX="108.0" layoutY="52.0">
+         <children>
+            <TextField fx:id="cardHolder" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="label-text-field-description" text="Card Holder" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="108.0" layoutY="104.0">
+         <children>
+            <TextField fx:id="cardNumber" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter card number" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="label-text-field-description" text="Card number" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="108.0" layoutY="156.0">
+         <children>
+            <Label layoutX="8.0" styleClass="label-text-field-description" text="Expire date" />
+            <ChoiceBox fx:id="expireMonth" layoutY="17.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="50.0" styleClass="text-field-content" />
+            <ChoiceBox fx:id="expireYear" layoutX="72.0" layoutY="17.0" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="50.0" styleClass="text-field-content" />
+            <Label layoutX="220.0" prefHeight="17.0" prefWidth="40.0" styleClass="label-text-field-description" text="CVC" />
+            <StackPane layoutX="220.0" layoutY="17.0">
+               <children>
+                  <TextField fx:id="visibleCvcCode" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="40.0" styleClass="text-field-content" />
+                  <PasswordField fx:id="invisibleCvcCode" maxHeight="24.0" minHeight="24.0" prefHeight="24.0" prefWidth="40.0" promptText="123" styleClass="text-field-content-password" />
+               </children>
+            </StackPane>
+            <Label layoutX="57.0" layoutY="14.0" styleClass="title-text" text="/" />
+            <ImageView fx:id="cvcVisible" fitHeight="20.0" fitWidth="20.0" layoutX="266.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/eye.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="108.0" layoutY="210.0">
+         <children>
+            <TextField fx:id="note" layoutY="17.0" prefHeight="72.0" prefWidth="264.0" promptText="Enter note" styleClass="text-field-content" />
+            <Label layoutX="8.0" styleClass="label-text-field-description" text="Note" />
+            <Label layoutX="203.0" styleClass="label-text-field-description" text="(optional)" />
+         </children>
+      </AnchorPane>
       <Button fx:id="saveButton" layoutX="195.0" layoutY="480.0" maxHeight="32.0" minHeight="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="90.0" styleClass="save-button" text="Save" />
-      <ImageView fx:id="cvcVisible" fitHeight="20.0" fitWidth="20.0" layoutX="374.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/eye.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="311.0" layoutY="154.0" styleClass="label-text-field-description" text="(optional)" />
    </children>
 </fx:root>

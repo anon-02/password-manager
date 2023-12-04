@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="cleaned up">
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="edit- logout- and removal functionality added (not working with db yet)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateSecureNote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateSecureNote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateWifi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CreateWifi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/DetailViewItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/DetailViewItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sqlDB" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,6 +40,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2XzHAM6F97Ne1RFqAjIrPgSdhz2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -52,15 +51,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Tim/Chalmers/objekt_projekt/password-manager",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Tim\Chalmers\test\password-manager\src\main\resources\com\example\passwordmanager\Views" />
       <recent name="C:\Users\Tim\Chalmers\test\password-manager\src\main\resources\com\example\passwordmanager\Images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Tim\Chalmers\objekt_projekt\password-manager\src\main\resources\com\example\passwordmanager\Images" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.passwordmanager" />
@@ -104,6 +112,7 @@
       <workItem from="1700971588308" duration="13290000" />
       <workItem from="1701051570818" duration="2698000" />
       <workItem from="1701058206549" duration="25906000" />
+      <workItem from="1701693660701" duration="10700000" />
     </task>
     <task id="LOCAL−00001" summary="detail view progress.">
       <option name="closed" value="true" />
@@ -159,7 +168,21 @@
       <option name="presentableId" value="LOCAL−00008" />
       <updated>1701353788505</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL−00009" summary="Fixed createCard, added getCardEntries, decryptCardEntry">
+      <option name="closed" value="true" />
+      <created>1701695181655</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1701695181655</updated>
+    </task>
+    <task id="LOCAL−00010" summary="edit- logout- and removal functionality added (not working with db yet)">
+      <option name="closed" value="true" />
+      <created>1701709722184</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1701709722184</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +198,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="detail view progress." />
@@ -185,7 +207,9 @@
     <MESSAGE value="start of the entity DAO" />
     <MESSAGE value="yooooo" />
     <MESSAGE value="cleaned up" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up" />
+    <MESSAGE value="Fixed createCard, added getCardEntries, decryptCardEntry" />
+    <MESSAGE value="edit- logout- and removal functionality added (not working with db yet)" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit- logout- and removal functionality added (not working with db yet)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

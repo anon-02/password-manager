@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -30,7 +31,7 @@ public class MainViewController implements Initializable {
     /* Home View */
     @FXML private AnchorPane mainAnchorPane;
     @FXML private TextField searchTextField;
-    @FXML private Button addEntryButton;
+    @FXML private Button addEntryButton, logoutButton;
     @FXML private FlowPane allEntrysFlowPane, detailViewFlowPane;
 
     /* Create Entry View */
@@ -38,13 +39,15 @@ public class MainViewController implements Initializable {
     @FXML private ImageView createEntryExit;
     @FXML private ChoiceBox<String> entryType;
     private final String[] entryTypes = {"Account", "Card", "Wifi", "Secure note"};
-    //@FXML private Button saveButton;
     @FXML private FlowPane injectEntryType;
 
     /* Detail view */
-    @FXML private Button editButton, cancelButton, saveButton;
+    @FXML private AnchorPane cancelSavePane, editPane;
+    @FXML private Button editButton, cancelButton, saveButton, removeButton;
+    @FXML private Label editLabel;
 
     private fxmlHelper helper = fxmlHelper.getInstance();
+    private DetailViewItem currentDetailItem;
 
 
 
@@ -52,7 +55,7 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         entryType.getItems().addAll(entryTypes);
         entryType.setValue(entryTypes[0]);
-        editButton.setVisible(false);
+        clearDetailView();
 
         try {
             updateEntryList();
@@ -123,22 +126,78 @@ public class MainViewController implements Initializable {
         updateEntryList();
     }
 
-
-    // Creates the correct entry type for the detail view
+    // Creates the correct detail view per given entry
     public void populateDetailView(DisplayableEntry entry) {
         detailViewFlowPane.getChildren().clear();
+        DetailViewItem detailViewItem;
+
         if (entry instanceof AccountEntry) {
-            detailViewFlowPane.getChildren().add(new DetailViewItem((AccountEntry) entry, this));
+            detailViewItem = new DetailViewItem((AccountEntry) entry, this);
+            detailViewFlowPane.getChildren().add(detailViewItem);
         }
         else if (entry instanceof CardEntry) {
-            detailViewFlowPane.getChildren().add(new DetailViewItem((CardEntry) entry, this));
+            detailViewItem = new DetailViewItem((CardEntry) entry, this);
+            detailViewFlowPane.getChildren().add(detailViewItem);
         }
         else if (entry instanceof WifiEntry) {
-            detailViewFlowPane.getChildren().add(new DetailViewItem((WifiEntry) entry, this));
+            detailViewItem = new DetailViewItem((WifiEntry) entry, this);
+            detailViewFlowPane.getChildren().add(detailViewItem);
         }
-        else if (entry instanceof SecureNoteEntry) {
-            detailViewFlowPane.getChildren().add(new DetailViewItem((SecureNoteEntry) entry, this));
+        else {
+            detailViewItem = new DetailViewItem((SecureNoteEntry) entry, this);
+            detailViewFlowPane.getChildren().add(detailViewItem);
         }
         editButton.setVisible(true);
+        removeButton.setVisible(true);
+        currentDetailItem = detailViewItem;
     }
+
+    @FXML
+    public void editButtonPressed() {
+        toggleEditingMode();
+
+        cancelSavePane.toFront();
+    }
+
+    @FXML
+    public void removeButtonPressed() {
+        // TODO handle removal of entry with database
+        clearDetailView();
+
+    }
+
+    private void clearDetailView() {
+        detailViewFlowPane.getChildren().clear();
+        editButton.setVisible(false);
+        removeButton.setVisible(false);
+    }
+    @FXML
+    public void cancelButtonPressed() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        toggleEditingMode();
+        updateEntryList();
+
+        editPane.toFront();
+    }
+
+    @FXML
+    public void saveButtonPressed() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        // TODO handle save action
+        currentDetailItem.updateDetailEntry();
+        toggleEditingMode();
+        updateEntryList();
+
+        editPane.toFront();
+    }
+
+    private void toggleEditingMode() {
+        editLabel.setVisible(!editLabel.isVisible());
+        currentDetailItem.toggleEditable();
+    }
+
+    @FXML
+    public void logoutButtonPressed() {
+        // TODO handle user when logged out
+        helper.navigateTo(mainAnchorPane, "login_view.fxml");
+    }
+
 }

@@ -117,9 +117,45 @@ public class PasswordGeneratorItem extends AnchorPane {
         return includeSpecial.isSelected();
     }
 
-    @FXML
-    public void generateButtonClicked() {
+    @FXML private PasswordField invisiblePassword;
 
+
+    @FXML
+
+    public void generateButtonClicked() {
+        String password = generatePassword();
+        invisiblePassword.setText(password);
+
+    }
+
+    private String generatePassword() {
+        int length = getLength();
+        boolean includeUppercase = isIncludeUppercase();
+        boolean includeNumbers = isIncludeNumbers();
+        boolean includeSpecial = isIncludeSpecial();
+
+        String uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String numbers = "0123456789";
+        String specialCharacters = "!@#$%^&*()_-+=<>?/";
+
+        StringBuilder characters = new StringBuilder("abcdefghijklmnopqrstuvwxyz");
+        if (includeUppercase) {
+            characters.append(uppercaseLetters);
+        }
+        if (includeNumbers) {
+            characters.append(numbers);
+        }
+        if (includeSpecial) {
+            characters.append(specialCharacters);
+        }
+
+        StringBuilder password = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int randomIndex = (int) (Math.random() * characters.length());
+            password.append(characters.charAt(randomIndex));
+        }
+
+        return password.toString();
     }
 
 }

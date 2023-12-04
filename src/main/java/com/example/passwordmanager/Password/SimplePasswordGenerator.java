@@ -2,26 +2,51 @@ package com.example.passwordmanager.Password;
 
 import java.security.SecureRandom;
 
-public class SimplePasswordGenerator implements PasswordGenerator {
-    @Override
-    public String generatePassword(int length) {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
+public class SimplePasswordGenerator {
+
+    private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+    private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String NUMBERS = "0123456789";
+    private static final String SPECIAL_CHARACTERS = "!\"^&#%*";
+
+    public static String generatePassword(int length, boolean includeLowercase, boolean includeUppercase, boolean includeNumbers, boolean includeSpecials) {
+        SecureRandom random = new SecureRandom();
         StringBuilder password = new StringBuilder();
 
-        SecureRandom random = new SecureRandom();
+        String allowedCharacters = "";
+        if (includeLowercase) {
+            allowedCharacters += LOWERCASE;
+        }
+        if (includeUppercase) {
+            allowedCharacters += UPPERCASE;
+        }
+        if (includeNumbers) {
+            allowedCharacters += NUMBERS;
+        }
+        if (includeSpecials) {
+            allowedCharacters += SPECIAL_CHARACTERS;
+        }
+
+        if (allowedCharacters.isEmpty()) {
+            throw new IllegalArgumentException("At least one character type should be included.");
+        }
+
         for (int i = 0; i < length; i++) {
-            int index = random.nextInt(characters.length());
-            password.append(characters.charAt(index));
+            int randomIndex = random.nextInt(allowedCharacters.length());
+            password.append(allowedCharacters.charAt(randomIndex));
         }
 
         return password.toString();
     }
 
     public static void main(String[] args) {
-        PasswordGenerator passwordGenerator = new SimplePasswordGenerator();
+        int length = 12;
+        boolean includeLowercase = true;
+        boolean includeUppercase = true;
+        boolean includeNumbers = true;
+        boolean includeSpecials = true;
 
-        String newPassword = passwordGenerator.generatePassword(12);
-        System.out.println("Genererat lösenord: " + newPassword);
-
+        String password = generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSpecials);
+        System.out.println("Generated Password: " + password);
     }
 }

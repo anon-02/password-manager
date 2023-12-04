@@ -60,12 +60,6 @@ public class AccountEntry implements DisplayableEntry {
         this.note = newString;
     }
 
-    public void updateAccountEntry(AccountEntry other) {
-        setName(other.getName());
-        setUsername(other.getUsername());
-        setPassword(other.getPassword());
-        setNote(other.getNote());
-    }
 
     @Override
     public String toString() {

@@ -223,7 +223,7 @@ public class DetailViewItem extends AnchorPane{
 
     @FXML
     public void deleteCurrentEntry() {
-
+        //
     }
 
 }

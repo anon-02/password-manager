@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+
+/**
+ * Currently generates a passphrase where each "word" is made out of 2 concatenated words
+ * This was done to ensure a stronger password, if in the case an attacker knew what the complete word list is.
+ * Can be changed in the future.
+ */
 public class PassphraseGenerator {
 
 

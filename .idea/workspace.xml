@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="passphrase generator implemented" />
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="yoo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PassphraseGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PassphraseGenerator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,6 +142,7 @@
       <workItem from="1701051570818" duration="2698000" />
       <workItem from="1701058206549" duration="25906000" />
       <workItem from="1701693660701" duration="10700000" />
+      <workItem from="1701777198780" duration="241000" />
     </task>
     <task id="LOCAL−00001" summary="detail view progress.">
       <option name="closed" value="true" />
@@ -229,7 +233,14 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1701721551853</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL−00014" summary="yoo">
+      <option name="closed" value="true" />
+      <created>1701777216775</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1701777216775</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +270,8 @@
     <MESSAGE value="bild added" />
     <MESSAGE value="added formatted text file" />
     <MESSAGE value="passphrase generator implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="passphrase generator implemented" />
+    <MESSAGE value="yoo" />
+    <option name="LAST_COMMIT_MESSAGE" value="yoo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

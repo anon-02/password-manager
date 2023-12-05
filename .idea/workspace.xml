@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="passphrase generator implemented">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PassphraseGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database/users.db" afterDir="false" />
-    </list>
+    <list default="true" id="08b37811-cfd1-4978-8542-a98246a576f5" name="Changes" comment="passphrase generator implemented" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -226,7 +222,14 @@
       <option name="presentableId" value="LOCAL−00012" />
       <updated>1701713305436</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL−00013" summary="passphrase generator implemented">
+      <option name="closed" value="true" />
+      <created>1701721551853</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1701721551853</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

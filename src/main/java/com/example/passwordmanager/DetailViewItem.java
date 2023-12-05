@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordFieldManager;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +55,7 @@ public class DetailViewItem extends AnchorPane{
     TextField[] secureNoteFields;
 
     private DisplayableEntry currentEntry;
+    private PasswordFieldManager manager;
 
     public DetailViewItem(AccountEntry entry, MainViewController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_account.fxml"));
@@ -74,7 +76,7 @@ public class DetailViewItem extends AnchorPane{
         this.accountNote.setText(entry.getNote());
 
         accountFields = new TextField[]{entryAccountName, accountUsername, accountPasswordInvisible, accountPasswordVisible};
-        helper.addPasswordVisibleToggle(eyeImageView, accountPasswordInvisible, accountPasswordVisible);
+        manager = helper.addPasswordVisibleToggle(eyeImageView, accountPasswordInvisible, accountPasswordVisible);
 
         currentEntry = entry;
 
@@ -126,7 +128,7 @@ public class DetailViewItem extends AnchorPane{
         this.cardNote.setText(entry.getNote());
 
         this.cardFields = new TextField[]{entryCardName, cardHolder, cardNumber, cardMonth, cardYear, cardCVCInvisible, cardCVCVisible};
-        helper.addPasswordVisibleToggle(cardEye, cardCVCInvisible, cardCVCVisible);
+        manager = helper.addPasswordVisibleToggle(cardEye, cardCVCInvisible, cardCVCVisible);
 
         currentEntry = entry;
     }
@@ -152,7 +154,7 @@ public class DetailViewItem extends AnchorPane{
         this.wifiNote.setText(entry.getNote());
 
         this.wifiFields = new TextField[]{entryWifiName, wifiName, wifiPasswordInvisible, wifiPasswordVisible, wifiConfigURL, wifiAdminPassword};
-        helper.addPasswordVisibleToggle(wifiEyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
+        manager = helper.addPasswordVisibleToggle(wifiEyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
 
         currentEntry = entry;
     }

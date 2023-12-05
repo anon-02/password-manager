@@ -99,6 +99,7 @@ public class PassphraseGenerator {
         return result.toString();
     }
 
+    // Generates a random passphrase based on the input parameters
     public static String generatePassphrase(int length, boolean includeUppercase, boolean includeNumber, boolean includeSpecial) {
         String base = getBasePassphrase(length);
         if (includeUppercase) {
@@ -116,6 +117,8 @@ public class PassphraseGenerator {
         return ThreadLocalRandom.current().nextInt(0, max + 1);
     }
 
+
+    // Used for testing
     public static void main(String[] args) {
         String test = generatePassphrase(3, true, true, true);
         System.out.println(test);

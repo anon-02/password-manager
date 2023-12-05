@@ -1,9 +1,11 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordFieldManager;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,16 +29,15 @@ public class fxmlHelper {
         return instance;
     }
 
-    // TODO getEntries(user) -> List<Entries>
-    // TODO getMatching(String searchTerm) -> List<Entries>
-    // TODO addEntry(Entry entry)
-    // TODO removeEntry(Entry entry)
-    // TODO clearEntries()
-
     public Image getImageFroURL(String url) {
         return new Image(url);
     }
-    public void addPasswordVisibleToggle(ImageView eye, TextField invisiblePassword, TextField visiblePassword) {
+
+    public PasswordFieldManager addPasswordVisibleToggle(ImageView eye, TextField invisiblePassword, TextField visiblePassword) {
+        PasswordFieldManager manager = new PasswordFieldManager(eye, invisiblePassword, visiblePassword);
+        return manager;
+
+        /*visiblePassword.setFocusTraversable(false);
         EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -56,7 +57,7 @@ public class fxmlHelper {
                 eye.requestFocus(); // Makes it not look shit
             }
         };
-        eye.setOnMouseClicked(onClick);
+        eye.setOnMouseClicked(onClick);*/
     }
 
     public Image getImage(String fileName) throws IOException {

@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -37,6 +38,7 @@ public class CreateAccount extends AnchorPane {
 
     private MainViewController parentController;
     private fxmlHelper model = fxmlHelper.getInstance();
+    private PasswordFieldManager manager;
     private boolean passwordGeneratorShowing = false;
 
     public CreateAccount(MainViewController controller) {
@@ -52,7 +54,7 @@ public class CreateAccount extends AnchorPane {
 
         initFields();
         this.parentController = controller;
-        model.addPasswordVisibleToggle(passwordVisible, invisiblePassword, visiblePassword);
+        manager = model.addPasswordVisibleToggle(passwordVisible, invisiblePassword, visiblePassword);
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override
@@ -96,7 +98,7 @@ public class CreateAccount extends AnchorPane {
     private boolean isFieldsComplete() {
         return (checkLength(this.name.getText()) &&
                 checkLength(this.username.getText()) &&
-                checkLength(this.invisiblePassword.getText()));
+                checkLength(manager.getPassword()));
     }
 
     private boolean checkLength(String str) {
@@ -107,7 +109,7 @@ public class CreateAccount extends AnchorPane {
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         if (isFieldsComplete()) {
 
-            AccountEntry newEntry = new AccountEntry(name.getText(), username.getText(), invisiblePassword.getText(), note.getText());
+            AccountEntry newEntry = new AccountEntry(name.getText(), username.getText(), manager.getPassword(), note.getText());
             EncryptionBuffer.insertAccountEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
@@ -132,7 +134,7 @@ public class CreateAccount extends AnchorPane {
 
     private void updateStrengthIndicator(String newString) {
         // TODO get ratio from model according to rules
-        double ratio = invisiblePassword.getText().length() * 8 / 250d;
+        double ratio = manager.getPassword().length() * 8 / 250d;
         strengthIndicatorRec.setWidth((int) (250 * ratio));
 
         if (ratio >= 0 && ratio < 0.25) {

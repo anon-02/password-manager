@@ -75,9 +75,10 @@ public class PasswordFieldManager {
         invisibleField.setText(password);
     }
 
-    private void toggleFocusTraversable() {
-        visibleField.setFocusTraversable(!visibleField.isFocusTraversable());
-        invisibleField.setFocusTraversable(!invisibleField.isFocusTraversable());
+    public void setPassword(String s) {
+        this.password = s;
+        this.visibleField.setText(s);
+        this.invisibleField.setText(s);
     }
 
 

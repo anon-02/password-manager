@@ -68,15 +68,15 @@ public class DetailViewItem extends AnchorPane{
             throw new RuntimeException(exception);
         }
         this.parentController = controller;
+        manager = helper.addPasswordVisibleToggle(eyeImageView, accountPasswordInvisible, accountPasswordVisible);
 
         this.entryAccountName.setText(entry.getName());
         this.accountUsername.setText(entry.getUsername());
-        this.accountPasswordInvisible.setText(entry.getPassword());
-        this.accountPasswordVisible.setText(entry.getPassword());
+        manager.setPassword(entry.getPassword());
         this.accountNote.setText(entry.getNote());
 
         accountFields = new TextField[]{entryAccountName, accountUsername, accountPasswordInvisible, accountPasswordVisible};
-        manager = helper.addPasswordVisibleToggle(eyeImageView, accountPasswordInvisible, accountPasswordVisible);
+
 
         currentEntry = entry;
 
@@ -112,6 +112,7 @@ public class DetailViewItem extends AnchorPane{
             throw new RuntimeException(exception);
         }
         this.parentController = controller;
+        manager = helper.addPasswordVisibleToggle(cardEye, cardCVCInvisible, cardCVCVisible);
 
         String[] expireMonths = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         String[] expireYears = {"24", "25", "26", "27", "28", "29", "30"};
@@ -123,12 +124,11 @@ public class DetailViewItem extends AnchorPane{
         this.cardNumber.setText(entry.getCardNumber());
         this.cardMonth.setText(entry.getExpireMonth());
         this.cardYear.setText(entry.getExpireYear());
-        this.cardCVCInvisible.setText(entry.getCvcCode());
-        this.cardCVCVisible.setText(entry.getCvcCode());
+        manager.setPassword(entry.getCvcCode());
         this.cardNote.setText(entry.getNote());
 
         this.cardFields = new TextField[]{entryCardName, cardHolder, cardNumber, cardMonth, cardYear, cardCVCInvisible, cardCVCVisible};
-        manager = helper.addPasswordVisibleToggle(cardEye, cardCVCInvisible, cardCVCVisible);
+
 
         currentEntry = entry;
     }
@@ -144,17 +144,16 @@ public class DetailViewItem extends AnchorPane{
             throw new RuntimeException(exception);
         }
         this.parentController = controller;
+        manager = helper.addPasswordVisibleToggle(wifiEyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
 
         this.entryWifiName.setText(entry.getName());
         this.wifiName.setText(entry.getWifiName());
-        this.wifiPasswordVisible.setText(entry.getWifiPassword());
-        this.wifiPasswordInvisible.setText(entry.getWifiPassword());
+        manager.setPassword(entry.getWifiPassword());
         this.wifiConfigURL.setText(entry.getWifiURL());
         this.wifiAdminPassword.setText(entry.getWifiAdminPassword());
         this.wifiNote.setText(entry.getNote());
 
         this.wifiFields = new TextField[]{entryWifiName, wifiName, wifiPasswordInvisible, wifiPasswordVisible, wifiConfigURL, wifiAdminPassword};
-        manager = helper.addPasswordVisibleToggle(wifiEyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
 
         currentEntry = entry;
     }

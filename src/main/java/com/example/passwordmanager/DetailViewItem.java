@@ -91,7 +91,7 @@ public class DetailViewItem extends AnchorPane {
                 } else {
                     noteAnchorPane.setLayoutY(476);
                     generatePasswordFlowPane.getChildren().clear();
-                    generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail", accountPasswordInvisible, parentController, currentEntry));
+                    generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail", accountPasswordInvisible, accountPasswordVisible, parentController, currentEntry));
                 }
                 passwordGeneratorShowing = !passwordGeneratorShowing;
             }

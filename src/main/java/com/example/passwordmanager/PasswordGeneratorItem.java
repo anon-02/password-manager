@@ -34,14 +34,16 @@ public class PasswordGeneratorItem extends AnchorPane {
 
     private int indicatorMaxWidth;
 
-    private TextField connectedTextfield;
+    private TextField invisibleTextField;
+    private TextField visibleTextField;
     private DisplayableEntry connectedEntry;
     private MainViewController parentController;
 
     private ToggleGroup passwordTypes = new ToggleGroup();
 
-    public PasswordGeneratorItem(String s, TextField connectedTextField, MainViewController parentController) {
-        this.connectedTextfield = connectedTextField;
+    public PasswordGeneratorItem(String s, TextField invisible, TextField visible, MainViewController parentController) {
+        this.invisibleTextField = invisible;
+        this.visibleTextField = visible;
         this.parentController = parentController;
 
         FXMLLoader fxmlLoader = null;
@@ -92,8 +94,8 @@ public class PasswordGeneratorItem extends AnchorPane {
         });
     }
 
-    public PasswordGeneratorItem(String s, TextField connectedTextfield, MainViewController parentController, DisplayableEntry entry) {
-        this(s, connectedTextfield, parentController);
+    public PasswordGeneratorItem(String s, TextField invisible, TextField visible, MainViewController parentController, DisplayableEntry entry) {
+        this(s, invisible, visible, parentController);
         this.connectedEntry = entry;
     }
 
@@ -130,9 +132,6 @@ public class PasswordGeneratorItem extends AnchorPane {
         return (int) val;
     }
 
-    private boolean isDetailView() {
-        return connectedTextfield == null;
-    }
 
     private boolean isPassword() {
         return getSelectedToggleButton().equals("Password");
@@ -157,10 +156,12 @@ public class PasswordGeneratorItem extends AnchorPane {
     @FXML
     public void generateButtonClicked() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         if (isPassword()) {
-            connectedTextfield.setText(PasswordGenerator.generatePassword(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial()));
+            invisibleTextField.setText(PasswordGenerator.generatePassword(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial()));
+            visibleTextField.setText(PasswordGenerator.generatePassword(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial()));
         }
         else if (isPassphrase()) {
-            connectedTextfield.setText(PassphraseGenerator.generatePassphrase(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial()));
+            invisibleTextField.setText(PassphraseGenerator.generatePassphrase(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial()));
+            visibleTextField.setText(PassphraseGenerator.generatePassphrase(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial()));
         }
         // else exception ?
         parentController.updateEntryList();

@@ -52,6 +52,7 @@ public class PassphraseGenerator {
         return result.toString();
     }
 
+
     // Replaces a random letter in a string with its uppercase variant
     private static String includeUppercase(String s) {
         StringBuilder result = new StringBuilder(s);

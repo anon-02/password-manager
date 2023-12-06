@@ -2,8 +2,8 @@ package com.example.passwordmanager.Password;
 
 import java.security.SecureRandom;
 
-public class SimplePasswordGenerator implements PasswordGenerator {
-    @Override
+public class SimplePasswordGenerator  {
+
     public String generatePassword(int length) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
         StringBuilder password = new StringBuilder();
@@ -18,7 +18,7 @@ public class SimplePasswordGenerator implements PasswordGenerator {
     }
 
     public static void main(String[] args) {
-        PasswordGenerator passwordGenerator = new SimplePasswordGenerator();
+        SimplePasswordGenerator passwordGenerator = new SimplePasswordGenerator();
 
         String newPassword = passwordGenerator.generatePassword(12);
         System.out.println("Genererat lösenord: " + newPassword);

@@ -2,6 +2,8 @@ package com.example.passwordmanager;
 
 import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
+import com.example.passwordmanager.Password.PassphraseGenerator;
+import com.example.passwordmanager.Password.PasswordGenerator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -25,7 +27,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 
-public class CreateAccount extends AnchorPane {
+public class CreateAccount extends AnchorPane implements Generator{
 
     @FXML private AnchorPane backAnchorPane, noteAnchorPane;
     @FXML private TextField name, username, invisiblePassword, visiblePassword, note;
@@ -122,14 +124,14 @@ public class CreateAccount extends AnchorPane {
         } else {
             noteAnchorPane.setLayoutY(384);
             passwordGeneratorFlowPane.getChildren().clear();
-            passwordGeneratorFlowPane.getChildren().add(new PasswordGeneratorItem("create"));
+            passwordGeneratorFlowPane.getChildren().add(new PasswordGeneratorItem(this, "create"));
         }
         passwordGeneratorShowing = !passwordGeneratorShowing;
     }
 
     @FXML
-    private void generateButtonClicked() {
-        // TODO model.generatePassword()
+    private void generateButtonClicked(String passwordType) {
+        //
     }
 
     private void updateStrengthIndicator(String newString) {
@@ -153,5 +155,15 @@ public class CreateAccount extends AnchorPane {
     }
 
 
+    @Override
+    public void generate(String type, int length, boolean includeUpper, boolean includeNumbers, boolean includeSpecial) {
+        String generatedPassword = null;
+        if (type.equals("Password")) {
+            generatedPassword = PasswordGenerator.generatePassword(length, includeUpper, includeNumbers, includeSpecial);
 
+        } else if (type.equals("Passphrase")) {
+            generatedPassword = PassphraseGenerator.generatePassphrase(length, includeUpper, includeNumbers, includeSpecial);
+        }
+        manager.setPassword(generatedPassword);
+    }
 }

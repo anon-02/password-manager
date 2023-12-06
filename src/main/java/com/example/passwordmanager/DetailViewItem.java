@@ -1,6 +1,8 @@
 package com.example.passwordmanager;
 
 import com.example.passwordmanager.Model.PasswordFieldManager;
+import com.example.passwordmanager.Password.PassphraseGenerator;
+import com.example.passwordmanager.Password.PasswordGenerator;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +18,7 @@ import javafx.scene.layout.FlowPane;
 import java.io.IOException;
 import java.util.Objects;
 
-public class DetailViewItem extends AnchorPane{
+public class DetailViewItem extends AnchorPane implements Generator{
     private MainViewController parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
 
@@ -93,7 +95,7 @@ public class DetailViewItem extends AnchorPane{
                 } else {
                     noteAnchorPane.setLayoutY(476);
                     generatePasswordFlowPane.getChildren().clear();
-                    generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail"));
+                    generatePasswordFlowPane.getChildren().add(generateItem("detail"));
                 }
                 passwordGeneratorShowing = !passwordGeneratorShowing;
             }
@@ -227,4 +229,19 @@ public class DetailViewItem extends AnchorPane{
         //
     }
 
+    private PasswordGeneratorItem generateItem(String s) {
+        return new PasswordGeneratorItem(this, s);
+    }
+
+    @Override
+    public void generate(String type, int length, boolean includeUpper, boolean includeNumbers, boolean includeSpecial) {
+        String generatedPassword = null;
+        if (type.equals("Password")) {
+            generatedPassword = PasswordGenerator.generatePassword(length, includeUpper, includeNumbers, includeSpecial);
+
+        } else if (type.equals("Passphrase")) {
+            generatedPassword = PassphraseGenerator.generatePassphrase(length, includeUpper, includeNumbers, includeSpecial);
+        }
+        manager.setPassword(generatedPassword);
+    }
 }

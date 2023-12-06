@@ -24,10 +24,11 @@ public class PasswordGeneratorItem extends AnchorPane {
     @FXML private Button generateButton;
 
     private int indicatorMaxWidth;
+    private Generator parentController;
 
     private ToggleGroup passwordTypes = new ToggleGroup();
 
-    public PasswordGeneratorItem(String s) {
+    public PasswordGeneratorItem(Generator controller, String s) {
         FXMLLoader fxmlLoader = null;
         if (s.equals("create")) {
             fxmlLoader = new FXMLLoader(getClass().getResource("Views/password-generator.fxml"));
@@ -45,6 +46,8 @@ public class PasswordGeneratorItem extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        parentController = controller;
         passwordRadioButton.setToggleGroup(passwordTypes);
         passphraseRadioButton.setToggleGroup(passwordTypes);
         init();
@@ -119,7 +122,7 @@ public class PasswordGeneratorItem extends AnchorPane {
 
     @FXML
     public void generateButtonClicked() {
-
+        parentController.generate(getSelectedToggleButton(), getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial());
     }
 
 }

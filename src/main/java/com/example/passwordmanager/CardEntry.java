@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class CardEntry implements DisplayableEntry {
+public class CardEntry extends PasswordEntry {
 
     private String name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note;
     private Image image;

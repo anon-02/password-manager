@@ -3,11 +3,10 @@ package com.example.passwordmanager.Model.dbStuff;
 import java.sql.*;
 
 public class DatabaseHandler {
-    private static final String JDBC_URL = "jdbc:sqlite:C:/Users/Tim/Chalmers/objekt_projekt/password-manager/Database/users.db";
+    private static final String JDBC_URL = "jdbc:sqlite:C:/Users/marco/Dropbox/IT/Projekt Objektorienterat TDA367/PasswordManager/Database/users.db";
     private static Connection  connection;
 
     private DatabaseHandler() {
-
     }
 
     // Connect to user database

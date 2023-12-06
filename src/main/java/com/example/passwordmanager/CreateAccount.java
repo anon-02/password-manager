@@ -108,7 +108,7 @@ public class CreateAccount extends AnchorPane {
         if (isFieldsComplete()) {
 
             AccountEntry newEntry = new AccountEntry(name.getText(), username.getText(), invisiblePassword.getText(), note.getText());
-            EncryptionBuffer.insertAccountEntry(newEntry);
+            parentController.addPasswordEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
     }

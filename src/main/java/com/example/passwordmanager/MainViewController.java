@@ -23,6 +23,8 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
@@ -46,13 +48,32 @@ public class MainViewController implements Initializable {
     @FXML private Button editButton, cancelButton, saveButton, removeButton;
     @FXML private Label editLabel;
 
+    // Category related
+    @FXML private AnchorPane addChooserAnchorPane;
+    @FXML private AnchorPane createCategoryAnchorPane;
+    @FXML private AnchorPane categoryChooser;
+    @FXML private AnchorPane editCategoryAnchorPane;
+    @FXML private FlowPane chooseCategoryFlowPane;
+    @FXML private FlowPane removeFromFlowPane;
+    @FXML private FlowPane addToFlowPane;
+    @FXML private TextField categoryName;
+    @FXML private AnchorPane createCategoryFront;
+    @FXML private AnchorPane extended;
+    @FXML private AnchorPane original;
+
     private fxmlHelper helper = fxmlHelper.getInstance();
     private DetailViewItem currentDetailItem;
 
+    EntriesListHandler entriesHandler;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            entriesHandler = new EntriesListHandler(EncryptionBuffer.retrieveEntries());
+        } catch (SQLException | InvalidAlgorithmParameterException | NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
+            e.printStackTrace();
+        }
         entryType.getItems().addAll(entryTypes);
         entryType.setValue(entryTypes[0]);
         clearDetailView();
@@ -78,17 +99,81 @@ public class MainViewController implements Initializable {
         });
     }
 
-    private void updateEntryList() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    protected void updateEntryList() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         allEntrysFlowPane.getChildren().clear();
-        for (DisplayableEntry displayableEntry : EncryptionBuffer.retrieveEntries()) { // Temporary just for proof of concept
-            allEntrysFlowPane.getChildren().add(new EntryListItem(displayableEntry, this));
+        for (DisplayableEntry entry : entriesHandler.getAllEntries()) { // Temporary just for proof of concept
+            allEntrysFlowPane.getChildren().add(EntryListItemFactory.makeEntryListItem(entry, this));
         }
+    }
+
+    public void updateCategoryChooserList(PasswordEntry passwordEntry) throws IOException {
+        this.chooseCategoryFlowPane.getChildren().clear();
+        List<CategoryEntry> currentCategories = entriesHandler.getCategories();
+
+        for (CategoryEntry categoryEntry : currentCategories) {
+            CategoryEntryListItemSmall categoryEntryListItemSmall = new CategoryEntryListItemSmall(categoryEntry, this);
+            this.chooseCategoryFlowPane.getChildren().add(categoryEntryListItemSmall);
+            categoryEntryListItemSmall.setTempPasswordEntry(passwordEntry);
+        }
+    }
+
+    public void updateCategoryChooserListExtended(PasswordEntry passwordEntry) throws IOException {
+        this.removeFromFlowPane.getChildren().clear();
+        this.addToFlowPane.getChildren().clear();
+        List<CategoryEntry> currentCategories = new LinkedList<>(entriesHandler.getCategories());
+        currentCategories.remove(passwordEntry.getCategory());
+
+        for (CategoryEntry categoryEntry : currentCategories) {
+            CategoryEntryListItemSmall categoryEntryListItemSmall = new CategoryEntryListItemSmall(categoryEntry, this);
+            this.addToFlowPane.getChildren().add(categoryEntryListItemSmall);
+            categoryEntryListItemSmall.setTempPasswordEntry(passwordEntry);
+        }
+        CategoryEntryListItemSmall categoryEntryListItemSmallRemove = new CategoryEntryListItemSmall(passwordEntry.getCategory(), this);
+        removeFromFlowPane.getChildren().add(categoryEntryListItemSmallRemove);
+        categoryEntryListItemSmallRemove.setTempPasswordEntry(passwordEntry);
     }
 
     @FXML
     public void addButtonPressed() {
+        addChooserAnchorPane.toFront();
+    }
+
+    @FXML
+    public void addCategoryEntryButtonPressed() {
+        closeButtonPressed();
+        categoryName.setText("");
+        createCategoryAnchorPane.toFront();
+    }
+
+    @FXML
+    public void addPasswordEntryButtonPressed() {
+        closeButtonPressed();
         createEntryAnchorPane.toFront();
         updateCreateView();
+    }
+
+    public void categoryOption(PasswordEntry passwordEntry) throws IOException {
+        openCategoryChooser();
+        updateCategoryChooserList(passwordEntry);
+    }
+
+    public void categoryOptionExtended(PasswordEntry passwordEntry) throws IOException {
+        openCategoryChooserExtended();
+        System.out.println(entriesHandler.getCategories());
+        updateCategoryChooserListExtended(passwordEntry);
+        System.out.println(entriesHandler.getCategories());
+    }
+
+    public void openCategoryChooserExtended() {
+        openCategoryChooser();
+        extended.toFront();
+    }
+
+
+    public void openCategoryChooser() {
+        mainAnchorPane.toFront();
+        categoryChooser.toFront();
+        original.toFront();
     }
 
     // Updates the create view based on the entry type
@@ -124,6 +209,16 @@ public class MainViewController implements Initializable {
     public void handleSaveButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         closeButtonPressed();
         updateEntryList();
+    }
+
+    @FXML
+    public void saveCategoryButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        entriesHandler.addCategoryEntry(new CategoryEntry(categoryName.getText()));
+        handleSaveButtonPressed();
+    }
+
+    public void addPasswordEntry(PasswordEntry entry) {   // addEntry
+        this.entriesHandler.addPasswordEntry(entry);
     }
 
     // Creates the correct detail view per given entry

@@ -15,7 +15,7 @@ import javafx.scene.layout.FlowPane;
 import java.io.IOException;
 import java.util.Objects;
 
-public class DetailViewItem extends AnchorPane{
+public class DetailViewItem extends AnchorPane {
     private MainViewController parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
 
@@ -91,7 +91,7 @@ public class DetailViewItem extends AnchorPane{
                 } else {
                     noteAnchorPane.setLayoutY(476);
                     generatePasswordFlowPane.getChildren().clear();
-                    generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail"));
+                    generatePasswordFlowPane.getChildren().add(new PasswordGeneratorItem("detail", accountPasswordInvisible, parentController, currentEntry));
                 }
                 passwordGeneratorShowing = !passwordGeneratorShowing;
             }

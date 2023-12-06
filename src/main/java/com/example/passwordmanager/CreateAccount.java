@@ -120,7 +120,7 @@ public class CreateAccount extends AnchorPane {
         } else {
             noteAnchorPane.setLayoutY(384);
             passwordGeneratorFlowPane.getChildren().clear();
-            passwordGeneratorFlowPane.getChildren().add(new PasswordGeneratorItem("create"));
+            passwordGeneratorFlowPane.getChildren().add(new PasswordGeneratorItem("create", invisiblePassword, parentController));
         }
         passwordGeneratorShowing = !passwordGeneratorShowing;
     }

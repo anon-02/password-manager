@@ -1,5 +1,7 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Password.PassphraseGenerator;
+import com.example.passwordmanager.Password.PasswordGenerator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -9,7 +11,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 
 public class PasswordGeneratorItem extends AnchorPane {
 
@@ -25,9 +34,16 @@ public class PasswordGeneratorItem extends AnchorPane {
 
     private int indicatorMaxWidth;
 
+    private TextField connectedTextfield;
+    private DisplayableEntry connectedEntry;
+    private MainViewController parentController;
+
     private ToggleGroup passwordTypes = new ToggleGroup();
 
-    public PasswordGeneratorItem(String s) {
+    public PasswordGeneratorItem(String s, TextField connectedTextField, MainViewController parentController) {
+        this.connectedTextfield = connectedTextField;
+        this.parentController = parentController;
+
         FXMLLoader fxmlLoader = null;
         if (s.equals("create")) {
             fxmlLoader = new FXMLLoader(getClass().getResource("Views/password-generator.fxml"));
@@ -52,7 +68,11 @@ public class PasswordGeneratorItem extends AnchorPane {
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                generateButtonClicked();
+                try {
+                    generateButtonClicked();
+                } catch (InvalidAlgorithmParameterException | SQLException | NoSuchPaddingException | IllegalBlockSizeException | IOException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
+                    e.printStackTrace();
+                }
             }
         };
         generateButton.setOnAction(event);
@@ -70,6 +90,11 @@ public class PasswordGeneratorItem extends AnchorPane {
                 update((int) lengthSlider.getValue());
             }
         });
+    }
+
+    public PasswordGeneratorItem(String s, TextField connectedTextfield, MainViewController parentController, DisplayableEntry entry) {
+        this(s, connectedTextfield, parentController);
+        this.connectedEntry = entry;
     }
 
     private void update(Number newValue) {
@@ -105,6 +130,18 @@ public class PasswordGeneratorItem extends AnchorPane {
         return (int) val;
     }
 
+    private boolean isDetailView() {
+        return connectedTextfield == null;
+    }
+
+    private boolean isPassword() {
+        return getSelectedToggleButton().equals("Password");
+    }
+
+    private boolean isPassphrase() {
+        return getSelectedToggleButton().equals("Passphrase");
+    }
+
     private boolean isIncludeUppercase() {
         return includeUppercase.isSelected();
     }
@@ -118,8 +155,15 @@ public class PasswordGeneratorItem extends AnchorPane {
     }
 
     @FXML
-    public void generateButtonClicked() {
-
+    public void generateButtonClicked() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        if (isPassword()) {
+            connectedTextfield.setText(PasswordGenerator.generatePassword(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial()));
+        }
+        else if (isPassphrase()) {
+            connectedTextfield.setText(PassphraseGenerator.generatePassphrase(getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial()));
+        }
+        // else exception ?
+        parentController.updateEntryList();
+        parentController.populateDetailView(connectedEntry);
     }
-
 }

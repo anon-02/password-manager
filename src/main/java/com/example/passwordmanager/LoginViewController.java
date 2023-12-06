@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -19,6 +20,7 @@ public class LoginViewController implements Initializable {
     @FXML private AnchorPane baseAnchorPane;
     @FXML private TextField email, masterPasswordInvisible, masterPasswordVisible;
     @FXML private Button newUserButton, unlockButton;
+    @FXML private ImageView eyeImageView;
 
     private fxmlHelper helper = fxmlHelper.getInstance();
 
@@ -27,16 +29,19 @@ public class LoginViewController implements Initializable {
     public LoginViewController() {
         this.loginService = new LoginService();
     }
+    private PasswordFieldManager manager;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         helper.onMouseHover(newUserButton);
         helper.onMouseHover(unlockButton);
+
+        this.manager = helper.addPasswordVisibleToggle(eyeImageView, masterPasswordInvisible, masterPasswordVisible);
     }
 
     @FXML public void unlockButtonPressed() throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
         String userMailInput = email.getText();
-        String userMasterPassInput = masterPasswordInvisible.getText();
+        String userMasterPassInput = manager.getPassword();
 
         System.out.println("user '"+userMailInput + "' trying to log in");
         System.out.println("users pass : "+ userMasterPassInput);

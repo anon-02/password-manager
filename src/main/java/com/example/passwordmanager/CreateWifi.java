@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,6 +29,7 @@ public class CreateWifi extends AnchorPane {
 
     private MainViewController parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
+    private PasswordFieldManager manager;
 
 
     public CreateWifi(MainViewController controller) {
@@ -42,7 +44,7 @@ public class CreateWifi extends AnchorPane {
         }
 
         this.parentController = controller;
-        helper.addPasswordVisibleToggle(eyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
+        manager = helper.addPasswordVisibleToggle(eyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override
@@ -62,7 +64,7 @@ public class CreateWifi extends AnchorPane {
     private boolean isFieldsComplete() {
         return (checkLength(this.entryName.getText()) &&
                 checkLength(this.wifiName.getText()) &&
-                checkLength(this.wifiPasswordInvisible.getText()));
+                checkLength(this.manager.getPassword()));
     }
 
     private boolean checkLength(String str) {
@@ -72,7 +74,7 @@ public class CreateWifi extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
-            WifiEntry newEntry = new WifiEntry(entryName.getText(), wifiName.getText(), wifiPasswordInvisible.getText(), wifiURL.getText(), wifiAdminPassword.getText(), wifiNote.getText());
+            WifiEntry newEntry = new WifiEntry(entryName.getText(), wifiName.getText(), manager.getPassword(), wifiURL.getText(), wifiAdminPassword.getText(), wifiNote.getText());
             EncryptionBuffer.insertWifiEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }

@@ -1,6 +1,7 @@
 package com.example.passwordmanager;
 
 import com.example.passwordmanager.Model.LoginService;
+import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.fxmlHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,9 +23,10 @@ public class CreateUserViewController implements Initializable {
     @FXML private ImageView masterPasswordEye, confirmPasswordEye;
 
     private fxmlHelper helper = fxmlHelper.getInstance();
-
-
     private LoginService loginService = new LoginService();
+    private PasswordFieldManager firstFieldManager, secondFieldManager;
+
+
     public CreateUserViewController() {
         this.loginService = new LoginService();
     }
@@ -35,9 +37,8 @@ public class CreateUserViewController implements Initializable {
         helper.onMouseHover(backButton);
         helper.onMouseHover(createButton);
 
-        helper.addPasswordVisibleToggle(masterPasswordEye, masterPasswordInvisible, masterPasswordVisible);
-        helper.addPasswordVisibleToggle(confirmPasswordEye, confirmPasswordInvisible, confirmPasswordVisible);
-
+        firstFieldManager = helper.addPasswordVisibleToggle(masterPasswordEye, masterPasswordInvisible, masterPasswordVisible);
+        secondFieldManager = helper.addPasswordVisibleToggle(confirmPasswordEye, confirmPasswordInvisible, confirmPasswordVisible);
     }
 
     @FXML
@@ -45,7 +46,7 @@ public class CreateUserViewController implements Initializable {
         helper.navigateTo(baseAnchorPane, "login_view.fxml");}
 
     private boolean verifyFields() {
-        return (masterPasswordInvisible.getText().equals(confirmPasswordInvisible.getText()) &&
+        return (firstFieldManager.getPassword().equals(secondFieldManager.getPassword()) &&
                 (!email.getText().isEmpty() || !masterPasswordInvisible.getText().isEmpty()));
     }
 
@@ -59,7 +60,7 @@ public class CreateUserViewController implements Initializable {
 
             // Add User
             String userMailInput = email.getText();
-            String userMasterPassInput = masterPasswordInvisible.getText();
+            String userMasterPassInput = secondFieldManager.getPassword();
             System.out.println("new users mail: "+userMailInput);
             System.out.println("new users pass (prehash): "+userMasterPassInput);
             loginService.CreateNewUser(userMailInput, userMasterPassInput);

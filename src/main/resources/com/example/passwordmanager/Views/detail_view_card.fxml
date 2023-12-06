@@ -26,7 +26,7 @@
       </AnchorPane>
       <AnchorPane layoutX="65.0" layoutY="194.0" prefHeight="47.0" prefWidth="285.0" stylesheets="@../CSS/login_createUser_view.css">
          <children>
-            <TextField fx:id="cardNumber" editable="false" layoutY="17.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter card number" styleClass="text-field-content" />
+            <TextField fx:id="cardNumber" layoutY="17.0" prefHeight="30.0" prefWidth="220.0" promptText="Enter card number" styleClass="text-field-content" />
             <Label layoutX="8.0" styleClass="text-field-name" text="Card Number" />
          </children>
       </AnchorPane>
@@ -62,7 +62,7 @@
                   <PasswordField fx:id="cardCVCInvisible" editable="false" maxHeight="24.0" minHeight="30.0" prefHeight="30.0" prefWidth="44.0" styleClass="text-field-content" text="020" />
                </children>
             </StackPane>
-            <Label layoutX="58.0" layoutY="21.0" styleClass="text-field-name" text="/" />
+            <Label layoutX="58.0" layoutY="19.0" styleClass="text-field-name" text="/" />
             <ImageView fx:id="cardEye" fitHeight="20.0" fitWidth="20.0" layoutX="226.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/eye.png" />

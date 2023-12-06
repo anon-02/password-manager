@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,7 +34,7 @@ public class CreateCard extends AnchorPane {
 
     private MainViewController parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
-
+    private PasswordFieldManager manager;
 
     public CreateCard(MainViewController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-card.fxml"));
@@ -70,7 +71,7 @@ public class CreateCard extends AnchorPane {
         };
 
         saveButton.setOnAction(event);
-        helper.addPasswordVisibleToggle(cvcVisible, invisibleCvcCode, visibleCvcCode);
+        manager = helper.addPasswordVisibleToggle(cvcVisible, invisibleCvcCode, visibleCvcCode);
 
         // Regex for card number
         cardNumber.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -94,7 +95,7 @@ public class CreateCard extends AnchorPane {
 
         invisibleCvcCode.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if (!invisibleCvcCode.getText().matches("^\\d{3}$")) {
+                if (!manager.getPassword().matches("^\\d{3}$")) {
                     invisibleCvcCode.setText("");
                 }
             }
@@ -102,7 +103,7 @@ public class CreateCard extends AnchorPane {
 
         visibleCvcCode.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if (!visibleCvcCode.getText().matches("^\\d{3}$")) {
+                if (!manager.getPassword().matches("^\\d{3}$")) {
                     visibleCvcCode.setText("");
                 }
             }
@@ -123,7 +124,7 @@ public class CreateCard extends AnchorPane {
                 checkLength(this.cardNumber.getText()) &&
                 checkLength(this.expireMonth.getValue()) &&
                 checkLength(this.expireYear.getValue()) &&
-                checkLength(this.invisibleCvcCode.getText()));
+                checkLength(this.manager.getPassword()));
     }
 
     private boolean checkLength(String str) {
@@ -133,7 +134,7 @@ public class CreateCard extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
-            CardEntry newEntry = new CardEntry(name.getText(), cardHolder.getText(), cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), invisibleCvcCode.getText(), note.getText());
+            CardEntry newEntry = new CardEntry(name.getText(), cardHolder.getText(), cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), manager.getPassword(), note.getText());
             EncryptionBuffer.insertCardEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }

@@ -1,5 +1,15 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,12 +19,14 @@ public class EntriesListHandler {
     private List<PasswordEntry> allPasswordEntries;         // list of all current existing passwordEntries
     private List<PasswordEntry> passwordEntries;            // list of category-less passwordEntries  (could make into priority queue, prioritized by frequency)
     private List<CategoryEntry> categoryEntries;            // list of categories
+    private List<PasswordEntry> addedEntries;
 
 
     public EntriesListHandler(List<DisplayableEntry> allEntries) {
         allPasswordEntries = new LinkedList(allEntries);
         passwordEntries = new LinkedList<>();
         categoryEntries = new LinkedList<>();
+        addedEntries = new LinkedList<>();
         initialize();
     }
 
@@ -35,6 +47,7 @@ public class EntriesListHandler {
     public void addPasswordEntry(PasswordEntry passwordEntry) {
         passwordEntries.add(passwordEntry);
         allPasswordEntries.add(passwordEntry);
+        addedEntries.add(passwordEntry);
     }
 
     public void addCategoryEntry(CategoryEntry categoryEntry) {
@@ -62,7 +75,6 @@ public class EntriesListHandler {
     public void deletePasswordEntry(PasswordEntry passwordEntry) {
         // raise exception if entry not in list, or do something else to let client code know
         passwordEntries.remove(passwordEntry);
-        allPasswordEntries.remove(passwordEntry);
     }
 
     // removes this category's all current passwordEntries and adds them to the list of individual passwordEntries, then deletes this category
@@ -95,5 +107,10 @@ public class EntriesListHandler {
             showList.add(passwordEntry);
         }
         return showList;
+    }
+
+    public void saveAllEntries() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
+        List<DisplayableEntry> newEntries = new LinkedList<>(addedEntries);
+        EncryptionBuffer.inserAllEntries(newEntries);
     }
 }

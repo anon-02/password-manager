@@ -22,6 +22,7 @@ import java.net.URL;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
@@ -290,8 +291,9 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    public void logoutButtonPressed() {
+    public void logoutButtonPressed() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         // TODO handle user when logged out
+        entriesHandler.saveAllEntries();
         helper.navigateTo(mainAnchorPane, "login_view.fxml");
     }
 

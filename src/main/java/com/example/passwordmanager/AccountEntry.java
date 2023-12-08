@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class AccountEntry implements DisplayableEntry {
+public class AccountEntry extends PasswordEntry implements PasswordType {
 
     private String name, username, password, note;
     private Image image;

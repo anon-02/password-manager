@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class WifiEntry implements DisplayableEntry {
+public class WifiEntry extends PasswordEntry {
     private String name, wifiName, wifiPassword, wifiURL, wifiAdminPassword, note;
 
 

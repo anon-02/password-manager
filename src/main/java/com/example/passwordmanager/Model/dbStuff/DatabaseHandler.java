@@ -6,9 +6,7 @@ public class DatabaseHandler {
     private static final String JDBC_URL = "jdbc:sqlite:C:\\Users\\timso\\objekt-projekt\\password-manager\\Database\\users.db";
     private static Connection  connection;
 
-
     private DatabaseHandler() {
-
     }
 
     // Connect to user database

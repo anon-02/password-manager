@@ -106,6 +106,23 @@ public class EncryptionBuffer {
         return decodedEntry;
     }
 
+    public static void inserAllEntries(List<DisplayableEntry> allEntries) throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
+        for (DisplayableEntry entry : allEntries) {
+            if (entry instanceof AccountEntry) {
+                insertAccountEntry((AccountEntry) entry);
+            }
+            else if (entry instanceof CardEntry) {
+                insertCardEntry((CardEntry) entry);
+            }
+            else if (entry instanceof WifiEntry) {
+                insertWifiEntry((WifiEntry) entry);
+            }
+            else if (entry instanceof SecureNoteEntry) {
+                insertNoteEntry((SecureNoteEntry)entry);
+            }
+        }
+    }
+
     public static void insertAccountEntry(AccountEntry entry) throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         // get entry
         int type = 1;  // deciding arbitrarily that accountEntries are 1

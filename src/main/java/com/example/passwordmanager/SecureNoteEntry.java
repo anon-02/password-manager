@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class SecureNoteEntry implements DisplayableEntry {
+public class SecureNoteEntry extends PasswordEntry {
 
     private String name, noteSubject, noteContent;
 

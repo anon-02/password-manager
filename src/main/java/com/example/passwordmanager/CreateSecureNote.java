@@ -69,7 +69,7 @@ public class CreateSecureNote extends AnchorPane {
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
             SecureNoteEntry newEntry = new SecureNoteEntry(entryName.getText(), noteSubject.getText(), noteContent.getText());
-            EncryptionBuffer.insertNoteEntry(newEntry);
+            parentController.addPasswordEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
     }

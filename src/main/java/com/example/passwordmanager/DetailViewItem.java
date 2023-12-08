@@ -131,7 +131,6 @@ public class DetailViewItem extends AnchorPane implements Generator{
 
         this.cardFields = new TextField[]{entryCardName, cardHolder, cardNumber, cardMonth, cardYear, cardCVCInvisible, cardCVCVisible};
 
-
         currentEntry = entry;
     }
 
@@ -146,7 +145,7 @@ public class DetailViewItem extends AnchorPane implements Generator{
             throw new RuntimeException(exception);
         }
         this.parentController = controller;
-        manager = helper.addPasswordVisibleToggle(wifiEyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
+       manager = helper.addPasswordVisibleToggle(wifiEyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
 
         this.entryWifiName.setText(entry.getName());
         this.wifiName.setText(entry.getWifiName());

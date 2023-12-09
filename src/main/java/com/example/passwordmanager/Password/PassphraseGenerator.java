@@ -20,7 +20,7 @@ public class PassphraseGenerator {
     private static String getRandomWord() throws FileNotFoundException {
         String randomString = null;
         try {
-            RandomAccessFile raf = new RandomAccessFile("src/main/resources/com/example/passwordmanager/Other/words.txt", "r");
+            RandomAccessFile raf = new RandomAccessFile("src/main/resources/com/example/passwordmanager/Other/english-words10k.txt", "r");
             raf.seek(getRandomFromRange((int) (raf.length() + 1)));
             raf.readLine();
             randomString = raf.readLine();
@@ -30,28 +30,21 @@ public class PassphraseGenerator {
         return randomString;
     }
 
-    private static String getSinglePassphraseWord() {
-        String result;
-        try {
-            String s1 = getRandomWord();
-            result = s1 + getRandomWord();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return result;
-    }
 
     private static String getBasePassphrase(int length) {
         StringBuilder result = new StringBuilder();
         for (int i=0; i<length; i++) {
-            result.append(getSinglePassphraseWord());
+            try {
+                result.append(getRandomWord());
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
             if (i<length-1) {
                 result.append("-");  // Word separator
             }
         }
         return result.toString();
     }
-
 
     // Replaces a random letter in a string with its uppercase variant
     private static String includeUppercase(String s) {
@@ -102,7 +95,8 @@ public class PassphraseGenerator {
 
     // Generates a random passphrase based on the input parameters
     public static String generatePassphrase(int length, boolean includeUppercase, boolean includeNumber, boolean includeSpecial) {
-        String base = getBasePassphrase(length);
+        String base = null;
+        base = getBasePassphrase(length);
         if (includeUppercase) {
             base = includeUppercase(base);
         } if (includeNumber) {

@@ -8,11 +8,15 @@ import java.util.Objects;
 
 public class AccountEntry implements DisplayableEntry {
 
+
     private String name, username, password, note;
+    int type = 1;
+    int entryId;
     private Image image;
 
 
-    public AccountEntry(String name, String username, String password, String note) {
+    public AccountEntry(int entryId, String name, String username, String password, String note) {
+        this.entryId = entryId;
         this.name = name;
         this.username = username;
         this.password = password;
@@ -40,6 +44,10 @@ public class AccountEntry implements DisplayableEntry {
         return this.note;
     }
 
+    public int getType() { return type;}
+    public int getEntryId() {return entryId;}
+    public void setEntryId(int entryId) {this.entryId = entryId;};
+
     public Image getImage() throws IOException {
         return new Image(Objects.requireNonNull(getClass().getResource("Images/user.png")).openStream());
     }
@@ -64,6 +72,7 @@ public class AccountEntry implements DisplayableEntry {
     @Override
     public String toString() {
         return "AccountEntry{" +
+                "ID='" + entryId + '\'' +
                 "encryptedName='" + name + '\'' +
                 ", encryptedUsername='" + username + '\'' +
                 ", encryptedPassword='" + password + '\'' +

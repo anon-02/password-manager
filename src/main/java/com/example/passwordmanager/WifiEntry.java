@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class WifiEntry implements DisplayableEntry {
     private String name, wifiName, wifiPassword, wifiURL, wifiAdminPassword, note;
-
+    int type = 3;
 
     public WifiEntry(String name, String wifiName, String wifiPassword, String wifiURL, String wifiAdminPassword, String note) {
         this.name = name;
@@ -17,6 +17,7 @@ public class WifiEntry implements DisplayableEntry {
         this.wifiURL = wifiURL;
         this.wifiAdminPassword = wifiAdminPassword;
         this.note = note;
+
         //this.modified = getTimeCreated(); TODO implement timeModified
     }
 
@@ -26,6 +27,12 @@ public class WifiEntry implements DisplayableEntry {
     public String getWifiURL() {return this.wifiURL;}
     public String getWifiAdminPassword() {return this.wifiAdminPassword;}
     public String getNote() {return this.note;}
+    public int getType() {return type;}
+
+    @Override
+    public int getEntryId() {
+        return 0;
+    }
 
     @Override
     public String getUnderName() {

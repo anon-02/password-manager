@@ -9,16 +9,24 @@ import java.util.Objects;
 public class SecureNoteEntry implements DisplayableEntry {
 
     private String name, noteSubject, noteContent;
+    int type = 4;
 
     public SecureNoteEntry(String name, String noteSubject, String noteContent) {
         this.name = name;
         this.noteSubject = noteSubject;
         this.noteContent = noteContent;
+
     }
 
     public String getName() {return this.name;}
     public String getNoteSubject() {return this.noteSubject;}
     public String getNoteContent() {return this.noteContent;}
+    public int getType() {return type;}
+
+    @Override
+    public int getEntryId() {
+        return 0;
+    }
 
     @Override
     public String getUnderName() {

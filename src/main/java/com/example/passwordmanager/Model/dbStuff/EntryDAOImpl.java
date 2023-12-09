@@ -6,6 +6,7 @@ import com.example.passwordmanager.CardEntry;
 import com.example.passwordmanager.SecureNoteEntry;
 import com.example.passwordmanager.WifiEntry;
 import com.example.passwordmanager.Model.User;
+import javafx.scene.chart.PieChart;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +14,20 @@ import java.util.List;
 
 public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
 
+    public static int delete(DisplayableEntry entry, String sql) throws SQLException {
+        Connection connection = DatabaseHandler.DBconnect();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        System.out.println("the sql thats unsafe" + sql);
+        System.out.println("the entry id to be deleted "+ entry.getEntryId());
+        preparedStatement.setInt(1, entry.getEntryId());
+
+        int result = preparedStatement.executeUpdate();
+        System.out.println("the result of deleting "+ result);
+        DatabaseHandler.closePreparedStatement(preparedStatement);
+        DatabaseHandler.closeConnection(connection);
+        return result;
+    }
 
     @Override
     public DisplayableEntry get(int id) throws SQLException {
@@ -54,6 +69,8 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
 
     @Override
     public int update(DisplayableEntry entry) throws SQLException {
+
+
         return 0;
     }
 
@@ -61,6 +78,7 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
     public int delete(DisplayableEntry entry) throws SQLException {
         return 0;
     }
+
 
     public List<DisplayableEntry> getAccountEntries(List<DisplayableEntry> entryList, int user_id, Connection connection) throws SQLException {
         String sql = "SELECT * FROM AccountEntry WHERE User_ID = ?";
@@ -70,7 +88,8 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()) {
-            AccountEntry newAccEntry = new AccountEntry(resultSet.getString("Name"), resultSet.getString("Username"), resultSet.getString("Password"), resultSet.getString("Note"));
+            System.out.println("the ID for the acc entry "+ resultSet.getInt("ID"));
+            AccountEntry newAccEntry = new AccountEntry(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("Username"), resultSet.getString("Password"), resultSet.getString("Note"));
             entryList.add(newAccEntry);
         }
         return entryList;
@@ -138,10 +157,11 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         preparedStatement.setInt(6, user_id);
         int result = preparedStatement.executeUpdate();
 
+
         DatabaseHandler.closePreparedStatement(preparedStatement);
         DatabaseHandler.closeConnection(connection);
         
-        System.out.println("Successful accountInsert");
+        System.out.println("Successful accountEntryInsert");
         return result;
     }
 

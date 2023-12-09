@@ -244,4 +244,8 @@ public class DetailViewItem extends AnchorPane implements Generator{
         }
         manager.setPassword(generatedPassword);
     }
+
+    public DisplayableEntry getEntry () {
+        System.out.println("current entry about to be selected in detailview "+ currentEntry );
+        return currentEntry;}
 }

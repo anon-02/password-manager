@@ -10,6 +10,7 @@ public class CardEntry implements DisplayableEntry {
 
     private String name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note;
     private Image image;
+    int type = 2;
 
 
     public CardEntry(String name, String cardHolder, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
@@ -20,6 +21,7 @@ public class CardEntry implements DisplayableEntry {
         this.expireYear = expireYear;
         this.cvcCode = cvcCode;
         this.note = note;
+
         //this.modified = timeCreated; TODO implement timeModified
     }
 
@@ -49,6 +51,13 @@ public class CardEntry implements DisplayableEntry {
 
     public String getNote() {
         return this.note;
+    }
+
+    public int getType() { return type;}
+
+    @Override
+    public int getEntryId() {
+        return 0;
     }
 
     public Image getImage() throws IOException {

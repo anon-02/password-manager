@@ -6,7 +6,6 @@ import java.io.IOException;
 
 public abstract class PasswordEntry implements DisplayableEntry {    // add common code from concrete password Entries
     private CategoryEntry category;
-    private boolean isInCategory;
 
     public PasswordEntry() {}
 

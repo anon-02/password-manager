@@ -60,12 +60,18 @@ public class MainViewController implements Initializable {
     @FXML private FlowPane removeFromFlowPane;
     @FXML private FlowPane addToFlowPane;
     @FXML private TextField categoryName;
-    @FXML private AnchorPane createCategoryFront;
+    @FXML private TextField categoryEditName;
+    @FXML private Label addToCategory;
+    @FXML private Label addToCategoryExtended;
     @FXML private AnchorPane extended;
     @FXML private AnchorPane original;
+    @FXML private ImageView detailClose;
 
     private fxmlHelper helper = fxmlHelper.getInstance();
     private DetailViewItem currentDetailItem;
+
+    private CategoryEntry categoryEditing;
+    private PasswordEntry passwordEntryEditing;
 
     EntriesListHandler entriesHandler;
 
@@ -172,14 +178,50 @@ public class MainViewController implements Initializable {
 
     public void openCategoryChooserExtended () {
         openCategoryChooser();
+        setAddToCategoryTextExtended();
         extended.toFront();
     }
 
 
-    public void openCategoryChooser () {
+    public void openCategoryChooser() {
         mainAnchorPane.toFront();
         categoryChooser.toFront();
+        setAddToCategoryText();
         original.toFront();
+    }
+
+    public void setAddToCategoryText() {
+        if (entriesHandler.getCategories().size() > 0) {
+            addToCategory.setText("Add To");
+        }
+        else
+            addToCategory.setText("");
+    }
+
+    public void setAddToCategoryTextExtended() {
+        if (entriesHandler.getCategories().size() > 1) {
+            addToCategoryExtended.setText("Add To");
+        }
+        else
+            addToCategoryExtended.setText("");
+    }
+
+    public void openCategoryEdit(CategoryEntry category) {
+        categoryEditing = category;
+        editCategoryAnchorPane.toFront();
+        categoryEditName.setText(category.getName());
+    }
+
+    public void editCategoryDelete() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        entriesHandler.deleteCategoryEntry(categoryEditing);
+        updateEntryList();
+        closeButtonPressed();
+    }
+
+    public void editCategorySave() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        categoryEditing.setName(categoryEditName.getText());
+        updateEntryList();
+        closeButtonPressed();
     }
 
     // Updates the create view based on the entry type
@@ -229,6 +271,7 @@ public class MainViewController implements Initializable {
 
     // Creates the correct detail view per given entry
     public void populateDetailView (DisplayableEntry entry) {
+        passwordEntryEditing = (PasswordEntry) entry;
         detailViewFlowPane.getChildren().clear();
         DetailViewItem detailViewItem;
 
@@ -247,6 +290,7 @@ public class MainViewController implements Initializable {
         }
         editButton.setVisible(true);
         removeButton.setVisible(true);
+        detailClose.setVisible(true);
         currentDetailItem = detailViewItem;
     }
 
@@ -257,16 +301,19 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    public void removeButtonPressed () {
+    public void removeButtonPressed () throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         // TODO handle removal of entry with database
+        entriesHandler.deletePasswordEntry(passwordEntryEditing);
         clearDetailView();
-
+        updateEntryList();
     }
 
+    @FXML
     private void clearDetailView () {
         detailViewFlowPane.getChildren().clear();
         editButton.setVisible(false);
         removeButton.setVisible(false);
+        detailClose.setVisible(false);
     }
 
     @FXML

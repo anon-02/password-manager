@@ -29,6 +29,10 @@ public class CategoryEntry implements DisplayableEntry {
         passwordEntry.removeFromItsCategory();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return this.name;
     }

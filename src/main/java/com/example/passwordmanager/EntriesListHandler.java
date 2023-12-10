@@ -42,6 +42,9 @@ public class EntriesListHandler {
                 passwordEntries.add(passwordEntry);
             }
         }
+        if (!categories.isEmpty()) {
+            categoryEntries.addAll(categories);
+        }
     }
 
     public void addPasswordEntry(PasswordEntry passwordEntry) {
@@ -80,8 +83,10 @@ public class EntriesListHandler {
     // removes this category's all current passwordEntries and adds them to the list of individual passwordEntries, then deletes this category
     public void deleteCategoryEntry(CategoryEntry categoryEntry) {
         // exceptions..
-        if (!passwordEntries.isEmpty()) {
-            for (PasswordEntry passwordEntry : passwordEntries) {
+        List<PasswordEntry> currentPasswordEntries = categoryEntry.getPasswordEntries();
+        System.out.println(currentPasswordEntries); //remove
+        if (!currentPasswordEntries.isEmpty()) {
+            for (PasswordEntry passwordEntry : currentPasswordEntries) {
                 removePasswordEntryFromCategory(categoryEntry, passwordEntry);
             }
         }
@@ -113,4 +118,27 @@ public class EntriesListHandler {
         List<DisplayableEntry> newEntries = new LinkedList<>(addedEntries);
         EncryptionBuffer.inserAllEntries(newEntries);
     }
+
+    public static void main(String[] args) {
+        CategoryEntry c = new CategoryEntry("category");
+        PasswordEntry p1 = new AccountEntry("1", "two", "h", "j");
+        System.out.println(p1.isInCategory());
+        p1.addToCategory(c);
+        System.out.println(p1.isInCategory());
+        PasswordEntry p2 = new AccountEntry("2", "two", "h", "j");
+        p2.addToCategory(c);
+        PasswordEntry p3 = new AccountEntry("3", "two", "h", "j");
+        p3.addToCategory(c);
+
+        List list = new LinkedList();
+        list.add(p1);
+        list.add(p2);
+        list.add(p3);
+
+        EntriesListHandler handler = new EntriesListHandler(list);
+        System.out.println(handler.getAllEntries());
+        System.out.println(handler.getCategories());
+        handler.deleteCategoryEntry(c);
+    }
 }
+

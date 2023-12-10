@@ -27,6 +27,7 @@ public class CategoryEntryListItem extends AnchorPane {
     @FXML private Label nrOfPasswords;
 
     @FXML private ImageView downwardsArrow;
+    @FXML private ImageView edit;
 
     MainViewController parentController;
 
@@ -44,19 +45,19 @@ public class CategoryEntryListItem extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-
         this.parentController = controller;
         this.categoryEntry = categoryEntry;
-
         this.categoryName.setText(categoryEntry.getName().toUpperCase());
         setNrOfPasswords();
-
     }
 
     public void setNrOfPasswords() {
         int nrOfPasswords = categoryEntry.getNrOfPasswords();
         if (nrOfPasswords > 0) {
-            this.nrOfPasswords.setText(nrOfPasswords + " passwords");
+            if (nrOfPasswords == 1)
+                this.nrOfPasswords.setText("1 password");
+            else
+                this.nrOfPasswords.setText(nrOfPasswords + " passwords");
         }
         else {
             this.nrOfPasswords.setText("");
@@ -74,7 +75,13 @@ public class CategoryEntryListItem extends AnchorPane {
         this.parentController.updateEntryList();
     }
 
+    @FXML
+    public void editCategory(Event event) throws IOException {
+        parentController.openCategoryEdit(categoryEntry);
+    }
+
     public void hoverIn(Event event) throws IOException {
+        edit.setImage(new Image(Objects.requireNonNull(getClass().getResource("Images/3dotsblack.png")).openStream()));
         if (!this.categoryEntry.isOpen())
             this.downwardsArrow.setImage(new Image(Objects.requireNonNull(getClass().getResource("Images/drop-down-arrow-new.png")).openStream()));
         else
@@ -82,6 +89,7 @@ public class CategoryEntryListItem extends AnchorPane {
     }
 
     public void hoverOut(Event event) throws IOException {
+        edit.setImage(null);
         this.downwardsArrow.setImage(null);
     }
 

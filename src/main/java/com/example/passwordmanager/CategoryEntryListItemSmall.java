@@ -26,7 +26,6 @@ public class CategoryEntryListItemSmall extends AnchorPane {
     MainViewController parentController;
 
     private CategoryEntry categoryEntry;
-
     private PasswordEntry tempPasswordEntry;
 
     public CategoryEntryListItemSmall(CategoryEntry categoryEntry, MainViewController controller) throws IOException {
@@ -52,8 +51,12 @@ public class CategoryEntryListItemSmall extends AnchorPane {
     public void setNrOfPasswords() {
         int nrOfPasswords = categoryEntry.getNrOfPasswords();
         if (nrOfPasswords > 0) {
-            this.nrOfPasswords.setText(nrOfPasswords + " passwords");
-        } else {
+            if (nrOfPasswords == 1)
+                this.nrOfPasswords.setText("1 password");
+            else
+                this.nrOfPasswords.setText(nrOfPasswords + " passwords");
+        }
+        else {
             this.nrOfPasswords.setText("");
         }
     }

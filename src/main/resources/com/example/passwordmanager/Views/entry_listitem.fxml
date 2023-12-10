@@ -23,9 +23,9 @@
                   <Font size="42.0" />
                </font>
             </Label>
-            <Button fx:id="addToCategoryButton" layoutX="525.0" layoutY="8.0" mnemonicParsing="false" onAction="#categoryButtonClicked" onMouseEntered="#categoryHoverIn" onMouseExited="#categoryHoverOut" styleClass="add-button" stylesheets="@../../../../../../../../password-manager/src/main/resources/com/example/passwordmanager/CSS/main_view.css">
+            <Button fx:id="addToCategoryButton" layoutX="530.0" layoutY="9.0" mnemonicParsing="false" onAction="#categoryButtonClicked" onMouseEntered="#categoryHoverIn" onMouseExited="#categoryHoverOut" styleClass="add-button" stylesheets="@../CSS/main_view.css">
                <graphic>
-                  <ImageView fx:id="categoryButton" fitHeight="25.0" fitWidth="25.0" onMouseExited="#categoryHoverOut" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="categoryButton" fitHeight="24.0" fitWidth="24.0" onMouseExited="#categoryHoverOut" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/category-icon-5.jpg" />
                      </image>

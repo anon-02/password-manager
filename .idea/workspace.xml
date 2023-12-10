@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73d3a711-00db-4a34-8a66-e0a74e02d442" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Other/english-words10k.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database/users.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PasswordManager.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CategoryEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CategoryEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CategoryEntryListItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CategoryEntryListItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CategoryEntryListItemSmall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/CategoryEntryListItemSmall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/EntriesListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/EntriesListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/MainViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/dbStuff/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/dbStuff/DatabaseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PassphraseGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PassphraseGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/PasswordEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/PasswordEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/entry_listitem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/entry_listitem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/main_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/passwordmanager/Views/main_view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/AccountEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/AccountEntry.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CardEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CardEntry.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CategoryEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/passwordmanager/CategoryEntry.class" afterDir="false" />
@@ -83,10 +88,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
   <component name="ProjectId" id="2ZFlj8xH0bvqKIK54erQ5mI3x6z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -95,28 +96,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Tim/Chalmers/password-manager/src/main/resources/com/example/passwordmanager/Other",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Tim\Chalmers\password-manager\src\main\resources\com\example\passwordmanager\Other" />
-    </key>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PasswordManager" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.PassphraseGenerator">
+    <configuration name="EntriesListHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.passwordmanager.EntriesListHandler" />
+      <module name="PasswordManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.passwordmanager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.passwordmanager.Main" />
       <module name="PasswordManager" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.passwordmanager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PassphraseGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.passwordmanager.Password.PassphraseGenerator" />
+      <module name="PasswordManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.passwordmanager.Password.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -137,6 +156,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PassphraseGenerator" />
+        <item itemvalue="Application.EntriesListHandler" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -151,7 +172,6 @@
       <updated>1702025844375</updated>
       <workItem from="1702025845519" duration="59000" />
       <workItem from="1702025928360" duration="1871000" />
-      <workItem from="1702130161280" duration="285000" />
     </task>
     <task id="LOCAL−00001" summary="initial commit">
       <created>1702026316079</created>
@@ -187,6 +207,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />

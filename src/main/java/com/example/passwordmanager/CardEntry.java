@@ -10,10 +10,12 @@ public class CardEntry implements DisplayableEntry {
 
     private String name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note;
     private Image image;
+    int entryId;
     int type = 2;
 
 
-    public CardEntry(String name, String cardHolder, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
+    public CardEntry(int entryId, String name, String cardHolder, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
+        this.entryId = entryId;
         this.name = name;
         this.cardHolder = cardHolder;
         this.cardNumber = cardNumber;
@@ -57,7 +59,7 @@ public class CardEntry implements DisplayableEntry {
 
     @Override
     public int getEntryId() {
-        return 0;
+        return entryId;
     }
 
     public Image getImage() throws IOException {

@@ -10,8 +10,10 @@ public class SecureNoteEntry implements DisplayableEntry {
 
     private String name, noteSubject, noteContent;
     int type = 4;
+    int entryId;
 
-    public SecureNoteEntry(String name, String noteSubject, String noteContent) {
+    public SecureNoteEntry(int entryId, String name, String noteSubject, String noteContent) {
+        this.entryId = entryId;
         this.name = name;
         this.noteSubject = noteSubject;
         this.noteContent = noteContent;
@@ -25,7 +27,7 @@ public class SecureNoteEntry implements DisplayableEntry {
 
     @Override
     public int getEntryId() {
-        return 0;
+        return entryId;
     }
 
     @Override

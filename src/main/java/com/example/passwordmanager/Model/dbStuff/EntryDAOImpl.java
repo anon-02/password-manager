@@ -42,13 +42,11 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         int user_id = currentuser.getID();
 
         Connection connection = DatabaseHandler.DBconnect();
-        String sql = "SELECT * FROM AccountEntry WHERE User_ID = ?";
+
 
         List<DisplayableEntry> entryList = new ArrayList<>();
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, user_id);
 
-        ResultSet resultSet = preparedStatement.executeQuery();
+
         getAccountEntries(entryList, user_id, connection);
         getNoteEntries(entryList, user_id, connection);
         getCardEntries(entryList, user_id, connection);
@@ -103,7 +101,7 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()) {
-            SecureNoteEntry newNoteEntry = new SecureNoteEntry(resultSet.getString("Name"), resultSet.getString("Subject"), resultSet.getString("Note"));
+            SecureNoteEntry newNoteEntry = new SecureNoteEntry(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("Subject"), resultSet.getString("Note"));
             entryList.add(newNoteEntry);
         }
         return entryList;
@@ -117,7 +115,7 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()) {
-            CardEntry newCardEntry = new CardEntry(resultSet.getString("Name"), resultSet.getString("CardHolder"), resultSet.getString("CardNumber"), resultSet.getString("expireMonth"), resultSet.getString("expireYear"), resultSet.getString("CVC"), resultSet.getString("Note"));
+            CardEntry newCardEntry = new CardEntry(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("CardHolder"), resultSet.getString("CardNumber"), resultSet.getString("expireMonth"), resultSet.getString("expireYear"), resultSet.getString("CVC"), resultSet.getString("Note"));
             entryList.add(newCardEntry);
         }
         return entryList;
@@ -131,7 +129,9 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()) {
-            WifiEntry newWifiEntry = new WifiEntry(resultSet.getString("Name"), resultSet.getString("WifiName"), resultSet.getString("WifiPassword"), resultSet.getString("ConfigURL"), resultSet.getString("AdminPassword"), resultSet.getString("Note"));
+            WifiEntry newWifiEntry = new WifiEntry(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("WifiName"), resultSet.getString("WifiPassword"), resultSet.getString("ConfigURL"), resultSet.getString("AdminPassword"), resultSet.getString("Note"));
+            System.out.println("the broken new wifis id  : "+ resultSet.getInt("ID"));
+            System.out.println(" ");
             entryList.add(newWifiEntry);
         }
         return entryList;

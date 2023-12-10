@@ -134,7 +134,7 @@ public class CreateCard extends AnchorPane {
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
-            CardEntry newEntry = new CardEntry(name.getText(), cardHolder.getText(), cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), manager.getPassword(), note.getText());
+            CardEntry newEntry = new CardEntry(0, name.getText(), cardHolder.getText(), cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), manager.getPassword(), note.getText());
             EncryptionBuffer.insertCardEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }

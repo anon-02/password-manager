@@ -8,15 +8,19 @@ import java.util.Objects;
 
 public class WifiEntry implements DisplayableEntry {
     private String name, wifiName, wifiPassword, wifiURL, wifiAdminPassword, note;
+    int entryId;
     int type = 3;
 
-    public WifiEntry(String name, String wifiName, String wifiPassword, String wifiURL, String wifiAdminPassword, String note) {
+    public WifiEntry(int entryId, String name, String wifiName, String wifiPassword, String wifiURL, String wifiAdminPassword, String note) {
+        this.entryId = entryId;
         this.name = name;
         this.wifiName = wifiName;
         this.wifiPassword = wifiPassword;
         this.wifiURL = wifiURL;
         this.wifiAdminPassword = wifiAdminPassword;
         this.note = note;
+
+        System.out.println("Entry added: " + this.name + " ID: "+ this.entryId);
 
         //this.modified = getTimeCreated(); TODO implement timeModified
     }
@@ -31,7 +35,7 @@ public class WifiEntry implements DisplayableEntry {
 
     @Override
     public int getEntryId() {
-        return 0;
+        return entryId;
     }
 
     @Override
@@ -53,6 +57,7 @@ public class WifiEntry implements DisplayableEntry {
 
     public String toString() {
         return "WifiEntry{" +
+                "ID='" + entryId + '\'' +
                 "encryptedName='" + name + '\'' +
                 ", encryptedWifiName='" + wifiName + '\'' +
                 ", encryptedWifiPass='" + wifiPassword + '\'' +

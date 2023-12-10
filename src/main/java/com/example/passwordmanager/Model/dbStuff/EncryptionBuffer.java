@@ -38,6 +38,8 @@ public class EncryptionBuffer {
 
         // decrypt it
         //
+        System.out.println(" ");
+        System.out.println("-This is the decrypted list: ");
         for (DisplayableEntry entry : encryptedList) {
             if (entry instanceof AccountEntry) {
                 decryptedList.add(decryptAccountEntry((AccountEntry) entry));
@@ -50,25 +52,29 @@ public class EncryptionBuffer {
             }
 
             System.out.println(entry);
-            System.out.println("This is the decrypted list");
-            System.out.println(decryptedList);
         }
         // return a complete list
+        System.out.println(" ");
+        System.out.println("-- complete decrypted list --");
         return decryptedList;
     }
 
     public static AccountEntry decryptAccountEntry(AccountEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        int ID = entry.getEntryId();
+        System.out.println("the entry account ID " + ID);
         String decryptedName = EncryptionLogic.decrypt(algorithm, entry.getName(), key, iv);
         String decryptedUsername = EncryptionLogic.decrypt(algorithm, entry.getUsername(), key, iv);
         String decryptedPassword = EncryptionLogic.decrypt(algorithm, entry.getPassword(), key, iv);
         String decryptedNote = EncryptionLogic.decrypt(algorithm, entry.getNote(), key, iv);
 
-        AccountEntry decodedEntry = new AccountEntry(0, decryptedName, decryptedUsername, decryptedPassword, decryptedNote);
+
+        AccountEntry decodedEntry = new AccountEntry(ID, decryptedName, decryptedUsername, decryptedPassword, decryptedNote);
 
         return decodedEntry;
     }
 
     public static CardEntry decryptCardEntry(CardEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        int ID = entry.getEntryId();
         String decryptedName = EncryptionLogic.decrypt(algorithm, entry.getName(), key, iv);
         String decryptedCardHolder = EncryptionLogic.decrypt(algorithm, entry.getCardHolder(), key, iv);
         String decryptedCardNumber = EncryptionLogic.decrypt(algorithm, entry.getCardNumber(), key, iv);
@@ -78,12 +84,14 @@ public class EncryptionBuffer {
         String decryptedNote = EncryptionLogic.decrypt(algorithm, entry.getNote(), key, iv);
 
 
-        CardEntry decodedEntry = new CardEntry(decryptedName, decryptedCardHolder, decryptedCardNumber, decryptedExpireMonth, decryptedExpireYear, decryptedCvcCode, decryptedNote);
+        CardEntry decodedEntry = new CardEntry(ID, decryptedName, decryptedCardHolder, decryptedCardNumber, decryptedExpireMonth, decryptedExpireYear, decryptedCvcCode, decryptedNote);
 
         return decodedEntry;
     }
 
     public static WifiEntry decryptWifiEntry(WifiEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        // TODO ID dies here
+        int ID = entry.getEntryId();
         String decryptedName = EncryptionLogic.decrypt(algorithm, entry.getName(), key, iv);
         String decryptedWifiName = EncryptionLogic.decrypt(algorithm, entry.getWifiName(), key, iv);
         String decryptedWifiPassword = EncryptionLogic.decrypt(algorithm, entry.getWifiPassword(), key, iv);
@@ -91,17 +99,18 @@ public class EncryptionBuffer {
         String decryptedAdminPassword = EncryptionLogic.decrypt(algorithm, entry.getWifiURL(), key, iv);
         String decryptedNote = EncryptionLogic.decrypt(algorithm, entry.getNote(), key, iv);
 
-        WifiEntry decodedEntry = new WifiEntry(decryptedName, decryptedWifiName, decryptedWifiPassword, decryptedConfigURL, decryptedAdminPassword, decryptedNote);
+        WifiEntry decodedEntry = new WifiEntry(ID, decryptedName, decryptedWifiName, decryptedWifiPassword, decryptedConfigURL, decryptedAdminPassword, decryptedNote);
 
         return decodedEntry;
     }
 
     public static SecureNoteEntry decryptNoteEntry(SecureNoteEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        int ID = entry.getEntryId();
         String decryptedName = EncryptionLogic.decrypt(algorithm, entry.getName(), key, iv);
         String decryptedSubject = EncryptionLogic.decrypt(algorithm, entry.getNoteSubject(), key, iv);
         String decryptedNote = EncryptionLogic.decrypt(algorithm, entry.getNoteContent(), key, iv);
 
-        SecureNoteEntry decodedEntry = new SecureNoteEntry(decryptedName, decryptedSubject, decryptedNote);
+        SecureNoteEntry decodedEntry = new SecureNoteEntry(ID, decryptedName, decryptedSubject, decryptedNote);
 
         return decodedEntry;
     }
@@ -136,7 +145,7 @@ public class EncryptionBuffer {
         String encryptedCVC = EncryptionLogic.encrypt(algorithm, entry.getCvcCode(), key, iv);
         String encryptedNote = EncryptionLogic.encrypt(algorithm, entry.getNote(), key, iv);
 
-        CardEntry encodedEntry = new CardEntry(encryptedName, encryptedCardHolder, encryptedCardNumber, encryptedExpireMonth, encryptedExpireYear, encryptedCVC, encryptedNote);
+        CardEntry encodedEntry = new CardEntry(0, encryptedName, encryptedCardHolder, encryptedCardNumber, encryptedExpireMonth, encryptedExpireYear, encryptedCVC, encryptedNote);
 
         EntryDAOImpl.insertCardEntry(encodedEntry, type);
     }
@@ -151,7 +160,7 @@ public class EncryptionBuffer {
         String encryptedWifiAdminPass = EncryptionLogic.encrypt(algorithm, entry.getWifiAdminPassword(), key, iv);
         String encryptedNote = EncryptionLogic.encrypt(algorithm, entry.getNote(), key, iv);
 
-        WifiEntry encodedEntry = new WifiEntry(encryptedName, encryptedWifiName, encryptedWifiPassword, encryptedWifiURL, encryptedWifiAdminPass, encryptedNote);
+        WifiEntry encodedEntry = new WifiEntry(0, encryptedName, encryptedWifiName, encryptedWifiPassword, encryptedWifiURL, encryptedWifiAdminPass, encryptedNote);
 
         EntryDAOImpl.insertWifiEntry(encodedEntry, type);
     }
@@ -163,16 +172,43 @@ public class EncryptionBuffer {
         String encryptedSubject = EncryptionLogic.encrypt(algorithm, entry.getNoteSubject(), key, iv);
         String encryptedNote = EncryptionLogic.encrypt(algorithm, entry.getNoteContent(), key, iv);
 
-        SecureNoteEntry encodedEntry = new SecureNoteEntry(encryptedName, encryptedSubject, encryptedNote);
+        SecureNoteEntry encodedEntry = new SecureNoteEntry(0, encryptedName, encryptedSubject, encryptedNote);
 
         EntryDAOImpl.insertSecureNoteEntry(encodedEntry, type);
     }
 
     public static void deleteEntry(DisplayableEntry entry) throws SQLException {
         int entryType = entry.getType();
-        String sql = "DELETE FROM AccountEntry WHERE id = ?";
+        System.out.println("entry type about to be deleted: " + entryType);
 
-        EntryDAOImpl.delete(entry, sql);
+        switch (entryType) {
+            case 1:
+                String AccountDeletetionSql = "DELETE FROM AccountEntry WHERE id = ?";
+                EntryDAOImpl.delete(entry, AccountDeletetionSql);
+                System.out.println("type 1 accountentry deleted");
+                break;
+            case 2:
+                String CardDeleteSql = "DELETE FROM CardEntry WHERE id = ?";
+                EntryDAOImpl.delete(entry, CardDeleteSql);
+                System.out.println("Type 2 cardentry deleted");
+                break;
+            case 3:
+                String WifiDeletionSql = "DELETE FROM WifiEntry WHERE id = ?";
+                EntryDAOImpl.delete(entry, WifiDeletionSql);
+                System.out.println("Type 3 wifientry deleted");
+                break;
+            case 4:
+                String NoteDeletionSql = "DELETE FROM NoteEntry WHERE id = ?";
+                EntryDAOImpl.delete(entry, NoteDeletionSql);
+                System.out.println("Type 4 noteEntry deleted");
+                break;
+        }
+
+
+
+
+
+
         System.out.println(" ");
         System.out.println("This entry is now deleted");
 

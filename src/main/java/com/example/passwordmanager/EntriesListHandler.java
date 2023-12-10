@@ -83,7 +83,7 @@ public class EntriesListHandler {
     // removes this category's all current passwordEntries and adds them to the list of individual passwordEntries, then deletes this category
     public void deleteCategoryEntry(CategoryEntry categoryEntry) {
         // exceptions..
-        List<PasswordEntry> currentPasswordEntries = categoryEntry.getPasswordEntries();
+        List<PasswordEntry> currentPasswordEntries = new LinkedList<>(categoryEntry.getPasswordEntries());
         System.out.println(currentPasswordEntries); //remove
         if (!currentPasswordEntries.isEmpty()) {
             for (PasswordEntry passwordEntry : currentPasswordEntries) {
@@ -139,6 +139,8 @@ public class EntriesListHandler {
         System.out.println(handler.getAllEntries());
         System.out.println(handler.getCategories());
         handler.deleteCategoryEntry(c);
+        System.out.println(handler.getCategories());
+        System.out.println(handler.getAllEntries());
     }
 }
 

@@ -62,8 +62,10 @@ public class MainViewController implements Initializable {
     @FXML private TextField categoryName;
     @FXML private TextField categoryEditName;
     @FXML private Label addToCategory;
+    @FXML private Label addToCategoryExtended;
     @FXML private AnchorPane extended;
     @FXML private AnchorPane original;
+    @FXML private ImageView detailClose;
 
     private fxmlHelper helper = fxmlHelper.getInstance();
     private DetailViewItem currentDetailItem;
@@ -176,6 +178,7 @@ public class MainViewController implements Initializable {
 
     public void openCategoryChooserExtended () {
         openCategoryChooser();
+        setAddToCategoryTextExtended();
         extended.toFront();
     }
 
@@ -193,6 +196,14 @@ public class MainViewController implements Initializable {
         }
         else
             addToCategory.setText("");
+    }
+
+    public void setAddToCategoryTextExtended() {
+        if (entriesHandler.getCategories().size() > 1) {
+            addToCategoryExtended.setText("Add To");
+        }
+        else
+            addToCategoryExtended.setText("");
     }
 
     public void openCategoryEdit(CategoryEntry category) {
@@ -279,6 +290,7 @@ public class MainViewController implements Initializable {
         }
         editButton.setVisible(true);
         removeButton.setVisible(true);
+        detailClose.setVisible(true);
         currentDetailItem = detailViewItem;
     }
 
@@ -296,10 +308,12 @@ public class MainViewController implements Initializable {
         updateEntryList();
     }
 
+    @FXML
     private void clearDetailView () {
         detailViewFlowPane.getChildren().clear();
         editButton.setVisible(false);
         removeButton.setVisible(false);
+        detailClose.setVisible(false);
     }
 
     @FXML

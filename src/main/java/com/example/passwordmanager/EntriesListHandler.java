@@ -77,6 +77,9 @@ public class EntriesListHandler {
     // deletes a passwordEntry
     public void deletePasswordEntry(PasswordEntry passwordEntry) {
         // raise exception if entry not in list, or do something else to let client code know
+        if (passwordEntry.isInCategory()) {
+            removePasswordEntryFromCategory(passwordEntry.getCategory(), passwordEntry);
+        }
         passwordEntries.remove(passwordEntry);
     }
 

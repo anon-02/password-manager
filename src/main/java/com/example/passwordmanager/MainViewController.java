@@ -112,7 +112,7 @@ public class MainViewController implements Initializable {
 
     protected void updateEntryList () throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         allEntrysFlowPane.getChildren().clear();
-        for (DisplayableEntry entry : entriesHandler.getAllEntries()) { // Temporary just for proof of concept
+        for (DisplayableEntry entry : entriesHandler.getAllEntries()) {
             allEntrysFlowPane.getChildren().add(EntryListItemFactory.makeEntryListItem(entry, this));
         }
     }

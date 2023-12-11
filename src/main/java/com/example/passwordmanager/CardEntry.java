@@ -82,4 +82,17 @@ public class CardEntry extends PasswordEntry {
     public void setNote(String newString) {
         this.note = newString;
     }
+
+    @Override
+    public String getSearchTerm() {
+        String searchTerm = "";
+        String category;
+        searchTerm += getName() + "Card";
+        try {
+            category = getCategory().getName();
+        } catch (NullPointerException e) {
+            category = "";
+        }
+        return (searchTerm + category).toLowerCase().replace(" ", "");
+    }
 }

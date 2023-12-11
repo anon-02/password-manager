@@ -8,4 +8,5 @@ public interface DisplayableEntry {
     String getName();
     String getUnderName();
     Image getImage() throws IOException;
+    String getSearchTerm();
 }

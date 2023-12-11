@@ -33,4 +33,17 @@ public class SecureNoteEntry extends PasswordEntry {
     public void setName(String s) {this.name = s;}
     public void setNoteSubject(String s) {this.noteSubject = s;}
     public void setNoteContent(String s) {this.noteContent = s;}
+
+    @Override
+    public String getSearchTerm() {
+        String searchTerm = "";
+        String category;
+        searchTerm += getName() + "Secure note";
+        try {
+            category = getCategory().getName();
+        } catch (NullPointerException e) {
+            category = "";
+        }
+        return (searchTerm + category).toLowerCase().replace(" ", "");
+    }
 }

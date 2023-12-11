@@ -67,9 +67,92 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
 
     @Override
     public int update(DisplayableEntry entry) throws SQLException {
-
-
         return 0;
+    }
+
+    public int updateAccountEntry(AccountEntry entry) throws SQLException {
+        Connection connection = DatabaseHandler.DBconnect();
+        String sql = "UPDATE AccountEntry SET Name = ?, Username = ?, Password = ?, Note = ? WHERE ID = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, entry.getName());
+        System.out.println( "the entry name about to be changed: '"+entry.getName()+ "'");
+        preparedStatement.setString(2, entry.getUsername());
+        System.out.println("the entry username about to be changed '" +entry.getUsername()+"'");
+        preparedStatement.setString(3, entry.getPassword());
+        preparedStatement.setString(4, entry.getNote());
+        preparedStatement.setInt(5, entry.getEntryId());
+
+        int result = preparedStatement.executeUpdate();
+        DatabaseHandler.closePreparedStatement(preparedStatement);
+        DatabaseHandler.closeConnection(connection);
+        System.out.println("Successful entry update " + result);
+
+        return result;
+    }
+
+    public int updateCardEntry(CardEntry entry) throws SQLException {
+        Connection connection = DatabaseHandler.DBconnect();
+        String sql = "UPDATE CardEntry SET Name = ?, CardHolder = ?, CardNumber = ?, expireMonth = ?, expireYear = ?, CVC = ?, Note = ? WHERE ID = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, entry.getName());
+        preparedStatement.setString(2, entry.getCardHolder());
+        preparedStatement.setString(3, entry.getCardNumber());
+        preparedStatement.setString(4, entry.getExpireMonth());
+        preparedStatement.setString(5, entry.getExpireYear());
+        preparedStatement.setString(6, entry.getCvcCode());
+        preparedStatement.setString(7, entry.getNote());
+        preparedStatement.setInt(8, entry.getEntryId());
+
+        int result = preparedStatement.executeUpdate();
+        DatabaseHandler.closePreparedStatement(preparedStatement);
+        DatabaseHandler.closeConnection(connection);
+        System.out.println("Successful entry update " + result);
+
+        return result;
+    }
+
+    public int updateWifiEntry(WifiEntry entry) throws SQLException {
+        Connection connection = DatabaseHandler.DBconnect();
+        String sql = "UPDATE WifiEntry SET Name = ?, WifiName = ?, WifiPassword = ?, ConfigURL = ?, AdminPassword = ?, Note = ? WHERE ID = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, entry.getName());
+        preparedStatement.setString(2, entry.getWifiName());
+        preparedStatement.setString(3, entry.getWifiPassword());
+        preparedStatement.setString(4, entry.getWifiURL());
+        preparedStatement.setString(5, entry.getWifiAdminPassword());
+        preparedStatement.setString(6, entry.getNote());
+        preparedStatement.setInt(7, entry.getEntryId());
+
+
+        int result = preparedStatement.executeUpdate();
+        DatabaseHandler.closePreparedStatement(preparedStatement);
+        DatabaseHandler.closeConnection(connection);
+        System.out.println("Successful entry update " + result);
+
+        return result;
+    }
+
+    public int updateNoteEntry(SecureNoteEntry entry) throws SQLException {
+        Connection connection = DatabaseHandler.DBconnect();
+        String sql = "UPDATE NoteEntry SET Name = ?, Subject = ?, Note = ? WHERE ID = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, entry.getName());
+        preparedStatement.setString(2, entry.getNoteSubject());
+        preparedStatement.setString(3, entry.getNoteContent());
+        preparedStatement.setInt(4, entry.getEntryId());
+
+        int result = preparedStatement.executeUpdate();
+        DatabaseHandler.closePreparedStatement(preparedStatement);
+        DatabaseHandler.closeConnection(connection);
+
+        System.out.println("Successful entry update " + result);
+        return result;
     }
 
     @Override
@@ -86,7 +169,6 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()) {
-            System.out.println("the ID for the acc entry "+ resultSet.getInt("ID"));
             AccountEntry newAccEntry = new AccountEntry(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("Username"), resultSet.getString("Password"), resultSet.getString("Note"));
             entryList.add(newAccEntry);
         }

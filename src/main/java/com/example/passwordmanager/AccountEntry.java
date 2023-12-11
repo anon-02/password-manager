@@ -9,7 +9,7 @@ import java.util.Objects;
 public class AccountEntry extends PasswordEntry implements PasswordType {
 
     private String name, username, password, note;
-    private Image image;
+    private final fxmlHelper helper = fxmlHelper.getInstance();
 
 
     public AccountEntry(String name, String username, String password, String note) {
@@ -40,9 +40,7 @@ public class AccountEntry extends PasswordEntry implements PasswordType {
         return this.note;
     }
 
-    public Image getImage() throws IOException {
-        return new Image(Objects.requireNonNull(getClass().getResource("Images/user.png")).openStream());
-    }
+    public Image getImage() throws IOException { return helper.getImage("user.png"); }
 
     public void setName(String newString) {
         this.name = newString;

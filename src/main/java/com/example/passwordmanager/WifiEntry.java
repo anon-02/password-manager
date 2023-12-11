@@ -8,6 +8,7 @@ import java.util.Objects;
 
 public class WifiEntry extends PasswordEntry {
     private String name, wifiName, wifiPassword, wifiURL, wifiAdminPassword, note;
+    private final fxmlHelper helper = fxmlHelper.getInstance();
 
 
     public WifiEntry(String name, String wifiName, String wifiPassword, String wifiURL, String wifiAdminPassword, String note) {
@@ -41,7 +42,7 @@ public class WifiEntry extends PasswordEntry {
 
     @Override
     public Image getImage() throws IOException {
-        return new Image(Objects.requireNonNull(getClass().getResource("Images/wifi.png")).openStream());
+        return helper.getImage("wifi.png");
     }
 
     public String toString() {

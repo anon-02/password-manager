@@ -9,6 +9,7 @@ import java.util.Objects;
 public class SecureNoteEntry extends PasswordEntry {
 
     private String name, noteSubject, noteContent;
+    private final fxmlHelper helper = fxmlHelper.getInstance();
 
     public SecureNoteEntry(String name, String noteSubject, String noteContent) {
         this.name = name;
@@ -27,7 +28,7 @@ public class SecureNoteEntry extends PasswordEntry {
 
     @Override
     public Image getImage() throws IOException {
-        return new Image(Objects.requireNonNull(getClass().getResource("Images/note.png")).openStream());
+        return helper.getImage("note.png");
     }
 
     public void setName(String s) {this.name = s;}

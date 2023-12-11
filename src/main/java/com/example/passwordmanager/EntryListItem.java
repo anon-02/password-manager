@@ -26,11 +26,12 @@ public class EntryListItem extends AnchorPane {
 
     MainViewController parentController;
     private PasswordEntry entry;
+    private final fxmlHelper helper = fxmlHelper.getInstance();
 
 
     // This constructor is used for testing only
     public EntryListItem(PasswordEntry entry, MainViewController controller) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/entry_listitem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(helper.getFxmlFile("entry_listitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

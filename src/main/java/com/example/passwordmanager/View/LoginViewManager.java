@@ -1,7 +1,9 @@
-package com.example.passwordmanager;
+package com.example.passwordmanager.View;
 
+import com.example.passwordmanager.Controller.LoginViewController;
 import com.example.passwordmanager.Model.*;
 import com.example.passwordmanager.Model.dbStuff.SessionManager;
+import com.example.passwordmanager.fxmlHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,7 +17,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class LoginViewController implements Initializable {
+public class LoginViewManager implements Initializable {
 
     @FXML private AnchorPane baseAnchorPane;
     @FXML private TextField email, masterPasswordInvisible, masterPasswordVisible;
@@ -23,13 +25,8 @@ public class LoginViewController implements Initializable {
     @FXML private ImageView eyeImageView;
 
     private fxmlHelper helper = fxmlHelper.getInstance();
-
-    // TODO private LoginService loginService
-    private LoginService loginService = new LoginService();
-    public LoginViewController() {
-        this.loginService = new LoginService();
-    }
     private PasswordFieldManager manager;
+    private LoginViewController controller = new LoginViewController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,23 +37,12 @@ public class LoginViewController implements Initializable {
     }
 
     @FXML public void unlockButtonPressed() throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
-        String userMailInput = email.getText();
-        String userMasterPassInput = manager.getPassword();
-
-        System.out.println("user '"+userMailInput + "' trying to log in");
-        System.out.println("users pass : "+ userMasterPassInput);
-
-        loginService.LogIn(userMailInput, userMasterPassInput);
-
-        User thisUser = SessionManager.getCurrentUser();
-        System.out.println(thisUser + " is currently logged in");
-
-
-
-        helper.navigateTo(baseAnchorPane, "main_view.fxml");
+        controller.handleUnlockButtonPressed(baseAnchorPane, email.getText(), manager.getPassword());
     }
 
 
     @FXML public void createUserButtonPressed() {
-        helper.navigateTo(baseAnchorPane, "create_user_view.fxml");}
+        controller.handleCreateUserButtonPressed(baseAnchorPane);
+    }
+
 }

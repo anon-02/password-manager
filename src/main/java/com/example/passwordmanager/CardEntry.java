@@ -9,7 +9,7 @@ import java.util.Objects;
 public class CardEntry extends PasswordEntry {
 
     private String name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note;
-    private Image image;
+    private final fxmlHelper helper = fxmlHelper.getInstance();
 
 
     public CardEntry(String name, String cardHolder, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
@@ -51,9 +51,7 @@ public class CardEntry extends PasswordEntry {
         return this.note;
     }
 
-    public Image getImage() throws IOException {
-        return new Image(Objects.requireNonNull(getClass().getResource("Images/credit-card.png")).openStream());
-    }
+    public Image getImage() throws IOException {return helper.getImage("credit-card.png");}
 
     public void setName(String newString) {
         this.name = newString;

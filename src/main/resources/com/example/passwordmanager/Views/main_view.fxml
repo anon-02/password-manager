@@ -99,7 +99,7 @@
                                     <Image url="@../Images/close.png" />
                                  </image>
                               </ImageView>
-                              <ScrollPane layoutX="35.0" layoutY="205.0" prefHeight="230.0" prefWidth="415.0" stylesheets="@../CSS/scrollpane2.css">
+                              <ScrollPane layoutX="35.0" layoutY="205.0" prefHeight="230.0" prefWidth="430.0" stylesheets="@../CSS/scrollpane2.css">
                                  <content>
                                     <FlowPane fx:id="addToFlowPane" prefHeight="227.0" prefWidth="407.0" styleClass="background" stylesheets="@../CSS/main_view.css" />
                                  </content>
@@ -114,7 +114,7 @@
                         <AnchorPane fx:id="original" prefHeight="400.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css">
                            <children>
                               <Label fx:id="addToCategory" layoutX="50.0" layoutY="70.0" prefHeight="18.0" prefWidth="142.0" styleClass="text-field-name" stylesheets="@../CSS/login_createUser_view.css" text="Add to " />
-                              <ScrollPane layoutX="35.0" layoutY="85.0" prefHeight="400.0" prefWidth="415.0" stylesheets="@../CSS/scrollpane2.css">
+                              <ScrollPane layoutX="35.0" layoutY="85.0" prefHeight="400.0" prefWidth="430.0" stylesheets="@../CSS/scrollpane2.css">
                                  <content>
                                     <FlowPane fx:id="chooseCategoryFlowPane" prefHeight="394.0" prefWidth="407.0" styleClass="background" stylesheets="@../CSS/main_view.css" />
                                  </content>

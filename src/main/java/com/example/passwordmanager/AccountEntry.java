@@ -71,4 +71,16 @@ public class AccountEntry extends PasswordEntry implements PasswordType {
                 '}';
     }
 
+    @Override
+    public String getSearchTerm() {
+        String searchTerm = "";
+        String category;
+        searchTerm += getName() + "Account";
+        try {
+            category = getCategory().getName();
+        } catch (NullPointerException e) {
+            category = "";
+        }
+        return (searchTerm + category).toLowerCase().replace(" ", "");
+    }
 }

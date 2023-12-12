@@ -26,6 +26,7 @@ import java.sql.SQLException;
 
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -104,15 +105,46 @@ public class MainViewController implements Initializable {
         searchTextField.setOnKeyReleased(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 System.out.println("Search: " + searchTextField.getText());
-                //handleSearchAction(); TODO implement search
+                try {
+                    handleSearchAction(searchTextField.getText());
+                } catch (InvalidAlgorithmParameterException | SQLException | NoSuchPaddingException |
+                         IllegalBlockSizeException | IOException | NoSuchAlgorithmException | BadPaddingException |
+                         InvalidKeyException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
 
+    // Iterates through all entries, creates a list of entries that matches the search term.
+    // If the search term is empty, show all entries.
+    private void handleSearchAction(String s) throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        String searchTerm = s.replace(" ", "").toLowerCase();
+
+        ArrayList<DisplayableEntry> matchingEntries = new ArrayList<>();
+        if (searchTerm.isEmpty()) {
+            updateEntryList();
+        } else {
+            for (DisplayableEntry entry : entriesHandler.getAllEntries()) {
+                System.out.println(entry.getSearchTerm());
+                if (entry.getSearchTerm().contains(searchTerm.toLowerCase())) {
+                    matchingEntries.add(entry);
+                }
+            }
+        }
+        updateEntryList(matchingEntries);
+    }
 
     protected void updateEntryList () throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         allEntrysFlowPane.getChildren().clear();
-        for (DisplayableEntry entry : entriesHandler.getAllEntries()) { // Temporary just for proof of concept
+        for (DisplayableEntry entry : entriesHandler.getAllEntries()) {
+            allEntrysFlowPane.getChildren().add(EntryListItemFactory.makeEntryListItem(entry, this));
+        }
+    }
+
+    protected void updateEntryList (ArrayList<DisplayableEntry> array) throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        allEntrysFlowPane.getChildren().clear();
+        for (DisplayableEntry entry : array) {
             allEntrysFlowPane.getChildren().add(EntryListItemFactory.makeEntryListItem(entry, this));
         }
     }

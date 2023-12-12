@@ -47,6 +47,11 @@ public class CategoryEntry implements DisplayableEntry {
         return null;
     }
 
+    @Override
+    public String getSearchTerm() {
+        return null;
+    }
+
     public boolean isOpen() {
         return isOpen;
     }

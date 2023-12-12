@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="categoryEntrySmallAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="410.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="8.0" onMouseClicked="#onClick" prefHeight="60.0" prefWidth="390.0" styleClass="anchor-pane-foreground" stylesheets="@../CSS/entry_listitem.css">
+         <children>
+            <Label fx:id="categoryName" layoutX="20.0" layoutY="17.0" prefHeight="20.0" prefWidth="178.0" styleClass="entry-name" text="Category" />
+            <Label fx:id="nrOfPasswords" layoutX="280.0" layoutY="20.0" prefHeight="20.0" prefWidth="98.0" styleClass="under-last-modified" stylesheets="@../CSS/entry_listitem.css" text="5 passwords" textAlignment="RIGHT" textFill="#971414">
+               <font>
+                  <Font size="42.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>

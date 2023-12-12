@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="entryAnchorPane" prefHeight="62.0" prefWidth="716.0" styleClass="anchor-pane-background" stylesheets="@../CSS/entry_listitem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="36.0" layoutY="6.0" onMouseClicked="#onClick" prefHeight="50.0" prefWidth="640.0" styleClass="anchor-pane-foreground" stylesheets="@../CSS/entry_listitem.css">
+         <children>
+            <ImageView fx:id="iconImageView" fitHeight="32.0" fitWidth="32.0" layoutX="13.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/door-key.png" />
+               </image></ImageView>
+            <Label fx:id="nameLabel" layoutX="55.0" layoutY="6.0" prefHeight="20.0" prefWidth="191.0" styleClass="entry-name" text="Gmail (timcarlsson)" />
+            <Label fx:id="underNameLabel" layoutX="55.0" layoutY="24.0" prefHeight="17.0" prefWidth="191.0" styleClass="text-under-name" stylesheets="@../CSS/entry_listitem.css" text="timcarlsson0203@gmail.com" textFill="#e41e1e" />
+            <Label fx:id="lastModifiedLabel" layoutX="480.0" layoutY="6.0" prefHeight="20.0" prefWidth="144.0" styleClass="last-modified-text" text="Last modified" />
+            <Label fx:id="modifiedLabel" layoutX="480.0" layoutY="24.0" prefHeight="17.0" prefWidth="144.0" styleClass="under-last-modified" stylesheets="@../CSS/entry_listitem.css" text="Today at 13:50" textAlignment="RIGHT" textFill="#971414">
+               <font>
+                  <Font size="42.0" />
+               </font>
+            </Label>
+            <Button fx:id="addToCategoryButton" layoutX="470.0" layoutY="9.0" mnemonicParsing="false" onAction="#categoryButtonClicked" onMouseEntered="#categoryHoverIn" onMouseExited="#categoryHoverOut" styleClass="add-button" stylesheets="@../CSS/main_view.css">
+               <graphic>
+                  <ImageView fx:id="categoryButton" fitHeight="24.0" fitWidth="24.0" onMouseExited="#categoryHoverOut" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/category-icon-5.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>

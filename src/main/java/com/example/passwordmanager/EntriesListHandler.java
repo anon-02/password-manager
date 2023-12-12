@@ -100,7 +100,11 @@ public class EntriesListHandler {
         return categoryEntries;
     }
 
-    public List<DisplayableEntry> getAllEntries() {
+    public List<PasswordEntry> getAllPasswordEntries() {
+        return allPasswordEntries;
+    }
+
+    public List<DisplayableEntry> displayEntries() {
         List showList = new LinkedList<>();
         for (CategoryEntry categoryEntry : categoryEntries) {
             showList.add(categoryEntry);
@@ -139,11 +143,11 @@ public class EntriesListHandler {
         list.add(p3);
 
         EntriesListHandler handler = new EntriesListHandler(list);
-        System.out.println(handler.getAllEntries());
+        System.out.println(handler.displayEntries());
         System.out.println(handler.getCategories());
         handler.deleteCategoryEntry(c);
         System.out.println(handler.getCategories());
-        System.out.println(handler.getAllEntries());
+        System.out.println(handler.displayEntries());
     }
 }
 

@@ -120,24 +120,24 @@ public class MainViewController implements Initializable {
     // If the search term is empty, show all entries.
     private void handleSearchAction(String s) throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         String searchTerm = s.replace(" ", "").toLowerCase();
-
-        ArrayList<DisplayableEntry> matchingEntries = new ArrayList<>();
         if (searchTerm.isEmpty()) {
             updateEntryList();
         } else {
-            for (DisplayableEntry entry : entriesHandler.getAllEntries()) {
-                System.out.println(entry.getSearchTerm());
-                if (entry.getSearchTerm().contains(searchTerm.toLowerCase())) {
-                    matchingEntries.add(entry);
-                }
+            List<DisplayableEntry> currentPasswordEntries = new LinkedList<>(entriesHandler.getAllPasswordEntries());
+            displayResult(Searcher.search(currentPasswordEntries, searchTerm));
             }
-        }
-        updateEntryList(matchingEntries);
+    }
+
+    private void displayResult(ArrayList<DisplayableEntry> matchingEntries) throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        if (!(matchingEntries.isEmpty()))
+            updateEntryList(matchingEntries);
+        else
+            updateEntryList();
     }
 
     protected void updateEntryList () throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         allEntrysFlowPane.getChildren().clear();
-        for (DisplayableEntry entry : entriesHandler.getAllEntries()) {
+        for (DisplayableEntry entry : entriesHandler.displayEntries()) {
             allEntrysFlowPane.getChildren().add(EntryListItemFactory.makeEntryListItem(entry, this));
         }
     }

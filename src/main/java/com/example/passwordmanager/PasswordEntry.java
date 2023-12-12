@@ -25,15 +25,4 @@ public abstract class PasswordEntry implements DisplayableEntry {    // add comm
         return this.category;
     }
 
-    public void delete() {
-        if (this.category != null) {
-            this.category.removePasswordEntry(this);
-        }
-        else {
-            // normal delete,from entriesHandler (?)
-        }
-    };
-
-
-
 }

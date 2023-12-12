@@ -72,14 +72,4 @@ public class CategoryEntry implements DisplayableEntry {
         return passwordEntries.size();
     }
 
-
-    public void delete() {
-        // if passwordEntries is not null...
-        for (PasswordEntry passwordEntry : passwordEntries) {        // removes this category's all current passwordEntries from the category, then removes this category from  the user's list of categories
-      //    this.handler.removePasswordEntryFromCategory(this, passwordEntry);
-        }
-        // else
-      //this.handler.deleteCategoryEntry(this);
-    }
-
 }

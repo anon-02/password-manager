@@ -97,11 +97,11 @@ public class EntriesListHandler {
     }
 
     public List<CategoryEntry> getCategories() {
-        return categoryEntries;
+        return new LinkedList<>(categoryEntries);
     }
 
     public List<PasswordEntry> getAllPasswordEntries() {
-        return allPasswordEntries;
+        return new LinkedList<>(allPasswordEntries);
     }
 
     public List<DisplayableEntry> displayEntries() {

@@ -111,9 +111,10 @@ public class CreateAccount extends AnchorPane implements Generator{
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         if (isFieldsComplete()) {
-
-            AccountEntry newEntry = new AccountEntry(name.getText(), username.getText(), manager.getPassword(), note.getText());
+            // TODO se över detta
+            AccountEntry newEntry = new AccountEntry(0, name.getText(), username.getText(), manager.getPassword(), note.getText());
             parentController.addPasswordEntry(newEntry);
+            EncryptionBuffer.insertAccountEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
     }

@@ -1,6 +1,7 @@
 package com.example.passwordmanager;
 
 import com.example.passwordmanager.Model.PasswordFieldManager;
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.Password.PassphraseGenerator;
 import com.example.passwordmanager.Password.PasswordGenerator;
 import javafx.event.EventHandler;
@@ -15,7 +16,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class DetailViewItem extends AnchorPane implements Generator{
@@ -76,6 +84,7 @@ public class DetailViewItem extends AnchorPane implements Generator{
         this.accountUsername.setText(entry.getUsername());
         manager.setPassword(entry.getPassword());
         this.accountNote.setText(entry.getNote());
+
 
         accountFields = new TextField[]{entryAccountName, accountUsername, accountPasswordInvisible, accountPasswordVisible};
 
@@ -211,15 +220,40 @@ public class DetailViewItem extends AnchorPane implements Generator{
     }
 
     // Updates the current entry viewed in the detail
-    public void updateDetailEntry() {
+    public void updateDetailEntry() throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         if (currentEntry instanceof AccountEntry) {
-            // TODO update current AccountEntry
+
+            // make a new entry instance and send the edited data to the db
+            AccountEntry updateEntry = new AccountEntry(currentEntry.getEntryId(), entryAccountName.getText(), accountUsername.getText(), manager.getPassword(), accountNote.getText());
+            System.out.println("updated entry: ");
+            System.out.println(updateEntry);
+            EncryptionBuffer.updateAccountEntry(updateEntry);
+
         } else if (currentEntry instanceof CardEntry) {
-            // TODO update current CardEntry
+
+            CardEntry updateEntry = new CardEntry(currentEntry.getEntryId(), entryCardName.getText(), cardHolder.getText(), cardNumber.getText(), cardMonth.getText(), cardYear.getText(), manager.getPassword(), cardNote.getText());
+
+            System.out.println("updated entry: ");
+            System.out.println(updateEntry);
+            EncryptionBuffer.updateCardEntry(updateEntry);
+
         } else if (currentEntry instanceof WifiEntry) {
-            // TODO update current WifiEntry
+
+            WifiEntry updateEntry = new WifiEntry(currentEntry.getEntryId(), entryWifiName.getText(), wifiName.getText(), manager.getPassword(), wifiConfigURL.getText(), wifiAdminPassword.getText(), wifiNote.getText());
+
+            System.out.println("updated entry (detailview): ");
+            System.out.println(updateEntry);
+            EncryptionBuffer.updateWifiEntry(updateEntry);
+
         } else if (currentEntry instanceof SecureNoteEntry) {
             // TODO update current SecureNoteEntry
+
+            SecureNoteEntry updateEntry = new SecureNoteEntry(currentEntry.getEntryId(), entryNoteName.getText(), noteSubject.getText(), noteContent.getText());
+
+            System.out.println("updated entry (detailview): ");
+            System.out.println(updateEntry);
+            EncryptionBuffer.updateNoteEntry(updateEntry);
+
         }
     }
 
@@ -243,4 +277,8 @@ public class DetailViewItem extends AnchorPane implements Generator{
         }
         manager.setPassword(generatedPassword);
     }
+
+    public DisplayableEntry getEntry () {
+        System.out.println("current entry about to be selected in detailview "+ currentEntry );
+        return currentEntry;}
 }

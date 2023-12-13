@@ -333,11 +333,15 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    public void removeButtonPressed () throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void removeButtonPressed() throws SQLException {
         // TODO handle removal of entry with database
-        entriesHandler.deletePasswordEntry(passwordEntryEditing);
+        DisplayableEntry currentEntry = currentDetailItem.getEntry();
+        System.out.println("the selected entry about to be deleted "+ currentEntry);
         clearDetailView();
+        EncryptionBuffer.deleteEntry(currentEntry);
         updateEntryList();
+        // TODO Kolla över detta
+        entriesHandler.deletePasswordEntry(passwordEntryEditing);
     }
 
     @FXML
@@ -354,6 +358,7 @@ public class MainViewController implements Initializable {
     {
         toggleEditingMode();
         updateEntryList();
+
 
         editPane.toFront();
     }

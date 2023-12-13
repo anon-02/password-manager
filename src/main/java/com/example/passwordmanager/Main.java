@@ -1,6 +1,7 @@
 package com.example.passwordmanager;
 
 import com.example.passwordmanager.Model.dbStuff.*;
+import com.example.passwordmanager.Model.dbStuff.EntryDAOImplementation.EntryDAOImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

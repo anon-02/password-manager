@@ -9,16 +9,26 @@ import java.util.Objects;
 public class SecureNoteEntry extends PasswordEntry {
 
     private String name, noteSubject, noteContent;
+    int type = 4;
+    int entryId;
 
-    public SecureNoteEntry(String name, String noteSubject, String noteContent) {
+    public SecureNoteEntry(int entryId, String name, String noteSubject, String noteContent) {
+        this.entryId = entryId;
         this.name = name;
         this.noteSubject = noteSubject;
         this.noteContent = noteContent;
+
     }
 
     public String getName() {return this.name;}
     public String getNoteSubject() {return this.noteSubject;}
     public String getNoteContent() {return this.noteContent;}
+    public int getType() {return type;}
+
+    @Override
+    public int getEntryId() {
+        return entryId;
+    }
 
     @Override
     public String getUnderName() {

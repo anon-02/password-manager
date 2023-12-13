@@ -10,9 +10,12 @@ public class CardEntry extends PasswordEntry {
 
     private String name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note;
     private Image image;
+    int entryId;
+    int type = 2;
 
 
-    public CardEntry(String name, String cardHolder, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
+    public CardEntry(int entryId, String name, String cardHolder, String cardNumber, String expireMonth, String expireYear, String cvcCode, String note) {
+        this.entryId = entryId;
         this.name = name;
         this.cardHolder = cardHolder;
         this.cardNumber = cardNumber;
@@ -20,6 +23,7 @@ public class CardEntry extends PasswordEntry {
         this.expireYear = expireYear;
         this.cvcCode = cvcCode;
         this.note = note;
+
         //this.modified = timeCreated; TODO implement timeModified
     }
 
@@ -49,6 +53,13 @@ public class CardEntry extends PasswordEntry {
 
     public String getNote() {
         return this.note;
+    }
+
+    public int getType() { return type;}
+
+    @Override
+    public int getEntryId() {
+        return entryId;
     }
 
     public Image getImage() throws IOException {

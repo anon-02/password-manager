@@ -2,6 +2,7 @@ package com.example.passwordmanager;
 
 import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,12 +28,12 @@ public class CreateWifi extends AnchorPane {
     @FXML Button saveButton;
     @FXML ImageView eyeImageView;
 
-    private MainViewController parentController;
+    private MainViewManager parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
     private PasswordFieldManager manager;
 
 
-    public CreateWifi(MainViewController controller) {
+    public CreateWifi(MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-wifi.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

@@ -1,10 +1,8 @@
 package com.example.passwordmanager;
-import com.example.passwordmanager.CategoryEntry;
-import com.example.passwordmanager.DisplayableEntry;
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,12 +27,12 @@ public class CategoryEntryListItem extends AnchorPane {
     @FXML private ImageView downwardsArrow;
     @FXML private ImageView edit;
 
-    MainViewController parentController;
+    MainViewManager parentController;
 
     private CategoryEntry categoryEntry;
 
 
-    public CategoryEntryListItem(CategoryEntry categoryEntry, MainViewController controller) throws IOException {
+    public CategoryEntryListItem(CategoryEntry categoryEntry, MainViewManager controller) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/category_entry.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

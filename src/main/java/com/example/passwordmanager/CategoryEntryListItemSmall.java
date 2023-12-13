@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -23,12 +24,12 @@ public class CategoryEntryListItemSmall extends AnchorPane {
     @FXML
     private Label nrOfPasswords;
 
-    MainViewController parentController;
+    MainViewManager parentController;
 
     private CategoryEntry categoryEntry;
     private PasswordEntry tempPasswordEntry;
 
-    public CategoryEntryListItemSmall(CategoryEntry categoryEntry, MainViewController controller) throws IOException {
+    public CategoryEntryListItemSmall(CategoryEntry categoryEntry, MainViewManager controller) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/categoryListItemLighter.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

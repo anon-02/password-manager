@@ -23,7 +23,7 @@ public class EntriesListHandler {
 
 
     public EntriesListHandler(List<DisplayableEntry> allEntries) {
-        allPasswordEntries = new LinkedList(allEntries);
+        allPasswordEntries = new LinkedList(EncryptionBuffer.retrieveEntries());
         passwordEntries = new LinkedList<>();
         categoryEntries = new LinkedList<>();
         addedEntries = new LinkedList<>();
@@ -123,7 +123,7 @@ public class EntriesListHandler {
 
     public void saveAllEntries() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         List<DisplayableEntry> newEntries = new LinkedList<>(addedEntries);
-        EncryptionBuffer.inserAllEntries(newEntries);
+        EncryptionBuffer.insertAllEntries(newEntries);
     }
 
     /*public static void main(String[] args) {

@@ -1,6 +1,7 @@
 package com.example.passwordmanager;
 
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -31,11 +32,11 @@ public class CreateCard extends AnchorPane {
     @FXML private ImageView cvcVisible;
     @FXML private FlowPane passwordGeneratorFlowPane;
 
-    private MainViewController parentController;
+    private MainViewManager parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
 
 
-    public CreateCard(MainViewController controller) {
+    public CreateCard(MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

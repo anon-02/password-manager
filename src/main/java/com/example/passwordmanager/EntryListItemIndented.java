@@ -1,6 +1,6 @@
 package com.example.passwordmanager;
 
-import com.example.passwordmanager.PasswordEntry;
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,11 +24,11 @@ public class EntryListItemIndented extends AnchorPane {
 
     @FXML private ImageView categoryButton;
 
-    MainViewController parentController;
+    MainViewManager parentController;
     private PasswordEntry entry;
 
 
-    public EntryListItemIndented(PasswordEntry entry, MainViewController controller) throws IOException {
+    public EntryListItemIndented(PasswordEntry entry, MainViewManager controller) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/entry_listitem_indented.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

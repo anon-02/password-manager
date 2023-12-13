@@ -4,11 +4,11 @@ import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.Password.PassphraseGenerator;
 import com.example.passwordmanager.Password.PasswordGenerator;
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -24,10 +24,9 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public class DetailViewItem extends AnchorPane implements Generator{
-    private MainViewController parentController;
+    private MainViewManager parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
 
     @FXML private AnchorPane baseAnchorPane;
@@ -67,7 +66,7 @@ public class DetailViewItem extends AnchorPane implements Generator{
     private DisplayableEntry currentEntry;
     private PasswordFieldManager manager;
 
-    public DetailViewItem(AccountEntry entry, MainViewController controller) {
+    public DetailViewItem(AccountEntry entry, MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_account.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -112,7 +111,7 @@ public class DetailViewItem extends AnchorPane implements Generator{
         cogImageView.setOnMouseClicked(cogClick);
     }
 
-    public DetailViewItem(CardEntry entry, MainViewController controller) {
+    public DetailViewItem(CardEntry entry, MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_card.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -143,7 +142,7 @@ public class DetailViewItem extends AnchorPane implements Generator{
         currentEntry = entry;
     }
 
-    public DetailViewItem(WifiEntry entry, MainViewController controller) {
+    public DetailViewItem(WifiEntry entry, MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_wifi.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -168,7 +167,7 @@ public class DetailViewItem extends AnchorPane implements Generator{
         currentEntry = entry;
     }
 
-    public DetailViewItem(SecureNoteEntry entry, MainViewController controller) {
+    public DetailViewItem(SecureNoteEntry entry, MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/detail_view_secure-note.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

@@ -4,6 +4,7 @@ import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.Password.PassphraseGenerator;
 import com.example.passwordmanager.Password.PasswordGenerator;
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -38,13 +39,13 @@ public class CreateAccount extends AnchorPane implements Generator{
     @FXML private Label passwordStrengthLabel;
 
 
-    private MainViewController parentController;
+    private MainViewManager parentController;
     private fxmlHelper model = fxmlHelper.getInstance();
     private PasswordFieldManager manager;
 
     private boolean passwordGeneratorShowing = false;
 
-    public CreateAccount(MainViewController controller) {
+    public CreateAccount(MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-account.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

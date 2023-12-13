@@ -1,5 +1,7 @@
-package com.example.passwordmanager;
+package com.example.passwordmanager.ViewManager;
 
+import com.example.passwordmanager.*;
+import com.example.passwordmanager.Controller.MainViewController;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,13 +27,12 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import java.security.spec.InvalidKeySpecException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MainViewController implements Initializable {
+public class MainViewManager implements Initializable {
 
     /* Home View */
     @FXML private AnchorPane mainAnchorPane;
@@ -74,16 +75,15 @@ public class MainViewController implements Initializable {
     private CategoryEntry categoryEditing;
     private PasswordEntry passwordEntryEditing;
 
-    EntriesListHandler entriesHandler;
+    public EntriesListHandler entriesHandler;
+    private MainViewController controller;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            entriesHandler = new EntriesListHandler(EncryptionBuffer.retrieveEntries());
-        } catch (SQLException | InvalidAlgorithmParameterException | NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
-            e.printStackTrace();
-        }
+        this.controller = new MainViewController();
+
+        entriesHandler = new EntriesListHandler(EncryptionBuffer.retrieveEntries());
 
         entryType.getItems().addAll(entryTypes);
         entryType.setValue(entryTypes[0]);
@@ -135,7 +135,7 @@ public class MainViewController implements Initializable {
             updateEntryList();
     }
 
-    protected void updateEntryList () throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void updateEntryList() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         allEntrysFlowPane.getChildren().clear();
         for (DisplayableEntry entry : entriesHandler.displayEntries()) {
             allEntrysFlowPane.getChildren().add(EntryListItemFactory.makeEntryListItem(entry, this));

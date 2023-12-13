@@ -1,6 +1,7 @@
 package com.example.passwordmanager;
 
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,10 +27,10 @@ public class CreateSecureNote extends AnchorPane {
     @FXML private TextArea noteContent;
     @FXML private Button saveButton;
 
-    private MainViewController parentController;
+    private MainViewManager parentController;
     private fxmlHelper model = fxmlHelper.getInstance();
 
-    public CreateSecureNote(MainViewController controller) {
+    public CreateSecureNote(MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/create-secure-note.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

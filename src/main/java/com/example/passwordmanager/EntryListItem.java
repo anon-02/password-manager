@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.ViewManager.MainViewManager;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +25,12 @@ public class EntryListItem extends AnchorPane {
     @FXML private Button addToCategoryButton;
     @FXML private ImageView categoryButton;
 
-    MainViewController parentController;
+    MainViewManager parentController;
     private PasswordEntry entry;
 
 
     // This constructor is used for testing only
-    public EntryListItem(PasswordEntry entry, MainViewController controller) throws IOException {
+    public EntryListItem(PasswordEntry entry, MainViewManager controller) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/entry_listitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

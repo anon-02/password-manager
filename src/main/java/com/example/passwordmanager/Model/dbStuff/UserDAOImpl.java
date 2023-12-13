@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
     // crud retrive
-    // TODO maybe remove
+    // TODO maybe remove, move to get
     @Override
     public User getUserByUsername(String username) throws SQLException {
         Connection connection = DatabaseHandler.DBconnect();
@@ -37,26 +37,6 @@ public class UserDAOImpl implements UserDAO {
         }
         return user;
     }
-
-    @Override
-    public User get(int id) throws SQLException {
-        return null;
-    }
-
-    // crud retrieve all
-    // TODO maybe remove
-    @Override
-    public List<User> getAll() throws SQLException {
-        return null;
-    }
-
-    // crud created / update
-    // TODO remove
-    @Override
-    public int save(User user) throws SQLException {
-        return 0;
-    }
-
 
     // crud create
     @Override

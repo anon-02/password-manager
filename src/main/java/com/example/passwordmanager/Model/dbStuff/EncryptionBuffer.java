@@ -3,6 +3,7 @@ package com.example.passwordmanager.Model.dbStuff;
 import com.example.passwordmanager.*;
 import com.example.passwordmanager.AccountEntry;
 import com.example.passwordmanager.CardEntry;
+import com.example.passwordmanager.Model.dbStuff.EntryDAOImplementation.*;
 import com.example.passwordmanager.SecureNoteEntry;
 import com.example.passwordmanager.WifiEntry;
 import com.example.passwordmanager.Model.User;
@@ -25,6 +26,13 @@ public class EncryptionBuffer {
     User currentUser = SessionManager.getCurrentUser();
     int userID = currentUser.getID();
 
+
+    static AccountEntryDAOImpl accountEntryDAO = new AccountEntryDAOImpl();
+    static CardEntryDAOImpl cardEntryDAO = new CardEntryDAOImpl();
+    static WifiEntryDAOImpl wifiEntryDAO = new WifiEntryDAOImpl();
+    static NoteEntryDAOImpl noteEntryDAO = new NoteEntryDAOImpl();
+
+
     static IvParameterSpec iv = SessionManager.getActiveIV();
     static SecretKey key = SessionManager.getActiveSecretKey();
     static String algorithm = "AES/CBC/PKCS5Padding";
@@ -34,6 +42,10 @@ public class EncryptionBuffer {
 
         // get the list
         List<DisplayableEntry> encryptedList = entryDAO.getAll();
+        // TODO
+
+
+
         List<DisplayableEntry> decryptedList = new ArrayList<>();
 
         // decrypt it
@@ -114,9 +126,6 @@ public class EncryptionBuffer {
     }
 
     public static void insertAccountEntry(AccountEntry entry) throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
-        // get entry
-        int type = entry.getType();  // deciding arbitrarily that accountEntries are 1
-
         // encrypt each field on their own
         String encryptedName = EncryptionLogic.encrypt(algorithm, entry.getName(), key, iv);
         String encryptedUsername = EncryptionLogic.encrypt(algorithm, entry.getUsername(), key, iv);
@@ -127,13 +136,11 @@ public class EncryptionBuffer {
         AccountEntry encodedEntry = new AccountEntry(0, encryptedName, encryptedUsername, encryptedPassword, encryptedNote);
 
         // insert it
-        EntryDAOImpl.insertAccountEntry(encodedEntry, type);
+        accountEntryDAO.insert(encodedEntry);
         retrieveEntries();
     }
 
     public static void insertCardEntry(CardEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
-        int type = entry.getType();
-
         String encryptedName = EncryptionLogic.encrypt(algorithm, entry.getName(), key, iv);
         String encryptedCardHolder = EncryptionLogic.encrypt(algorithm, entry.getCardHolder(), key, iv);
         String encryptedCardNumber = EncryptionLogic.encrypt(algorithm, entry.getCardNumber(), key, iv);
@@ -144,12 +151,10 @@ public class EncryptionBuffer {
 
         CardEntry encodedEntry = new CardEntry(0, encryptedName, encryptedCardHolder, encryptedCardNumber, encryptedExpireMonth, encryptedExpireYear, encryptedCVC, encryptedNote);
 
-        EntryDAOImpl.insertCardEntry(encodedEntry, type);
+        cardEntryDAO.insert(encodedEntry);
     }
 
     public static void insertWifiEntry(WifiEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
-        int type = entry.getType();
-
         String encryptedName = EncryptionLogic.encrypt(algorithm, entry.getName(), key, iv);
         String encryptedWifiName = EncryptionLogic.encrypt(algorithm, entry.getWifiName(), key, iv);
         String encryptedWifiPassword = EncryptionLogic.encrypt(algorithm, entry.getWifiPassword(), key, iv);
@@ -159,19 +164,17 @@ public class EncryptionBuffer {
 
         WifiEntry encodedEntry = new WifiEntry(0, encryptedName, encryptedWifiName, encryptedWifiPassword, encryptedWifiURL, encryptedWifiAdminPass, encryptedNote);
 
-        EntryDAOImpl.insertWifiEntry(encodedEntry, type);
+        wifiEntryDAO.insert(encodedEntry);
     }
 
     public static void insertNoteEntry(SecureNoteEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
-        int type = entry.getType();
-
         String encryptedName = EncryptionLogic.encrypt(algorithm, entry.getName(), key, iv);
         String encryptedSubject = EncryptionLogic.encrypt(algorithm, entry.getNoteSubject(), key, iv);
         String encryptedNote = EncryptionLogic.encrypt(algorithm, entry.getNoteContent(), key, iv);
 
         SecureNoteEntry encodedEntry = new SecureNoteEntry(0, encryptedName, encryptedSubject, encryptedNote);
 
-        EntryDAOImpl.insertSecureNoteEntry(encodedEntry, type);
+        noteEntryDAO.insert(encodedEntry);
     }
 
     public static void deleteEntry(DisplayableEntry entry) throws SQLException {
@@ -180,23 +183,23 @@ public class EncryptionBuffer {
 
         switch (entryType) {
             case 1:
-                String AccountDeletetionSql = "DELETE FROM AccountEntry WHERE id = ?";
-                EntryDAOImpl.delete(entry, AccountDeletetionSql);
+                AccountEntry accountEntry = (AccountEntry) entry;  // typecasting
+                accountEntryDAO.delete(accountEntry);
                 System.out.println("type 1 accountentry deleted");
                 break;
             case 2:
-                String CardDeleteSql = "DELETE FROM CardEntry WHERE id = ?";
-                EntryDAOImpl.delete(entry, CardDeleteSql);
+                CardEntry cardEntry = (CardEntry) entry;
+                cardEntryDAO.delete(cardEntry);
                 System.out.println("Type 2 cardentry deleted");
                 break;
             case 3:
-                String WifiDeletionSql = "DELETE FROM WifiEntry WHERE id = ?";
-                EntryDAOImpl.delete(entry, WifiDeletionSql);
+                WifiEntry wifiEntry = (WifiEntry) entry;
+                wifiEntryDAO.delete(wifiEntry);
                 System.out.println("Type 3 wifientry deleted");
                 break;
             case 4:
-                String NoteDeletionSql = "DELETE FROM NoteEntry WHERE id = ?";
-                EntryDAOImpl.delete(entry, NoteDeletionSql);
+                SecureNoteEntry noteEntry = (SecureNoteEntry) entry;
+                noteEntryDAO.delete(noteEntry);
                 System.out.println("Type 4 noteEntry deleted");
                 break;
         }
@@ -205,7 +208,6 @@ public class EncryptionBuffer {
     }
 
     public static void updateAccountEntry(AccountEntry entry) throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-        EntryDAOImpl entryDAO = new EntryDAOImpl();
 
         // encrypt it
         String encryptedName = EncryptionLogic.encrypt(algorithm, entry.getName(), key, iv);
@@ -215,7 +217,7 @@ public class EncryptionBuffer {
 
         AccountEntry updatedAccountEntry = new AccountEntry(entry.getEntryId(), encryptedName, encryptedUsername, encryptedPassword, encryptedNote);
         // send in the info you need
-        entryDAO.updateAccountEntry(updatedAccountEntry);
+        accountEntryDAO.update(updatedAccountEntry);
         System.out.println("---");
         System.out.println("this is the entry edited: "+entry);
         System.out.println("the encrypted version: " + updatedAccountEntry);
@@ -223,7 +225,6 @@ public class EncryptionBuffer {
     }
 
     public static void updateCardEntry(CardEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
-        EntryDAOImpl entryDAO = new EntryDAOImpl();
 
         String encryptedName = EncryptionLogic.encrypt(algorithm, entry.getName(), key, iv);
         String encryptedCardHolder = EncryptionLogic.encrypt(algorithm, entry.getCardHolder(), key, iv);
@@ -235,7 +236,7 @@ public class EncryptionBuffer {
 
         CardEntry updatedCardEntry = new CardEntry(entry.getEntryId(), encryptedName, encryptedCardHolder, encryptedCardNumber, encryptedExpireMonth, encryptedExpireYear, encryptedCVC, encryptedNote);
 
-        entryDAO.updateCardEntry(updatedCardEntry);
+        cardEntryDAO.update(updatedCardEntry);
         System.out.println("---");
         System.out.println("this is the entry edited: "+entry);
         System.out.println("the encrypted version: " + updatedCardEntry);
@@ -243,8 +244,6 @@ public class EncryptionBuffer {
     }
 
     public static void updateWifiEntry(WifiEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
-        EntryDAOImpl entryDAO = new EntryDAOImpl();
-
         String encryptedName = EncryptionLogic.encrypt(algorithm, entry.getName(), key, iv);
         String encryptedWifiName = EncryptionLogic.encrypt(algorithm, entry.getWifiName(), key, iv);
         String encryptedWifiPassword = EncryptionLogic.encrypt(algorithm, entry.getWifiPassword(), key, iv);
@@ -254,7 +253,7 @@ public class EncryptionBuffer {
 
         WifiEntry updatedWifiEntry = new WifiEntry(entry.getEntryId(), encryptedName, encryptedWifiName, encryptedWifiPassword, encryptedWifiURL, encryptedWifiAdminPass, encryptedNote);
 
-        entryDAO.updateWifiEntry(updatedWifiEntry);
+        wifiEntryDAO.update(updatedWifiEntry);
         System.out.println("---");
         System.out.println("this is the entry edited: "+entry);
         System.out.println("the encrypted version: " + updatedWifiEntry);
@@ -262,15 +261,13 @@ public class EncryptionBuffer {
     }
 
     public static void updateNoteEntry(SecureNoteEntry entry) throws InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
-        EntryDAOImpl entryDAO = new EntryDAOImpl();
-
         String encryptedName = EncryptionLogic.encrypt(algorithm, entry.getName(), key, iv);
         String encryptedSubject = EncryptionLogic.encrypt(algorithm, entry.getNoteSubject(), key, iv);
         String encryptedNote = EncryptionLogic.encrypt(algorithm, entry.getNoteContent(), key, iv);
 
         SecureNoteEntry updatedNoteEntry = new SecureNoteEntry(entry.getEntryId(), encryptedName, encryptedSubject, encryptedNote);
 
-        entryDAO.updateNoteEntry(updatedNoteEntry);
+        noteEntryDAO.update(updatedNoteEntry);
         System.out.println("---");
         System.out.println("this is the entry edited: "+entry);
         System.out.println("the encrypted version: " + updatedNoteEntry);

@@ -1,7 +1,9 @@
-package com.example.passwordmanager;
+package com.example.passwordmanager.ViewManager;
 
+import com.example.passwordmanager.Controller.LoginViewController;
 import com.example.passwordmanager.Model.*;
 import com.example.passwordmanager.Model.dbStuff.SessionManager;
+import com.example.passwordmanager.fxmlHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,48 +17,35 @@ import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class LoginViewController implements Initializable {
+
+/**
+ * View manager for the login view, handling all fxml-elements and notifying the controller when user performs actions
+ */
+public class LoginViewManager implements Initializable {
 
     @FXML private AnchorPane baseAnchorPane;
     @FXML private TextField email, masterPasswordInvisible, masterPasswordVisible;
     @FXML private Button newUserButton, unlockButton;
     @FXML private ImageView eyeImageView;
 
-    private fxmlHelper helper = fxmlHelper.getInstance();
-
-    // TODO private LoginService loginService
-    private LoginService loginService = new LoginService();
-    public LoginViewController() {
-        this.loginService = new LoginService();
-    }
+    private final fxmlHelper helper = fxmlHelper.getInstance();
     private PasswordFieldManager manager;
+    private LoginViewController controller;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.controller = new LoginViewController();
+        this.manager = helper.addPasswordVisibleToggle(eyeImageView, masterPasswordInvisible, masterPasswordVisible);
+
         helper.onMouseHover(newUserButton);
         helper.onMouseHover(unlockButton);
-
-        this.manager = helper.addPasswordVisibleToggle(eyeImageView, masterPasswordInvisible, masterPasswordVisible);
     }
 
     @FXML public void unlockButtonPressed() throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
-        String userMailInput = email.getText();
-        String userMasterPassInput = manager.getPassword();
-
-        System.out.println("user '"+userMailInput + "' trying to log in");
-        System.out.println("users pass : "+ userMasterPassInput);
-
-        loginService.LogIn(userMailInput, userMasterPassInput);
-
-        User thisUser = SessionManager.getCurrentUser();
-        System.out.println(thisUser + " is currently logged in");
-
-
-
-        helper.navigateTo(baseAnchorPane, "main_view.fxml");
+        controller.handleUnlockButtonPressed(baseAnchorPane, email.getText(), manager.getPassword());
     }
 
-
     @FXML public void createUserButtonPressed() {
-        helper.navigateTo(baseAnchorPane, "create_user_view.fxml");}
+        controller.handleCreateUserButtonPressed(baseAnchorPane);
+    }
 }

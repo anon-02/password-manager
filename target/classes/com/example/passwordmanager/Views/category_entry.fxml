@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="categoryEntryAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="716.0" styleClass="anchor-pane-background" stylesheets="@../CSS/entry_listitem.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="20.0" onMouseClicked="#manipulateCategory" onMouseEntered="#hoverIn" onMouseExited="#hoverOut" prefHeight="62.0" prefWidth="680.0" styleClass="anchor-pane-foreground" AnchorPane.topAnchor="10.0">
+         <children>
+            <Label fx:id="nrOfPasswords" layoutX="570.0" layoutY="33.0" prefHeight="20.0" prefWidth="94.0" styleClass="under-last-modified" stylesheets="@../CSS/entry_listitem.css" text="0 passwords" textAlignment="RIGHT" textFill="#971414">
+               <font>
+                  <Font size="42.0" />
+               </font>
+            </Label>
+            <Label fx:id="categoryName" layoutX="15.0" layoutY="18.0" prefHeight="20.0" prefWidth="224.0" styleClass="entry-name" text="Category" />
+            <ImageView fx:id="downwardsArrow" fitHeight="18.0" fitWidth="18.0" layoutX="328.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="620.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#editCategory" prefHeight="30.0" prefWidth="42.0" styleClass="add-button" stylesheets="@../CSS/main_view.css">
+               <graphic>
+                  <ImageView fx:id="edit" fitHeight="22.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" translateX="10.0" translateY="-2.0" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>

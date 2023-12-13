@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class CardEntry implements DisplayableEntry {
+public class CardEntry extends PasswordEntry {
 
     private String name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note;
     private Image image;
@@ -92,5 +92,18 @@ public class CardEntry implements DisplayableEntry {
 
     public void setNote(String newString) {
         this.note = newString;
+    }
+
+    @Override
+    public String getSearchTerm() {
+        String searchTerm = "";
+        String category;
+        searchTerm += getName() + "Card";
+        try {
+            category = getCategory().getName();
+        } catch (NullPointerException e) {
+            category = "";
+        }
+        return (searchTerm + category).toLowerCase().replace(" ", "");
     }
 }

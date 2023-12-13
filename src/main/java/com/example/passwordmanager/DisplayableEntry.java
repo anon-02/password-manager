@@ -10,4 +10,5 @@ public interface DisplayableEntry {
     Image getImage() throws IOException;
     int getType();
     int getEntryId();
+    String getSearchTerm();
 }

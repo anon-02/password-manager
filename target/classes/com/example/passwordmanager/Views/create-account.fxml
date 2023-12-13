@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root fx:id="backAnchorPane" prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="backAnchorPane" prefHeight="530.0" prefWidth="480.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <FlowPane fx:id="passwordGeneratorFlowPane" layoutX="108.0" layoutY="164.0" prefHeight="216.0" prefWidth="264.0" />
       <TextField fx:id="name" layoutX="108.0" layoutY="17.0" prefHeight="24.0" prefWidth="264.0" promptText="Enter entry name" styleClass="text-field-content" />

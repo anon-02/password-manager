@@ -41,6 +41,7 @@ public class CreateAccount extends AnchorPane implements Generator{
     private MainViewController parentController;
     private fxmlHelper model = fxmlHelper.getInstance();
     private PasswordFieldManager manager;
+
     private boolean passwordGeneratorShowing = false;
 
     public CreateAccount(MainViewController controller) {
@@ -110,8 +111,9 @@ public class CreateAccount extends AnchorPane implements Generator{
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         if (isFieldsComplete()) {
-
+            // TODO se över detta
             AccountEntry newEntry = new AccountEntry(0, name.getText(), username.getText(), manager.getPassword(), note.getText());
+            parentController.addPasswordEntry(newEntry);
             EncryptionBuffer.insertAccountEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
@@ -130,13 +132,13 @@ public class CreateAccount extends AnchorPane implements Generator{
     }
 
     @FXML
-    private void generateButtonClicked(String passwordType) {
-        //
+    private void generateButtonClicked() {
+        // TODO model.generatePassword()
     }
 
     private void updateStrengthIndicator(String newString) {
         // TODO get ratio from model according to rules
-        double ratio = manager.getPassword().length() * 8 / 250d;
+        double ratio = invisiblePassword.getText().length() * 8 / 250d;
         strengthIndicatorRec.setWidth((int) (250 * ratio));
 
         if (ratio >= 0 && ratio < 0.25) {
@@ -154,7 +156,6 @@ public class CreateAccount extends AnchorPane implements Generator{
         }
     }
 
-
     @Override
     public void generate(String type, int length, boolean includeUpper, boolean includeNumbers, boolean includeSpecial) {
         String generatedPassword = null;
@@ -166,4 +167,5 @@ public class CreateAccount extends AnchorPane implements Generator{
         }
         manager.setPassword(generatedPassword);
     }
+
 }

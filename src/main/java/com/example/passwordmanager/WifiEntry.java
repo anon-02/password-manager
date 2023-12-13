@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class WifiEntry implements DisplayableEntry {
+public class WifiEntry extends PasswordEntry {
     private String name, wifiName, wifiPassword, wifiURL, wifiAdminPassword, note;
     int entryId;
     int type = 3;
@@ -67,5 +67,17 @@ public class WifiEntry implements DisplayableEntry {
                 '}';
     }
 
+    @Override
+    public String getSearchTerm() {
+        String searchTerm = "";
+        String category;
+        searchTerm += getName() + "Wifi";
+        try {
+            category = getCategory().getName();
+        } catch (NullPointerException e) {
+            category = "";
+        }
+        return (searchTerm + category).toLowerCase().replace(" ", "");
+    }
 
 }

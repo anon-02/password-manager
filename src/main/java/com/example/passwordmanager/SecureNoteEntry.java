@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class SecureNoteEntry implements DisplayableEntry {
+public class SecureNoteEntry extends PasswordEntry {
 
     private String name, noteSubject, noteContent;
     int type = 4;
@@ -43,4 +43,17 @@ public class SecureNoteEntry implements DisplayableEntry {
     public void setName(String s) {this.name = s;}
     public void setNoteSubject(String s) {this.noteSubject = s;}
     public void setNoteContent(String s) {this.noteContent = s;}
+
+    @Override
+    public String getSearchTerm() {
+        String searchTerm = "";
+        String category;
+        searchTerm += getName() + "Secure note";
+        try {
+            category = getCategory().getName();
+        } catch (NullPointerException e) {
+            category = "";
+        }
+        return (searchTerm + category).toLowerCase().replace(" ", "");
+    }
 }

@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import java.io.IOException;
 import java.util.Objects;
 
-public class AccountEntry implements DisplayableEntry {
+public class AccountEntry extends PasswordEntry implements PasswordType {
 
 
     private String name, username, password, note;
@@ -80,4 +80,16 @@ public class AccountEntry implements DisplayableEntry {
                 '}';
     }
 
+    @Override
+    public String getSearchTerm() {
+        String searchTerm = "";
+        String category;
+        searchTerm += getName() + "Account";
+        try {
+            category = getCategory().getName();
+        } catch (NullPointerException e) {
+            category = "";
+        }
+        return (searchTerm + category).toLowerCase().replace(" ", "");
+    }
 }

@@ -142,25 +142,19 @@ public class EncryptionBuffer {
     }
 
     public static void insertAllEntries(List<DisplayableEntry> allEntries) {
-        try {
-            for (DisplayableEntry entry : allEntries) {
-                if (entry instanceof AccountEntry) {
-                    insertAccountEntry((AccountEntry) entry);
-                }
-                else if (entry instanceof CardEntry) {
-                    insertCardEntry((CardEntry) entry);
-                }
-                else if (entry instanceof WifiEntry) {
-                    insertWifiEntry((WifiEntry) entry);
-                }
-                else if (entry instanceof SecureNoteEntry) {
-                    insertNoteEntry((SecureNoteEntry)entry);
-                }
+        for (DisplayableEntry entry : allEntries) {
+            if (entry instanceof AccountEntry) {
+                insertAccountEntry((AccountEntry) entry);
             }
-        } catch (InvalidAlgorithmParameterException | NoSuchPaddingException | IllegalBlockSizeException |
-                 NoSuchAlgorithmException | BadPaddingException |
-                 InvalidKeyException | SQLException e) {
-            throw new RuntimeException(e);
+            else if (entry instanceof CardEntry) {
+                insertCardEntry((CardEntry) entry);
+            }
+            else if (entry instanceof WifiEntry) {
+                insertWifiEntry((WifiEntry) entry);
+            }
+            else if (entry instanceof SecureNoteEntry) {
+                insertNoteEntry((SecureNoteEntry)entry);
+            }
         }
     }
 

@@ -121,7 +121,7 @@ public class EntriesListHandler {
         return showList;
     }
 
-    public void saveAllEntries() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
+    public void saveAllEntries() {
         List<DisplayableEntry> newEntries = new LinkedList<>(addedEntries);
         EncryptionBuffer.insertAllEntries(newEntries);
     }

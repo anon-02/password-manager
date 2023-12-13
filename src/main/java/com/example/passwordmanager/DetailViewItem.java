@@ -219,7 +219,7 @@ public class DetailViewItem extends AnchorPane implements Generator{
     }
 
     // Updates the current entry viewed in the detail
-    public void updateDetailEntry() throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void updateDetailEntry() {
         if (currentEntry instanceof AccountEntry) {
 
             // make a new entry instance and send the edited data to the db

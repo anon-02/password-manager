@@ -29,7 +29,7 @@ public class CategoryEntryListItemSmall extends AnchorPane {
     private CategoryEntry categoryEntry;
     private PasswordEntry tempPasswordEntry;
 
-    public CategoryEntryListItemSmall(CategoryEntry categoryEntry, MainViewManager controller) throws IOException {
+    public CategoryEntryListItemSmall(CategoryEntry categoryEntry, MainViewManager controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/categoryListItemLighter.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

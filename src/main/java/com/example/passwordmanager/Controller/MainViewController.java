@@ -17,10 +17,9 @@ public class MainViewController {
 
     public MainViewController() {
         this.helper = fxmlHelper.getInstance();
-        this.entriesHandler = new EntriesListHandler()
     }
 
-    public ArrayList<DisplayableEntry> getAllEntries() {
+    /*public ArrayList<DisplayableEntry> getAllEntries() {
 
-    }
+    }*/
 }

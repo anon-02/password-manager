@@ -87,13 +87,10 @@ public class MainViewManager implements Initializable {
 
         entryType.getItems().addAll(entryTypes);
         entryType.setValue(entryTypes[0]);
-        clearDetailView();
 
-        try {
-            updateEntryList();
-        } catch (IOException | InvalidAlgorithmParameterException | SQLException | NoSuchPaddingException | IllegalBlockSizeException | NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
-            throw new RuntimeException(e);
-        }
+        clearDetailView();
+        updateEntryList();
+
 
         entryType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -105,20 +102,14 @@ public class MainViewManager implements Initializable {
         searchTextField.setOnKeyReleased(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 System.out.println("Search: " + searchTextField.getText());
-                try {
-                    handleSearchAction(searchTextField.getText());
-                } catch (InvalidAlgorithmParameterException | SQLException | NoSuchPaddingException |
-                         IllegalBlockSizeException | IOException | NoSuchAlgorithmException | BadPaddingException |
-                         InvalidKeyException e) {
-                    throw new RuntimeException(e);
-                }
+                handleSearchAction(searchTextField.getText());
             }
         });
     }
 
     // Iterates through all entries, creates a list of entries that matches the search term.
     // If the search term is empty, show all entries.
-    private void handleSearchAction(String s) throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    private void handleSearchAction(String s) {
         String searchTerm = s.replace(" ", "").toLowerCase();
         if (searchTerm.isEmpty()) {
             updateEntryList();
@@ -128,28 +119,28 @@ public class MainViewManager implements Initializable {
             }
     }
 
-    private void displayResult(ArrayList<DisplayableEntry> matchingEntries) throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    private void displayResult(ArrayList<DisplayableEntry> matchingEntries) {
         if (!(matchingEntries.isEmpty()))
             updateEntryList(matchingEntries);
         else
             updateEntryList();
     }
 
-    public void updateEntryList() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void updateEntryList() {
         allEntrysFlowPane.getChildren().clear();
         for (DisplayableEntry entry : entriesHandler.displayEntries()) {
             allEntrysFlowPane.getChildren().add(EntryListItemFactory.makeEntryListItem(entry, this));
         }
     }
 
-    protected void updateEntryList (ArrayList<DisplayableEntry> array) throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    protected void updateEntryList (ArrayList<DisplayableEntry> array) {
         allEntrysFlowPane.getChildren().clear();
         for (DisplayableEntry entry : array) {
             allEntrysFlowPane.getChildren().add(EntryListItemFactory.makeEntryListItem(entry, this));
         }
     }
 
-    public void updateCategoryChooserList (PasswordEntry passwordEntry) throws IOException {
+    public void updateCategoryChooserList (PasswordEntry passwordEntry) {
         this.chooseCategoryFlowPane.getChildren().clear();
         List<CategoryEntry> currentCategories = entriesHandler.getCategories();
 
@@ -160,7 +151,7 @@ public class MainViewManager implements Initializable {
         }
     }
 
-    public void updateCategoryChooserListExtended (PasswordEntry passwordEntry) throws IOException {
+    public void updateCategoryChooserListExtended (PasswordEntry passwordEntry) {
         this.removeFromFlowPane.getChildren().clear();
         this.addToFlowPane.getChildren().clear();
         List<CategoryEntry> currentCategories = new LinkedList<>(entriesHandler.getCategories());
@@ -196,12 +187,12 @@ public class MainViewManager implements Initializable {
     }
 
 
-    public void categoryOption (PasswordEntry passwordEntry) throws IOException {
+    public void categoryOption (PasswordEntry passwordEntry) {
         openCategoryChooser();
         updateCategoryChooserList(passwordEntry);
     }
 
-    public void categoryOptionExtended (PasswordEntry passwordEntry) throws IOException {
+    public void categoryOptionExtended (PasswordEntry passwordEntry) {
         openCategoryChooserExtended();
         System.out.println(entriesHandler.getCategories());
         updateCategoryChooserListExtended(passwordEntry);
@@ -244,13 +235,13 @@ public class MainViewManager implements Initializable {
         categoryEditName.setText(category.getName());
     }
 
-    public void editCategoryDelete() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void editCategoryDelete()  {
         entriesHandler.deleteCategoryEntry(categoryEditing);
         updateEntryList();
         closeButtonPressed();
     }
 
-    public void editCategorySave() throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void editCategorySave()  {
         categoryEditing.setName(categoryEditName.getText());
         updateEntryList();
         closeButtonPressed();
@@ -286,13 +277,13 @@ public class MainViewManager implements Initializable {
     }
 
     @FXML
-    public void handleSaveButtonPressed () throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void handleSaveButtonPressed () {
         closeButtonPressed();
         updateEntryList();
     }
 
     @FXML
-    public void saveCategoryButtonPressed () throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void saveCategoryButtonPressed () throws IndexOutOfBoundsException {
         entriesHandler.addCategoryEntry(new CategoryEntry(categoryName.getText()));
         handleSaveButtonPressed();
     }
@@ -333,7 +324,7 @@ public class MainViewManager implements Initializable {
     }
 
     @FXML
-    public void removeButtonPressed() throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void removeButtonPressed() {
         // TODO handle removal of entry with database
         DisplayableEntry currentEntry = currentDetailItem.getEntry();
         System.out.println("the selected entry about to be deleted "+ currentEntry);
@@ -353,18 +344,14 @@ public class MainViewManager implements Initializable {
     }
 
     @FXML
-    public void cancelButtonPressed () throws
-    InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException
-    {
+    public void cancelButtonPressed() {
         toggleEditingMode();
         updateEntryList();
-
-
         editPane.toFront();
     }
 
     @FXML
-    public void saveButtonPressed () throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    public void saveButtonPressed () {
         // TODO handle save action
         currentDetailItem.updateDetailEntry();
         toggleEditingMode();
@@ -379,7 +366,7 @@ public class MainViewManager implements Initializable {
     }
 
     @FXML
-    public void logoutButtonPressed () throws InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
+    public void logoutButtonPressed () {
         // TODO handle user when logged out
         entriesHandler.saveAllEntries();
         helper.navigateTo(mainAnchorPane, "login_view.fxml");

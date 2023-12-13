@@ -1,10 +1,9 @@
 package com.example.passwordmanager.Model;
 
-import com.example.passwordmanager.DisplayableEntry;
+import com.example.passwordmanager.Model.Entries.DisplayableEntry;
 
-import javax.crypto.spec.IvParameterSpec;
 import java.sql.Connection;
-import java.util.List;
+
 /** Description of class **/
 
 public class User<T extends DisplayableEntry> {

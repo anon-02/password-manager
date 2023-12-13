@@ -1,6 +1,6 @@
 package com.example.passwordmanager.Model.dbStuff.EntryDAOImplementation;
 
-import com.example.passwordmanager.CardEntry;
+import com.example.passwordmanager.Model.Entries.CardEntry;
 import com.example.passwordmanager.Model.User;
 import com.example.passwordmanager.Model.dbStuff.DatabaseHandler;
 import com.example.passwordmanager.Model.dbStuff.EntryDAO;

@@ -1,13 +1,9 @@
 package com.example.passwordmanager.Model.dbStuff.EntryDAOImplementation;
 
-import com.example.passwordmanager.*;
-import com.example.passwordmanager.AccountEntry;
-import com.example.passwordmanager.CardEntry;
+import com.example.passwordmanager.Model.Entries.*;
 import com.example.passwordmanager.Model.dbStuff.DatabaseHandler;
 import com.example.passwordmanager.Model.dbStuff.EntryDAO;
 import com.example.passwordmanager.Model.dbStuff.SessionManager;
-import com.example.passwordmanager.SecureNoteEntry;
-import com.example.passwordmanager.WifiEntry;
 import com.example.passwordmanager.Model.User;
 
 import java.sql.*;

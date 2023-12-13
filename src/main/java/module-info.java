@@ -22,4 +22,15 @@ module com.example.passwordmanager {
     exports com.example.passwordmanager.ViewManager;
     opens com.example.passwordmanager.ViewManager to javafx.fxml;
 
+    exports com.example.passwordmanager.Controller;
+    opens com.example.passwordmanager.Controller to javafx.fxml;
+    exports com.example.passwordmanager.ViewManager.CreateEntry;
+    opens com.example.passwordmanager.ViewManager.CreateEntry to javafx.fxml;
+    exports com.example.passwordmanager.Model.Entries;
+    opens com.example.passwordmanager.Model.Entries to javafx.fxml;
+    exports com.example.passwordmanager.ViewManager.Injectables;
+    opens com.example.passwordmanager.ViewManager.Injectables to javafx.fxml;
+    exports com.example.passwordmanager.ViewManager.Injectables.DetailViewItem;
+    opens com.example.passwordmanager.ViewManager.Injectables.DetailViewItem to javafx.fxml;
+
 }

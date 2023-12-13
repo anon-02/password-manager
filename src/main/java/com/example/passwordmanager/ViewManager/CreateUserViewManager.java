@@ -44,8 +44,11 @@ public class CreateUserViewManager implements Initializable {
                 if (controller.verifyEmail(email.getText())) {
                     email.setStyle("-fx-text-box-border: #75DD73");
                 } else {
-                    email.setStyle("-fx-text-box-border: #DD737");
+                    email.setStyle("-fx-text-box-border: #DD7371");
                 }
+            }
+            if (helper.isDebug()) {
+                System.out.println("Email correct: " + controller.isEmailVerified());
             }
         });
     }
@@ -68,6 +71,6 @@ public class CreateUserViewManager implements Initializable {
 
     private boolean verifyFields() {
         return (firstFieldManager.getPassword().equals(secondFieldManager.getPassword()) &&
-                (controller.isEmailVerified() || !masterPasswordInvisible.getText().isEmpty()));
+                (controller.isEmailVerified() && !masterPasswordInvisible.getText().isEmpty()));
     }
 }

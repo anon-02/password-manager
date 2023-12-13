@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.EntriesListHandler;
 import com.example.passwordmanager.Model.dbStuff.*;
 import com.example.passwordmanager.Model.dbStuff.EntryDAOImplementation.EntryDAOImpl;
 import javafx.application.Application;
@@ -11,10 +12,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main extends Application {
+
+    private final fxmlHelper helper = fxmlHelper.getInstance();
+
     @Override
     public void start(Stage stage) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Views/login_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(helper.getFxmlFile("login_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         stage.setTitle("PasswordManager");
         stage.setScene(scene);
@@ -28,12 +31,14 @@ public class Main extends Application {
         UserDAO userDAO = new UserDAOImpl();
         EntryDAO entryDAO = new EntryDAOImpl();
 
-     //   User user2 = new User(2, 2, "johnny", "real password right here");
+        launch();
 
-
-       // int result2 = userDAO.insert(user2);
-
-
-       launch();
+        // Makes sure changes are saved when exiting the application
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                EntriesListHandler.getInstance().saveAllEntries();
+            }
+        }));
     }
 }

@@ -1,11 +1,7 @@
 package com.example.passwordmanager.Model.dbStuff;
 
-import com.example.passwordmanager.*;
-import com.example.passwordmanager.AccountEntry;
-import com.example.passwordmanager.CardEntry;
+import com.example.passwordmanager.Model.Entries.*;
 import com.example.passwordmanager.Model.dbStuff.EntryDAOImplementation.*;
-import com.example.passwordmanager.SecureNoteEntry;
-import com.example.passwordmanager.WifiEntry;
 import com.example.passwordmanager.Model.User;
 
 import javax.crypto.BadPaddingException;
@@ -16,7 +12,6 @@ import javax.crypto.spec.IvParameterSpec;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,7 @@
 package com.example.passwordmanager.Model.dbStuff.EntryDAOImplementation;
 
 
-import com.example.passwordmanager.AccountEntry;
-import com.example.passwordmanager.DisplayableEntry;
+import com.example.passwordmanager.Model.Entries.AccountEntry;
 import com.example.passwordmanager.Model.User;
 import com.example.passwordmanager.Model.dbStuff.DatabaseHandler;
 import com.example.passwordmanager.Model.dbStuff.EntryDAO;
@@ -10,7 +9,6 @@ import com.example.passwordmanager.Model.dbStuff.SessionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 

@@ -4,7 +4,7 @@ import com.example.passwordmanager.Model.User;
 import com.example.passwordmanager.Model.dbStuff.DatabaseHandler;
 import com.example.passwordmanager.Model.dbStuff.EntryDAO;
 import com.example.passwordmanager.Model.dbStuff.SessionManager;
-import com.example.passwordmanager.SecureNoteEntry;
+import com.example.passwordmanager.Model.Entries.SecureNoteEntry;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

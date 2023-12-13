@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CreateUserViewManager implements Initializable {
     @FXML private AnchorPane baseAnchorPane;
@@ -23,8 +24,7 @@ public class CreateUserViewManager implements Initializable {
     @FXML private Button backButton, createButton;
     @FXML private ImageView masterPasswordEye, confirmPasswordEye;
 
-    private fxmlHelper helper = fxmlHelper.getInstance();
-    private LoginService loginService = new LoginService();
+    private final fxmlHelper helper = fxmlHelper.getInstance();
     private PasswordFieldManager firstFieldManager, secondFieldManager;
     private CreateUserViewController controller;
 
@@ -41,16 +41,10 @@ public class CreateUserViewManager implements Initializable {
 
         email.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
             if (!newValue) {
-                if (!email.getText().matches(" \t\n" +
-                        "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:" +
-                        "[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x" +
-                        "09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]" +
-                        "(?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[" +
-                        "0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\" +
-                        "x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")) {
-                    email.setStyle("-fx-border-color: #75DD73");
+                if (controller.verifyEmail(email.getText())) {
+                    email.setStyle("-fx-text-box-border: #75DD73");
                 } else {
-                    email.setStyle("-fx-border-color: #DD7373");
+                    email.setStyle("-fx-text-box-border: #DD737");
                 }
             }
         });
@@ -72,9 +66,8 @@ public class CreateUserViewManager implements Initializable {
         }
     }
 
-
     private boolean verifyFields() {
         return (firstFieldManager.getPassword().equals(secondFieldManager.getPassword()) &&
-                (!email.getText().isEmpty() || !masterPasswordInvisible.getText().isEmpty()));
+                (controller.isEmailVerified() || !masterPasswordInvisible.getText().isEmpty()));
     }
 }

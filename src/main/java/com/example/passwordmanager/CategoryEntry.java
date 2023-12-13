@@ -48,6 +48,16 @@ public class CategoryEntry implements DisplayableEntry {
     }
 
     @Override
+    public int getType() {
+        return 0;
+    }
+
+    @Override
+    public int getEntryId() {
+        return 0;
+    }
+
+    @Override
     public String getSearchTerm() {
         return null;
     }

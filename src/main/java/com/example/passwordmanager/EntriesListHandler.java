@@ -126,7 +126,7 @@ public class EntriesListHandler {
         EncryptionBuffer.inserAllEntries(newEntries);
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         CategoryEntry c = new CategoryEntry("category");
         PasswordEntry p1 = new AccountEntry("1", "two", "h", "j");
         System.out.println(p1.isInCategory());
@@ -148,6 +148,6 @@ public class EntriesListHandler {
         handler.deleteCategoryEntry(c);
         System.out.println(handler.getCategories());
         System.out.println(handler.displayEntries());
-    }
+    }*/
 }
 

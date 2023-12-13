@@ -333,7 +333,7 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    public void removeButtonPressed() throws SQLException {
+    public void removeButtonPressed() throws SQLException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, IOException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         // TODO handle removal of entry with database
         DisplayableEntry currentEntry = currentDetailItem.getEntry();
         System.out.println("the selected entry about to be deleted "+ currentEntry);

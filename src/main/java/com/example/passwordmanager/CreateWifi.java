@@ -1,5 +1,6 @@
 package com.example.passwordmanager;
 
+import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,6 +29,7 @@ public class CreateWifi extends AnchorPane {
 
     private MainViewController parentController;
     private fxmlHelper helper = fxmlHelper.getInstance();
+    private PasswordFieldManager manager;
 
 
     public CreateWifi(MainViewController controller) {
@@ -42,7 +44,7 @@ public class CreateWifi extends AnchorPane {
         }
 
         this.parentController = controller;
-        helper.addPasswordVisibleToggle(eyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
+        manager = helper.addPasswordVisibleToggle(eyeImageView, wifiPasswordInvisible, wifiPasswordVisible);
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             @Override

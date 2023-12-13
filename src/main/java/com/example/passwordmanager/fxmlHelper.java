@@ -129,5 +129,9 @@ public class fxmlHelper {
         });
     }
 
-
+    // Returns true if the application is running in debug mode
+    public boolean isDebug() {
+        return java.lang.management.ManagementFactory.getRuntimeMXBean().
+                getInputArguments().toString().contains("jdwp");
+    }
 }

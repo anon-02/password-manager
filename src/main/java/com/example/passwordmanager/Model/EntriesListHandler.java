@@ -20,6 +20,7 @@ public class EntriesListHandler {
     private List<PasswordEntry> addedEntries;
 
     protected EntriesListHandler() {
+        System.out.println("entrieshandler");
         allPasswordEntries = new LinkedList(EncryptionBuffer.retrieveEntries());
         passwordEntries = new LinkedList<>();
         categoryEntries = new LinkedList<>();
@@ -37,6 +38,12 @@ public class EntriesListHandler {
 
     private void initialize() {
         Set<CategoryEntry> categories = new HashSet<>();
+        allPasswordEntries.clear();
+        passwordEntries.clear();
+        categoryEntries.clear();
+        for (DisplayableEntry entry: EncryptionBuffer.retrieveEntries()) {
+            allPasswordEntries.add((PasswordEntry) entry);
+        }
         for (PasswordEntry passwordEntry : allPasswordEntries) {
             if (passwordEntry.isInCategory()) {
                 CategoryEntry category = passwordEntry.getCategory();
@@ -56,6 +63,7 @@ public class EntriesListHandler {
         passwordEntries.add(passwordEntry);
         allPasswordEntries.add(passwordEntry);
         addedEntries.add(passwordEntry);
+        saveAllEntries();
     }
 
     public void addCategoryEntry(CategoryEntry categoryEntry) {
@@ -110,6 +118,7 @@ public class EntriesListHandler {
     }
 
     public List<DisplayableEntry> displayEntries() {
+        initialize();
         List<DisplayableEntry> showList = new LinkedList<>();
         for (CategoryEntry categoryEntry : categoryEntries) {
             showList.add(categoryEntry);
@@ -124,6 +133,7 @@ public class EntriesListHandler {
     public void saveAllEntries() {
         List<DisplayableEntry> newEntries = new LinkedList<>(addedEntries);
         EncryptionBuffer.insertAllEntries(newEntries);
+        addedEntries.clear();
     }
 
     /*public static void main(String[] args) {

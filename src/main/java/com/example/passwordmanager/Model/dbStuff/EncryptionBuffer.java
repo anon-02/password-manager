@@ -36,7 +36,9 @@ public class EncryptionBuffer {
             EntryDAOImpl entryDAO = new EntryDAOImpl();
 
             // get the list
+            System.out.println("getall entries ");
             List<DisplayableEntry> encryptedList = entryDAO.getAll();
+            System.out.println("encrypted list for new user  " + encryptedList);
             // TODO
 
             decryptedList = new ArrayList<>();

@@ -16,7 +16,6 @@ import java.util.Base64;
 
 public class LoginService {
     private UserDAOImpl userDAO = new UserDAOImpl();
-    SessionManager sessionManager = new SessionManager();
 
     public LoginService() {
         this.userDAO = new UserDAOImpl();

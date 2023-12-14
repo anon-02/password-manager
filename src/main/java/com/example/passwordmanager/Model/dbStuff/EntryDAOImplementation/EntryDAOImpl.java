@@ -17,11 +17,15 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         User currentuser =  SessionManager.getCurrentUser();
         int user_id = currentuser.getID();
 
+        System.out.println("current user id:  "+user_id);
+
         Connection connection = DatabaseHandler.DBconnect();
 
         List<DisplayableEntry> entryList = new ArrayList<>();
 
         getAccountEntries(entryList, user_id, connection);
+        System.out.println("the entry list for account entries "+entryList);
+
         getNoteEntries(entryList, user_id, connection);
         getCardEntries(entryList, user_id, connection);
         getWifiEntries(entryList, user_id, connection);
@@ -37,6 +41,7 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()) {
+            System.out.println("the users id ");
             AccountEntry newAccEntry = new AccountEntry(resultSet.getInt("ID"), resultSet.getString("Name"), resultSet.getString("Username"), resultSet.getString("Password"), resultSet.getString("Note"));
             entryList.add(newAccEntry);
         }

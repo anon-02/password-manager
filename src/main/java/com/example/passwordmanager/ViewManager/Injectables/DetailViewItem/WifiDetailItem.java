@@ -62,6 +62,7 @@ public class WifiDetailItem extends AnchorPane implements DetailItemImpl {
     @Override
     public void updateEntry() {
         WifiEntry updateEntry = new WifiEntry(currentEntry.getEntryId(), entryWifiName.getText(), wifiName.getText(), manager.getPassword(), wifiConfigURL.getText(), wifiAdminPassword.getText(), wifiNote.getText());
+        System.out.println("new updated entry "+ updateEntry);
         EncryptionBuffer.updateWifiEntry(updateEntry);
         if (helper.isDebug()) {
             System.out.println("updated entry (detailview): ");

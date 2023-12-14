@@ -109,11 +109,7 @@ public class AccountDetailItem extends AnchorPane implements Generator, DetailIt
     public void updateEntry() {
         AccountEntry updateEntry = new AccountEntry(currentEntry.getEntryId(), entryAccountName.getText(), accountUsername.getText(), manager.getPassword(), accountNote.getText());
         EncryptionBuffer.updateAccountEntry(updateEntry);
-
-        if (helper.isDebug()) {
-            System.out.println("updated entry: ");
-            System.out.println(updateEntry);
-        }
+        System.out.println("successful detail update");
     }
 
     @Override

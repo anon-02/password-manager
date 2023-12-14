@@ -37,7 +37,7 @@ public class Main extends Application {
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
-                EntriesListHandler.getInstance().saveAllEntries();
+                EntriesListHandler.getInstance();
             }
         }));
     }

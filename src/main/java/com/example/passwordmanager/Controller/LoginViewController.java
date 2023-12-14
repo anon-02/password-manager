@@ -38,6 +38,7 @@ public class LoginViewController {
         }
     }
 
+    // Navigates to the create user view
     public void handleCreateUserButtonPressed(AnchorPane anchorPane) {
         helper.navigateTo(anchorPane, "create_user_view.fxml");
     }

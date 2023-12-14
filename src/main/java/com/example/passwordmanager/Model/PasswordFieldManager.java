@@ -12,13 +12,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
+/**
+ * A class for managing Password- and TextFields
+ * visibleFields and invisibleFields are two separate textFields which are toggled ond off by the user
+ * This class handles all logic that has to do with swapping between the fields and getting the password
+ */
 public class PasswordFieldManager {
 
     @FXML private TextField visibleField, invisibleField;
     @FXML private Node toggle;
     private String password = "";
 
-
+    // Initializes the PasswordFieldManager with the two TextFields and the Node which will toggle between visible and invisible
     public PasswordFieldManager(Node toggle, TextField invisibleField, TextField visibleField) {
         this.invisibleField = invisibleField;
         this.visibleField = visibleField;
@@ -27,6 +32,8 @@ public class PasswordFieldManager {
         visibleField.setFocusTraversable(false);
         invisibleField.setFocusTraversable(true);
 
+
+        // Handles the logic for toggling between the fields
         EventHandler<MouseEvent> onClick = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

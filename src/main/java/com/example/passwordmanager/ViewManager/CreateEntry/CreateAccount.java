@@ -32,6 +32,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 
+/**
+ * Injectable AnchorPane in the createEntry view
+ */
 public class CreateAccount extends AnchorPane implements Generator {
 
     @FXML private AnchorPane backAnchorPane, noteAnchorPane;
@@ -114,6 +117,7 @@ public class CreateAccount extends AnchorPane implements Generator {
         return !str.isEmpty();
     }
 
+    // Verifies that the necessary fields have been filled in, creates an entry and adds it to the database using entriesListHandler
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         if (isFieldsComplete()) {

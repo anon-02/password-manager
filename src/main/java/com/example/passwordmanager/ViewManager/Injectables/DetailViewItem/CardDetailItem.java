@@ -17,6 +17,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * Injectable AnchorPane in the detailView
+ */
 public class CardDetailItem extends AnchorPane implements DetailItemImpl     {
 
     @FXML private AnchorPane baseAnchorPane;

@@ -13,6 +13,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * Injectable password generator component
+ */
 public class PasswordGeneratorItem extends AnchorPane {
 
 
@@ -30,6 +33,8 @@ public class PasswordGeneratorItem extends AnchorPane {
 
     private final ToggleGroup passwordTypes = new ToggleGroup();
 
+    // Creates a PasswordGeneratorItem
+    // It has two different variant depending on if the generator is in the detail- or createAccount view
     public PasswordGeneratorItem(Generator controller, String s) {
         FXMLLoader fxmlLoader = null;
         fxmlHelper helper = fxmlHelper.getInstance();
@@ -78,6 +83,7 @@ public class PasswordGeneratorItem extends AnchorPane {
         });
     }
 
+    // Updates the length label based on the slider value
     private void update(Number newValue) {
         String selected = getSelectedToggleButton();
         if (selected.equals("Password")) {
@@ -101,11 +107,13 @@ public class PasswordGeneratorItem extends AnchorPane {
         passwordRadioButton.setSelected(true);
     }
 
+    // Returns the currently selected toggle button
     private String getSelectedToggleButton() {
         RadioButton selected = (RadioButton) passwordTypes.getSelectedToggle();
         return selected.getText();
     }
 
+    // Returns the slider value cast to an int
     private int getLength() {
         double val = lengthSlider.getValue();
         return (int) val;
@@ -123,6 +131,7 @@ public class PasswordGeneratorItem extends AnchorPane {
         return includeSpecial.isSelected();
     }
 
+    // Notifies the parentController that the user has pressed the "generate" button
     @FXML
     public void generateButtonClicked() {
         parentController.generate(getSelectedToggleButton(), getLength(), isIncludeUppercase(), isIncludeNumbers(), isIncludeSpecial());

@@ -18,6 +18,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+/**
+ * Manages the view for the create user view
+ */
 public class CreateUserViewManager implements Initializable {
     @FXML private AnchorPane baseAnchorPane;
     @FXML private TextField email, masterPasswordInvisible, masterPasswordVisible, confirmPasswordInvisible, confirmPasswordVisible;
@@ -39,6 +42,8 @@ public class CreateUserViewManager implements Initializable {
         firstFieldManager = helper.addPasswordVisibleToggle(masterPasswordEye, masterPasswordInvisible, masterPasswordVisible);
         secondFieldManager = helper.addPasswordVisibleToggle(confirmPasswordEye, confirmPasswordInvisible, confirmPasswordVisible);
 
+
+        // Sets a listener that check if the email is valid
         email.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
             if (!newValue) {
                 if (controller.verifyEmail(email.getText())) {
@@ -58,6 +63,7 @@ public class CreateUserViewManager implements Initializable {
         controller.handleBackButtonPressed(baseAnchorPane);
     }
 
+    // Verifies the fields and if valid creates a new user and naviges to the login view
     @FXML
     private void createUserButtonPressed() throws SQLException {
         // TODO verifyFields(), mail format

@@ -13,6 +13,7 @@ import javafx.scene.layout.FlowPane;
 
 /**
  * Controller for the detail view
+ *
  */
 public class DetailViewController {
 
@@ -31,6 +32,7 @@ public class DetailViewController {
         currentDetailItem = (DetailItemImpl) detailItem;
     }
 
+    // Returns the entry used to show the detail view
     public DisplayableEntry getCurrentDetailItem() {
         return currentDetailItem.getEntry();
     }

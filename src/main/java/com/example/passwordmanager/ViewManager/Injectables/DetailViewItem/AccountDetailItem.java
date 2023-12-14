@@ -23,6 +23,9 @@ import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 
+/**
+ * Injectable AnchorPane in the detailView
+ */
 public class AccountDetailItem extends AnchorPane implements Generator, DetailItemImpl {
 
     @FXML private AnchorPane baseAnchorPane;
@@ -60,6 +63,7 @@ public class AccountDetailItem extends AnchorPane implements Generator, DetailIt
 
         accountFields = new TextInputControl[]{entryAccountName, accountUsername, accountPasswordInvisible, accountPasswordVisible, accountNote};
 
+        // Listener for when the user opens the inline password generator
         EventHandler<MouseEvent> cogClick = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -87,6 +91,7 @@ public class AccountDetailItem extends AnchorPane implements Generator, DetailIt
         return this;
     }
 
+    // Generates a password based on the parameters in the PasswordGeneratorItem and updates the password field in the view
     @Override
     public void generate(String type, int length, boolean includeUpper, boolean includeNumbers, boolean includeSpecial) {
         String generatedPassword = null;

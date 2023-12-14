@@ -23,6 +23,9 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
+/**
+ * Injectable AnchorPane in the createEntry view
+ */
 public class CreateWifi extends AnchorPane {
 
     @FXML AnchorPane backAnchorPane;
@@ -75,6 +78,7 @@ public class CreateWifi extends AnchorPane {
         return !str.isEmpty();
     }
 
+    // Verifies that the necessary fields have been filled in, creates an entry and adds it to the database using entriesListHandler
     @FXML
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {

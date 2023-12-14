@@ -11,8 +11,12 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * Factory for creating entryListItems
+ */
 public class EntryListItemFactory {
 
+    // Returns the correct EntryListItem based on the given entry
     public static AnchorPane makeEntryListItem(DisplayableEntry entry, MainViewManager controller) {
         try {
             if (entry instanceof PasswordEntry) {

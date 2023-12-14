@@ -8,8 +8,12 @@ import com.example.passwordmanager.ViewManager.Injectables.DetailViewItem.Secure
 import com.example.passwordmanager.ViewManager.Injectables.DetailViewItem.WifiDetailItem;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Factory for creating detailViewItems
+ */
 public class DetailItemFactory {
 
+    // Returns the correct detail item based on the type of entry
     public static AnchorPane makeDetailItem(DisplayableEntry entry, DetailViewController controller) {
         AnchorPane detailItem;
         if (entry instanceof AccountEntry) {

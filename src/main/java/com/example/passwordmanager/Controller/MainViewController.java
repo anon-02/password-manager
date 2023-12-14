@@ -93,6 +93,7 @@ public class MainViewController {
         categoryEntryListItemSmallRemove.setTempPasswordEntry(entry);
     }
 
+    // Logs out the user and navigates to the login view
     public void logoutButtonPressed(AnchorPane pane) {
         entriesHandler.saveAllEntries();
         helper.navigateTo(pane, "login_view.fxml");

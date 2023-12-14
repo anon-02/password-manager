@@ -24,10 +24,12 @@ public class CreateUserViewController {
         this.helper = fxmlHelper.getInstance();
     }
 
+    // Navigates back to the login-view
     public void handleBackButtonPressed(AnchorPane anchorPane) {
         helper.navigateTo(anchorPane, "login_view.fxml");
     }
 
+    // Creates a user and navigates to the main view
     public void handleCreateUserButtonPressed(AnchorPane anchorPane, String email, String password) throws SQLException {
         loginService.CreateNewUser(email, password);
         helper.navigateTo(anchorPane, "login_view.fxml");

@@ -131,6 +131,17 @@
                   </StackPane>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="deleteConfirmationPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.70);">
+               <children>
+                  <AnchorPane layoutX="300.0" layoutY="60.0" prefHeight="230.0" prefWidth="300.0" styleClass="background" stylesheets="@../CSS/create_edit_view.css">
+                     <children>
+                        <Button layoutX="36.0" layoutY="148.0" maxHeight="38.0" minHeight="24.0" mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="32.0" prefWidth="90.0" styleClass="save-button" text="Yes" />
+                        <Label layoutX="112.0" layoutY="43.0" prefHeight="44.0" prefWidth="116.0" styleClass="title-text" text="Delete?" />
+                        <Button layoutX="170.0" layoutY="148.0" maxHeight="38.0" minHeight="24.0" mnemonicParsing="false" onAction="#closeButtonPressed" prefHeight="32.0" prefWidth="90.0" styleClass="save-button" text="No" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="mainAnchorPane">
                <children>
                   <AnchorPane layoutX="730.0" prefHeight="720.0" prefWidth="350.0" styleClass="background">
@@ -148,7 +159,7 @@
                               <AnchorPane fx:id="editPane" prefHeight="200.0" prefWidth="350.0" styleClass="background">
                                  <children>
                                     <Button fx:id="editButton" layoutX="248.0" layoutY="1.0" mnemonicParsing="false" onAction="#editButtonPressed" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Edit" />
-                                    <Button fx:id="removeButton" layoutX="16.0" layoutY="1.0" mnemonicParsing="false" onAction="#removeButtonPressed" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Delete" />
+                                    <Button fx:id="removeButton" layoutX="16.0" layoutY="1.0" mnemonicParsing="false" onAction="#deleteConfirmation" prefHeight="32.0" prefWidth="90.0" styleClass="add-button" text="Delete" />
                                  </children>
                               </AnchorPane>
                            </children>

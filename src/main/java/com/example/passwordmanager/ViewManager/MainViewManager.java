@@ -41,7 +41,7 @@ public class MainViewManager implements Initializable {
     private final String[] entryTypes = {"Account", "Card", "Wifi", "Secure note"};
 
     /* Detail view */
-    @FXML private AnchorPane cancelSavePane, editPane;
+    @FXML private AnchorPane cancelSavePane, editPane, deleteConfirmationPane;
     @FXML private Button editButton, cancelButton, saveButton, removeButton;
     @FXML private Label editLabel;
 
@@ -237,12 +237,18 @@ public class MainViewManager implements Initializable {
     }
 
     @FXML
+    public void deleteConfirmation() {
+        deleteConfirmationPane.toFront();
+    }
+
+    @FXML
     public void removeButtonPressed() {
         // TODO handle removal of entry with database
         DisplayableEntry currentEntry = detailViewController.getCurrentDetailItem();
         System.out.println("the selected entry about to be deleted "+ currentEntry);
         clearDetailView();
         EncryptionBuffer.deleteEntry(detailViewController.getCurrentDetailItem());
+        closeButtonPressed();
         updateEntryList();
         // TODO Kolla över detta
         entriesHandler.deletePasswordEntry((PasswordEntry) detailViewController.getCurrentDetailItem());

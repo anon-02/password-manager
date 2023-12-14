@@ -40,7 +40,6 @@ public class EntriesListHandler {
         Set<CategoryEntry> categories = new HashSet<>();
         allPasswordEntries.clear();
         passwordEntries.clear();
-        categoryEntries.clear();
         for (DisplayableEntry entry: EncryptionBuffer.retrieveEntries()) {
             allPasswordEntries.add((PasswordEntry) entry);
         }

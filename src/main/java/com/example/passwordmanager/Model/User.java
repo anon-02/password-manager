@@ -14,11 +14,6 @@ public class User<T extends DisplayableEntry> {
     private byte[] iv;
 
 
-    private static Connection connection;
-   // private UserDAO dbHandler = new UserDAO(connection);
-    //  private static final String JDBC_URL = "jdbc:sqlite:C:/Users/Felix/IdeaProjects/password-manager/Database/users.db";
-
-
     public User(int id, String username, String masterPassword, String salt, byte[] iv) {
         this.id = id;
         this.username = username;

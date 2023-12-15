@@ -39,7 +39,4 @@ public class SessionManager {
     public static void setActiveIV(IvParameterSpec iv) { activeIV = iv; }
     public static IvParameterSpec getActiveIV() {return activeIV;}
 
-
-    // create and store key
-
 }

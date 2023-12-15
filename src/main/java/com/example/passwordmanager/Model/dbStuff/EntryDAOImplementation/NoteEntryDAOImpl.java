@@ -11,6 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/*
+ * dao implementation for specifically noteEntry types containing crud functions
+ */
+
 public class NoteEntryDAOImpl implements EntryDAO<SecureNoteEntry> {
     @Override
     public List<SecureNoteEntry> getAll() throws SQLException {

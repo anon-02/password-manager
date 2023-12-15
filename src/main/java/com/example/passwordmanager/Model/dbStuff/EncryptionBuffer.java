@@ -16,6 +16,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* Class working as the main buffer between the model and the controllers.
+* Contains all crud functions to be called by the frontend to insert, update and retrieve all entries in the database.
+* Note that the class itself does not have any functions directly refering to the database or any sql.
+*/
+
 public class EncryptionBuffer {
 
     User currentUser = SessionManager.getCurrentUser();
@@ -30,6 +36,7 @@ public class EncryptionBuffer {
     static SecretKey key = SessionManager.getActiveSecretKey();
     static String algorithm = "AES/CBC/PKCS5Padding";
 
+    // Get all entries from a specific user
     public static List<DisplayableEntry> retrieveEntries() {
         List<DisplayableEntry> decryptedList = null;
         try {
@@ -68,6 +75,7 @@ public class EncryptionBuffer {
         }
     }
 
+    // All entries are stored encrypted and in turn needs to be decrypted before being sent to the controllers
     public static AccountEntry decryptAccountEntry(AccountEntry entry) {
         try {
             int ID = entry.getEntryId();

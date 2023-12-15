@@ -11,6 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/*
+ * dao implementation for specifically wifiEntry types containing crud functions
+ */
+
 public class WifiEntryDAOImpl implements EntryDAO<WifiEntry> {
 
     @Override

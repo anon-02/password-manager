@@ -14,6 +14,10 @@ import java.security.spec.InvalidKeySpecException;
 import java.sql.SQLException;
 import java.util.Base64;
 
+/*
+* Class containing all login logic
+*/
+
 public class LoginService {
     private UserDAOImpl userDAO = new UserDAOImpl();
 
@@ -21,14 +25,13 @@ public class LoginService {
         this.userDAO = new UserDAOImpl();
     }
 
-    // TODO Login()   void for now, send user_id later
     public void LogIn(String username, String masterPassword) throws SQLException, NoSuchAlgorithmException, InvalidKeySpecException {
         String hashedPass = HashPass(masterPassword);
 
         boolean userExist = userDAO.doesUserExist(username);
 
 
-        // create key with the pass input and .getsalt
+        // create key with the pass input, users salt and the users iv.
 
         if (userExist) {
             System.out.println("User exists");
@@ -53,13 +56,8 @@ public class LoginService {
             System.out.println("This user is not registered here!");
         }
 
-
-        // TODO connect to view and restrict access
-
     }
 
-    // create new user connect to CreateUserViewController
-    // TODO proper exception handling, check for already used mail addresses
     public int CreateNewUser(String username, String masterPassword) throws SQLException {
 
 
@@ -75,12 +73,14 @@ public class LoginService {
         return result;
     };
 
+    // hashing the user masterpassword using the sha256 hash funtion
     public String HashPass(String masterPassword) {
         String sha256hex = Hashing.sha256().hashString(masterPassword, StandardCharsets.UTF_8).toString();
         System.out.println("hashedpass: "+sha256hex );
         return sha256hex;
     }
 
+    // generating a personal salt stored together with the user
     public String generateSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];

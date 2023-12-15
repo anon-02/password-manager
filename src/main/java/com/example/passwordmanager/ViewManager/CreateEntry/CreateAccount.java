@@ -5,6 +5,7 @@ import com.example.passwordmanager.Model.Entries.AccountEntry;
 import com.example.passwordmanager.Model.EntriesListHandler;
 import com.example.passwordmanager.Model.Generator;
 import com.example.passwordmanager.Model.PasswordFieldManager;
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.Password.PassphraseGenerator;
 import com.example.passwordmanager.Password.PasswordGenerator;
 import com.example.passwordmanager.ViewManager.Injectables.PasswordGeneratorItem;
@@ -122,7 +123,8 @@ public class CreateAccount extends AnchorPane implements Generator {
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, SQLException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, InvalidKeySpecException, BadPaddingException, InvalidKeyException {
         if (isFieldsComplete()) {
             AccountEntry newEntry = new AccountEntry(0, name.getText(), username.getText(), manager.getPassword(), note.getText());
-            entriesListHandler.addPasswordEntry(newEntry);
+            EncryptionBuffer.insertAccountEntry(newEntry);
+            //entriesListHandler.addPasswordEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
     }

@@ -251,7 +251,7 @@ public class MainViewManager implements Initializable {
         closeButtonPressed();
         updateEntryList();
         // TODO Kolla över detta
-        entriesHandler.deletePasswordEntry((PasswordEntry) detailViewController.getCurrentDetailItem());
+        //entriesHandler.deletePasswordEntry((PasswordEntry) detailViewController.getCurrentDetailItem());
     }
 
     @FXML

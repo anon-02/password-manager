@@ -10,19 +10,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+/** Handles the display of all the apps current passwordEntries **/
 public class EntriesListHandler {
 
     private static EntriesListHandler instance = null;
 
-    private List<PasswordEntry> allPasswordEntries;         // list of all current existing passwordEntries
-    private List<PasswordEntry> passwordEntries;            // list of category-less passwordEntries  (could make into priority queue, prioritized by frequency)
-    private List<CategoryEntry> categoryEntries;            // list of categories
-    private List<PasswordEntry> addedEntries;
+    private final List<PasswordEntry> allPasswordEntries;         // list of all current existing passwordEntries
+    private final List<PasswordEntry> individualPasswordEntries;  // list of category-less passwordEntries
+    private final List<CategoryEntry> categoryEntries;            // list of categories
+    private final List<PasswordEntry> addedEntries;               // list of newly added passwordEntries
 
     protected EntriesListHandler() {
         System.out.println("entrieshandler");
-        allPasswordEntries = new LinkedList(EncryptionBuffer.retrieveEntries());
-        passwordEntries = new LinkedList<>();
+        allPasswordEntries = new LinkedList<>();
+        individualPasswordEntries = new LinkedList<>();
         categoryEntries = new LinkedList<>();
         addedEntries = new LinkedList<>();
         initialize();
@@ -36,10 +37,11 @@ public class EntriesListHandler {
         return instance;
     }
 
+    // initializes the lists with all current passwordEntries from database, distinguishes category-belonging and category-less passwordEntries from each other
     private void initialize() {
         Set<CategoryEntry> categories = new HashSet<>();
         allPasswordEntries.clear();
-        passwordEntries.clear();
+        individualPasswordEntries.clear();
         for (DisplayableEntry entry: EncryptionBuffer.retrieveEntries()) {
             allPasswordEntries.add((PasswordEntry) entry);
         }
@@ -50,7 +52,7 @@ public class EntriesListHandler {
                 categories.add(category);
             }
             else {
-                passwordEntries.add(passwordEntry);
+                individualPasswordEntries.add(passwordEntry);
             }
         }
         if (!categories.isEmpty()) {
@@ -58,13 +60,8 @@ public class EntriesListHandler {
         }
     }
 
-    public void addPasswordEntry(PasswordEntry passwordEntry) {
-        passwordEntries.add(passwordEntry);
-        allPasswordEntries.add(passwordEntry);
-        addedEntries.add(passwordEntry);
-        saveAllEntries();
-    }
 
+    // adds a new category to the list of categories
     public void addCategoryEntry(CategoryEntry categoryEntry) {
         categoryEntries.add(categoryEntry);
     }
@@ -80,10 +77,10 @@ public class EntriesListHandler {
         category.addPasswordEntry(passwordEntry);
     }
 
-    // adds a passwordEntry to a given category
+    // removes a passwordEntry from a given category
     public void removePasswordEntryFromCategory(CategoryEntry category, PasswordEntry passwordEntry) {
         category.removePasswordEntry(passwordEntry);   // exceptions
-        passwordEntries.add(passwordEntry);
+        individualPasswordEntries.add(passwordEntry);
     }
 
     // deletes a passwordEntry
@@ -92,7 +89,7 @@ public class EntriesListHandler {
         if (passwordEntry.isInCategory()) {
             removePasswordEntryFromCategory(passwordEntry.getCategory(), passwordEntry);
         }
-        passwordEntries.remove(passwordEntry);
+        individualPasswordEntries.remove(passwordEntry);
     }
 
     // removes this category's all current passwordEntries and adds them to the list of individual passwordEntries, then deletes this category
@@ -108,14 +105,18 @@ public class EntriesListHandler {
         categoryEntries.remove(categoryEntry);
     }
 
+    // returns categories
     public List<CategoryEntry> getCategories() {
         return new LinkedList<>(categoryEntries);
     }
 
+    // returns passwordEntries
     public List<PasswordEntry> getAllPasswordEntries() {
         return new LinkedList<>(allPasswordEntries);
     }
 
+    // displays all categoryEntries first, as well their internal passwordEntries if the category is open,
+    // and all category-less password Entries under these
     public List<DisplayableEntry> displayEntries() {
         initialize();
         List<DisplayableEntry> showList = new LinkedList<>();
@@ -125,10 +126,11 @@ public class EntriesListHandler {
                 showList.addAll(categoryEntry.getPasswordEntries());
             }
         }
-        showList.addAll(passwordEntries);
+        showList.addAll(individualPasswordEntries);
         return showList;
     }
 
+    // to be removed
     public void saveAllEntries() {
         List<DisplayableEntry> newEntries = new LinkedList<>(addedEntries);
         EncryptionBuffer.insertAllEntries(newEntries);

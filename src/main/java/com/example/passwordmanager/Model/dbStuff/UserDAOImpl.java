@@ -9,10 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
+/*
+* Concrete implementation of the userDao contains all logic relating to interacting directly with the users data
+*/
 public class UserDAOImpl implements UserDAO {
-    // crud retrive
-    // TODO maybe remove, move to get
+
     @Override
     public User getUserByUsername(String username) throws SQLException {
         Connection connection = DatabaseHandler.DBconnect();
@@ -82,8 +83,7 @@ public class UserDAOImpl implements UserDAO {
         return result;
     }
 
-    // crud delete
-    // TODO maybe useful
+
     @Override
     public int delete(User user) throws SQLException {
         Connection connection = DatabaseHandler.DBconnect();
@@ -101,6 +101,9 @@ public class UserDAOImpl implements UserDAO {
         return result;
     }
 
+    /*
+    * Used to control right user and password during login
+    */
     public boolean doesUserExist(String username)throws SQLException {
         Connection connection = DatabaseHandler.DBconnect();
         String sql = "SELECT 1 FROM users WHERE username = ?";

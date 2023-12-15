@@ -2,6 +2,9 @@ package com.example.passwordmanager.Model.dbStuff;
 
 import java.sql.*;
 
+/*
+* Class dealing with setting up a connection to the .db file.
+*/
 public class DatabaseHandler {
 
     private static final String JDBC_URL = "jdbc:sqlite:C:./Database/users.db";
@@ -22,16 +25,10 @@ public class DatabaseHandler {
         connection.close();
     }
 
-    public static void closeStatement(Statement statement) throws SQLException {
-        statement.close();
-    }
 
     public static void closePreparedStatement(PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.close();
     }
 
-    public static void closeResultSet(ResultSet resultSet) throws SQLException {
-        resultSet.close();
-    }
 
 }

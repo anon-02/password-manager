@@ -7,6 +7,10 @@ import javafx.beans.property.SimpleObjectProperty;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
+/*
+* Singelton class created upon launch used to keep track of which user is currently logged in.
+* Through it also keeps track of the users secretKey to decrypt their entries on login.
+*/
 public class SessionManager {
 
     //private static final SessionManager instance = new SessionManager();

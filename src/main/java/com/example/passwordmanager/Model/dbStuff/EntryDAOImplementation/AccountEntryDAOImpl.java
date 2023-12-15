@@ -12,6 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/*
+* dao implementation for specifically accountEntry types containing crud functions
+*/
 public class AccountEntryDAOImpl implements EntryDAO<AccountEntry> {
 
     @Override
@@ -25,7 +28,7 @@ public class AccountEntryDAOImpl implements EntryDAO<AccountEntry> {
         int user_id = currentuser.getID();
 
         int type = accountEntry.getType();
-        // the rest should be encrypted before inserting
+
         Connection connection = DatabaseHandler.DBconnect();
 
         String accountEntrySql = "INSERT INTO AccountEntry (Name, Username, Password, Note, Type, User_ID) VALUES (?, ?, ?, ?, ?, ?)";

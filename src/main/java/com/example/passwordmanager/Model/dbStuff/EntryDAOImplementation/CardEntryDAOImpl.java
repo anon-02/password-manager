@@ -11,6 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/*
+ * dao implementation for specifically cardEntry types containing crud functions
+ */
+
 public class CardEntryDAOImpl implements EntryDAO<CardEntry> {
 
     @Override

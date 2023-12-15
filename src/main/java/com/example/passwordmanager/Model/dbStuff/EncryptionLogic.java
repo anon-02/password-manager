@@ -12,6 +12,10 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
+/*
+* Class containing all logic for encrypting, decrypting and generating secretKeys
+* For more info on how exactly this works: https://www.baeldung.com/java-aes-encryption-decryption
+*/
 public class EncryptionLogic {
 
 
@@ -39,6 +43,8 @@ public class EncryptionLogic {
         return new String(plainText);
     }
 
+    // Creates a specific key based of the users password whenever the users attempts to log in.
+    // The key is based of the uncrypted version of the users masterPassword
     public static SecretKey getKeyFromPassword(String password, String salt)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
 
@@ -48,6 +54,8 @@ public class EncryptionLogic {
                 .getEncoded(), "AES");
         return secret;
     }
+
+    // the iv is personal to the user and is generated on user creation, then stored in the database.
     public static IvParameterSpec generateIv() {
         byte[] iv = new byte[16];
         new SecureRandom().nextBytes(iv);

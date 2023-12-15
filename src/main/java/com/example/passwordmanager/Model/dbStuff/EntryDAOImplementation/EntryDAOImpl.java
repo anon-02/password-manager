@@ -10,6 +10,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+* General entryDAO implementation used for getting all entries (encrypted) for a specific user
+*/
+
 public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
 
     @Override
@@ -91,9 +95,6 @@ public class EntryDAOImpl implements EntryDAO<DisplayableEntry> {
         }
         return entryList;
     }
-
-
-
 
     @Override
     public int insert(DisplayableEntry entry) throws SQLException {

@@ -96,6 +96,19 @@ public class CardEntry extends PasswordEntry {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CardEntry cardEntry = (CardEntry) o;
+        return entryId == cardEntry.entryId && type == cardEntry.type && Objects.equals(name, cardEntry.name) && Objects.equals(cardHolder, cardEntry.cardHolder) && Objects.equals(cardNumber, cardEntry.cardNumber) && Objects.equals(expireMonth, cardEntry.expireMonth) && Objects.equals(expireYear, cardEntry.expireYear) && Objects.equals(cvcCode, cardEntry.cvcCode) && Objects.equals(note, cardEntry.note) && Objects.equals(image, cardEntry.image);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, cardHolder, cardNumber, expireMonth, expireYear, cvcCode, note, image, entryId, type, helper);
+    }
+
+    @Override
     public String getSearchTerm() {
         String searchTerm = "";
         String category;

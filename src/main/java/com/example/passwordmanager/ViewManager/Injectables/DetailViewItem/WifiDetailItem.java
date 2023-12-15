@@ -2,7 +2,9 @@ package com.example.passwordmanager.ViewManager.Injectables.DetailViewItem;
 
 import com.example.passwordmanager.Controller.DetailViewController;
 import com.example.passwordmanager.Model.Entries.DisplayableEntry;
+import com.example.passwordmanager.Model.Entries.PasswordEntry;
 import com.example.passwordmanager.Model.Entries.WifiEntry;
+import com.example.passwordmanager.Model.EntriesListHandler;
 import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.fxmlHelper;
@@ -66,6 +68,7 @@ public class WifiDetailItem extends AnchorPane implements DetailItemImpl {
     public void updateEntry() {
         WifiEntry updateEntry = new WifiEntry(currentEntry.getEntryId(), entryWifiName.getText(), wifiName.getText(), manager.getPassword(), wifiConfigURL.getText(), wifiAdminPassword.getText(), wifiNote.getText());
         System.out.println("new updated entry "+ updateEntry);
+        EntriesListHandler.getInstance().updatePasswordEntry((PasswordEntry) currentEntry, updateEntry);
         EncryptionBuffer.updateWifiEntry(updateEntry);
         if (helper.isDebug()) {
             System.out.println("updated entry (detailview): ");

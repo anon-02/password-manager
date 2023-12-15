@@ -3,6 +3,8 @@ package com.example.passwordmanager.ViewManager.Injectables.DetailViewItem;
 import com.example.passwordmanager.Controller.DetailViewController;
 import com.example.passwordmanager.Model.Entries.AccountEntry;
 import com.example.passwordmanager.Model.Entries.DisplayableEntry;
+import com.example.passwordmanager.Model.Entries.PasswordEntry;
+import com.example.passwordmanager.Model.EntriesListHandler;
 import com.example.passwordmanager.Model.Generator;
 import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
@@ -113,6 +115,7 @@ public class AccountDetailItem extends AnchorPane implements Generator, DetailIt
     @Override
     public void updateEntry() {
         AccountEntry updateEntry = new AccountEntry(currentEntry.getEntryId(), entryAccountName.getText(), accountUsername.getText(), manager.getPassword(), accountNote.getText());
+        EntriesListHandler.getInstance().updatePasswordEntry((PasswordEntry) currentEntry, updateEntry);
         EncryptionBuffer.updateAccountEntry(updateEntry);
         System.out.println("successful detail update");
     }

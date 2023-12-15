@@ -2,6 +2,7 @@ package com.example.passwordmanager.ViewManager.CreateEntry;
 
 import com.example.passwordmanager.Model.EntriesListHandler;
 import com.example.passwordmanager.Model.Entries.SecureNoteEntry;
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.ViewManager.MainViewManager;
 import com.example.passwordmanager.fxmlHelper;
 import javafx.event.ActionEvent;
@@ -77,7 +78,8 @@ public class CreateSecureNote extends AnchorPane {
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
             SecureNoteEntry newEntry = new SecureNoteEntry(0, entryName.getText(), noteSubject.getText(), noteContent.getText());
-            entriesListHandler.addPasswordEntry(newEntry);
+            //entriesListHandler.addPasswordEntry(newEntry);
+            EncryptionBuffer.insertNoteEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
     }

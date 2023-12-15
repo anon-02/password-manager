@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="73d3a711-00db-4a34-8a66-e0a74e02d442" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PasswordGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PasswordGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database/users.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntriesListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntriesListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/AccountDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/AccountDetailItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/CardDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/CardDetailItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/SecureNoteDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/SecureNoteDetailItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/WifiDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/WifiDetailItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +32,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="ProjectId" id="2ZFlj8xH0bvqKIK54erQ5mI3x6z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -37,9 +39,6 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -92,7 +91,6 @@
       <workItem from="1702130161280" duration="285000" />
       <workItem from="1702469375459" duration="26707000" />
       <workItem from="1702562476289" duration="3609000" />
-      <workItem from="1702610616548" duration="817000" />
     </task>
     <task id="LOCAL−00001" summary="initial commit">
       <created>1702026316079</created>
@@ -128,7 +126,19 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1702476177700</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="removed unnecessary thrown exceptions">
+      <created>1702566350766</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1702566350766</updated>
+    </task>
+    <task id="LOCAL−00007" summary="comments added">
+      <created>1702635666572</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1702635666572</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +166,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
@@ -163,6 +174,7 @@
     <MESSAGE value="createUserView cleanup" />
     <MESSAGE value="added try statement" />
     <MESSAGE value="removed unnecessary thrown exceptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary thrown exceptions" />
+    <MESSAGE value="comments added" />
+    <option name="LAST_COMMIT_MESSAGE" value="comments added" />
   </component>
 </project>

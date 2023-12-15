@@ -2,6 +2,7 @@ package com.example.passwordmanager.ViewManager.CreateEntry;
 
 import com.example.passwordmanager.Model.EntriesListHandler;
 import com.example.passwordmanager.Model.PasswordFieldManager;
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.ViewManager.MainViewManager;
 import com.example.passwordmanager.Model.Entries.WifiEntry;
 import com.example.passwordmanager.fxmlHelper;
@@ -84,7 +85,8 @@ public class CreateWifi extends AnchorPane {
         if (isFieldsComplete()) {
             // Se över detta
             WifiEntry newEntry = new WifiEntry(0, entryName.getText(), wifiName.getText(), manager.getPassword(), wifiURL.getText(), wifiAdminPassword.getText(), wifiNote.getText());
-            entriesListHandler.addPasswordEntry(newEntry);
+            //entriesListHandler.addPasswordEntry(newEntry);
+            EncryptionBuffer.insertWifiEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
     }

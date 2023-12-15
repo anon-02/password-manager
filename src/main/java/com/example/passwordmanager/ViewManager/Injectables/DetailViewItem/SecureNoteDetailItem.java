@@ -2,7 +2,9 @@ package com.example.passwordmanager.ViewManager.Injectables.DetailViewItem;
 
 import com.example.passwordmanager.Controller.DetailViewController;
 import com.example.passwordmanager.Model.Entries.DisplayableEntry;
+import com.example.passwordmanager.Model.Entries.PasswordEntry;
 import com.example.passwordmanager.Model.Entries.SecureNoteEntry;
+import com.example.passwordmanager.Model.EntriesListHandler;
 import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.fxmlHelper;
@@ -61,6 +63,7 @@ public class SecureNoteDetailItem extends AnchorPane implements DetailItemImpl {
     @Override
     public void updateEntry() {
         SecureNoteEntry updateEntry = new SecureNoteEntry(currentEntry.getEntryId(), entryNoteName.getText(), noteSubject.getText(), noteContent.getText());
+        EntriesListHandler.getInstance().updatePasswordEntry((PasswordEntry) currentEntry, updateEntry);
         EncryptionBuffer.updateNoteEntry(updateEntry);
         if (helper.isDebug()) {
             System.out.println("updated entry (detailview): ");

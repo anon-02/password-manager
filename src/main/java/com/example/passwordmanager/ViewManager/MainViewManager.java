@@ -249,9 +249,9 @@ public class MainViewManager implements Initializable {
         clearDetailView();
         EncryptionBuffer.deleteEntry(detailViewController.getCurrentDetailItem());
         closeButtonPressed();
-        updateEntryList();
-        // TODO Kolla över detta
+        // Until category info can be saved to database
         entriesHandler.deletePasswordEntry((PasswordEntry) detailViewController.getCurrentDetailItem());
+        updateEntryList();
     }
 
     @FXML

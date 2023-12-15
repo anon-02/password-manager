@@ -2,6 +2,7 @@ package com.example.passwordmanager.ViewManager.CreateEntry;
 
 import com.example.passwordmanager.Model.Entries.CardEntry;
 import com.example.passwordmanager.Model.EntriesListHandler;
+import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.ViewManager.MainViewManager;
 import com.example.passwordmanager.fxmlHelper;
 import javafx.event.ActionEvent;
@@ -140,7 +141,8 @@ public class CreateCard extends AnchorPane {
     private void saveButtonPressed() throws IOException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException, SQLException {
         if (isFieldsComplete()) {
             CardEntry newEntry = new CardEntry(0, name.getText(), cardHolder.getText(), cardNumber.getText(), expireMonth.getValue(), expireYear.getValue(), invisibleCvcCode.getText(), note.getText());
-            entriesListHandler.addPasswordEntry(newEntry);
+            //entriesListHandler.addPasswordEntry(newEntry);
+            EncryptionBuffer.insertCardEntry(newEntry);
             parentController.handleSaveButtonPressed();
         }
 

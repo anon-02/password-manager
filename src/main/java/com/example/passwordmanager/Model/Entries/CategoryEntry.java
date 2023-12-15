@@ -92,5 +92,4 @@ public class CategoryEntry implements DisplayableEntry {
     public int getNrOfPasswords() {
         return passwordEntries.size();
     }
-
 }

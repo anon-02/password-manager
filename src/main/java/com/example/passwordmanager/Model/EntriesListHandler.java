@@ -5,10 +5,8 @@ import com.example.passwordmanager.Model.Entries.DisplayableEntry;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.Model.Entries.PasswordEntry;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /** Handles the display of all the apps current passwordEntries **/
 public class EntriesListHandler {
@@ -39,12 +37,16 @@ public class EntriesListHandler {
 
     // initializes the lists with all current passwordEntries from database, distinguishes category-belonging and category-less passwordEntries from each other
     private void initialize() {
-        Set<CategoryEntry> categories = new HashSet<>();
+    //  Set<CategoryEntry> categories = new HashSet<>();
         allPasswordEntries.clear();
         individualPasswordEntries.clear();
         for (DisplayableEntry entry: EncryptionBuffer.retrieveEntries()) {
+            if (!hasCategory((PasswordEntry) entry)) {
+                individualPasswordEntries.add((PasswordEntry) entry);
+            }
             allPasswordEntries.add((PasswordEntry) entry);
         }
+        /*
         for (PasswordEntry passwordEntry : allPasswordEntries) {
             if (passwordEntry.isInCategory()) {
                 CategoryEntry category = passwordEntry.getCategory();
@@ -57,7 +59,22 @@ public class EntriesListHandler {
         }
         if (!categories.isEmpty()) {
             categoryEntries.addAll(categories);
+        }*/
+    }
+
+
+    // ugly temporary solution until category info saved in database
+    private boolean hasCategory(PasswordEntry newEntry) {
+        for (CategoryEntry categoryEntry : categoryEntries) {
+            for (PasswordEntry passwordEntry : categoryEntry.getPasswordEntries()) {
+                if (passwordEntry.equals(newEntry)) {
+                    categoryEntry.removePasswordEntry(passwordEntry);
+                    categoryEntry.addPasswordEntry(newEntry);
+                    return true;
+                }
+            }
         }
+        return false;
     }
 
 

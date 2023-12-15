@@ -46,6 +46,19 @@ public class SecureNoteEntry extends PasswordEntry {
     public void setNoteContent(String s) {this.noteContent = s;}
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SecureNoteEntry that = (SecureNoteEntry) o;
+        return type == that.type && entryId == that.entryId && Objects.equals(name, that.name) && Objects.equals(noteSubject, that.noteSubject) && Objects.equals(noteContent, that.noteContent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, noteSubject, noteContent, type, entryId, helper);
+    }
+
+    @Override
     public String getSearchTerm() {
         String searchTerm = "";
         String category;

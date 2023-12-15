@@ -69,6 +69,19 @@ public class WifiEntry extends PasswordEntry {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WifiEntry wifiEntry = (WifiEntry) o;
+        return entryId == wifiEntry.entryId && type == wifiEntry.type && Objects.equals(name, wifiEntry.name) && Objects.equals(wifiName, wifiEntry.wifiName) && Objects.equals(wifiPassword, wifiEntry.wifiPassword) && Objects.equals(wifiURL, wifiEntry.wifiURL) && Objects.equals(wifiAdminPassword, wifiEntry.wifiAdminPassword) && Objects.equals(note, wifiEntry.note);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, wifiName, wifiPassword, wifiURL, wifiAdminPassword, note, entryId, type, helper);
+    }
+
+    @Override
     public String getSearchTerm() {
         String searchTerm = "";
         String category;

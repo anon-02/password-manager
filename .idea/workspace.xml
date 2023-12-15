@@ -6,25 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="73d3a711-00db-4a34-8a66-e0a74e02d442" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Controller/CreateUserViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Controller/CreateUserViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Controller/DetailViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Controller/DetailViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Controller/LoginViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Controller/LoginViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Controller/MainViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/DetailItemFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/DetailItemFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntryListItemFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntryListItemFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/Generator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/PasswordFieldManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/PasswordFieldManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateEntry/CreateAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateEntry/CreateAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateEntry/CreateCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateEntry/CreateCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateEntry/CreateSecureNote.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateEntry/CreateSecureNote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateEntry/CreateWifi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateEntry/CreateWifi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateUserViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/CreateUserViewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/AccountDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/AccountDetailItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/CardDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/CardDetailItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/DetailItemImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/DetailItemImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/SecureNoteDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/SecureNoteDetailItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/WifiDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/WifiDetailItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/PasswordGeneratorItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/PasswordGeneratorItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PasswordGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Password/PasswordGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +27,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2ZFlj8xH0bvqKIK54erQ5mI3x6z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -52,6 +37,9 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -104,6 +92,7 @@
       <workItem from="1702130161280" duration="285000" />
       <workItem from="1702469375459" duration="26707000" />
       <workItem from="1702562476289" duration="3609000" />
+      <workItem from="1702610616548" duration="817000" />
     </task>
     <task id="LOCAL−00001" summary="initial commit">
       <created>1702026316079</created>
@@ -167,7 +156,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />

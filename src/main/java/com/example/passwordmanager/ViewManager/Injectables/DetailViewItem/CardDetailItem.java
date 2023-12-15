@@ -3,6 +3,8 @@ package com.example.passwordmanager.ViewManager.Injectables.DetailViewItem;
 import com.example.passwordmanager.Controller.DetailViewController;
 import com.example.passwordmanager.Model.Entries.CardEntry;
 import com.example.passwordmanager.Model.Entries.DisplayableEntry;
+import com.example.passwordmanager.Model.Entries.PasswordEntry;
+import com.example.passwordmanager.Model.EntriesListHandler;
 import com.example.passwordmanager.Model.PasswordFieldManager;
 import com.example.passwordmanager.Model.dbStuff.EncryptionBuffer;
 import com.example.passwordmanager.fxmlHelper;
@@ -78,6 +80,7 @@ public class CardDetailItem extends AnchorPane implements DetailItemImpl     {
     @Override
     public void updateEntry() {
         CardEntry updateEntry = new CardEntry(currentEntry.getEntryId(), entryCardName.getText(), cardHolder.getText(), cardNumber.getText(), cardMonth.getText(), cardYear.getText(), manager.getPassword(), cardNote.getText());
+        EntriesListHandler.getInstance().updatePasswordEntry((PasswordEntry) currentEntry, updateEntry);
         EncryptionBuffer.updateCardEntry(updateEntry);
         if (helper.isDebug()) {
             System.out.println("updated entry: ");

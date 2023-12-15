@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73d3a711-00db-4a34-8a66-e0a74e02d442" name="Changes" comment="README.md">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="73d3a711-00db-4a34-8a66-e0a74e02d442" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/Database/users.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntriesListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/Model/EntriesListHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/AccountDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/AccountDetailItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/CardDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/CardDetailItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/SecureNoteDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/SecureNoteDetailItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/WifiDetailItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/passwordmanager/ViewManager/Injectables/DetailViewItem/WifiDetailItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +32,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
   <component name="ProjectId" id="2ZFlj8xH0bvqKIK54erQ5mI3x6z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -40,17 +40,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tim/Chalmers/yoo/password-manager&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Tim\Chalmers\password-manager\src\main\resources\com\example\passwordmanager\Other" />
@@ -83,19 +72,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="password-manager" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="password-manager" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -115,7 +91,6 @@
       <workItem from="1702130161280" duration="285000" />
       <workItem from="1702469375459" duration="26707000" />
       <workItem from="1702562476289" duration="3609000" />
-      <workItem from="1702638574864" duration="700000" />
     </task>
     <task id="LOCAL−00001" summary="initial commit">
       <created>1702026316079</created>
@@ -157,12 +132,11 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1702566350766</updated>
     </task>
-    <task id="LOCAL−00007" summary="README.md">
-      <option name="closed" value="true" />
-      <created>1702639621944</created>
+    <task id="LOCAL−00007" summary="comments added">
+      <created>1702635666572</created>
       <option name="number" value="LOCAL−00007" />
       <option name="presentableId" value="LOCAL−00007" />
-      <updated>1702639621944</updated>
+      <updated>1702635666572</updated>
     </task>
     <option name="localTasksCounter" value="8" />
     <servers />
@@ -192,6 +166,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
@@ -199,7 +174,7 @@
     <MESSAGE value="createUserView cleanup" />
     <MESSAGE value="added try statement" />
     <MESSAGE value="removed unnecessary thrown exceptions" />
-    <MESSAGE value="README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md" />
+    <MESSAGE value="comments added" />
+    <option name="LAST_COMMIT_MESSAGE" value="comments added" />
   </component>
 </project>

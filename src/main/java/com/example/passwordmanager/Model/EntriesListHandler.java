@@ -63,7 +63,6 @@ public class EntriesListHandler {
     }
 
 
-    // ugly temporary solution until category info saved in database
     private boolean hasCategory(PasswordEntry newEntry) {
         for (CategoryEntry categoryEntry : categoryEntries) {
             for (PasswordEntry passwordEntry : categoryEntry.getPasswordEntries()) {
@@ -77,6 +76,18 @@ public class EntriesListHandler {
         return false;
     }
 
+    private boolean hasCategory(PasswordEntry oldEntry, PasswordEntry newEntry) {
+        for (CategoryEntry categoryEntry : categoryEntries) {
+            for (PasswordEntry passwordEntry : categoryEntry.getPasswordEntries()) {
+                if (passwordEntry.equals(oldEntry)) {
+                    categoryEntry.removePasswordEntry(passwordEntry);
+                    categoryEntry.addPasswordEntry(newEntry);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     // adds a new category to the list of categories
     public void addCategoryEntry(CategoryEntry categoryEntry) {
@@ -120,6 +131,10 @@ public class EntriesListHandler {
             }
         }
         categoryEntries.remove(categoryEntry);
+    }
+
+    public void updatePasswordEntry(PasswordEntry old, PasswordEntry updated) {
+        hasCategory(old, updated);
     }
 
     // returns categories
